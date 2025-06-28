@@ -5,7 +5,7 @@
 }
 
 :root {
-  --background: hsl(215, 65%, 14%);
+  --background: #0B1D3A;
   --theme: hsl(194, 100%, 49%);
   --white: #fff;
   --black: #000;
@@ -23,4 +23,24 @@
 body {
   background-color: var(--background);
   color: var(--white);
+}
+
+.content-wrapper, .nav-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
