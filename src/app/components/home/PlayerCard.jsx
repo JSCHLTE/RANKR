@@ -18,7 +18,6 @@ const PlayerCard = () => {
           </div>
           </div>
           <div className="player-card-stats">
-            <div className="player-card-numbers">
               <h2>2024 Rankings</h2>
               <div className="player-card-stats-wrapper">
                 <div className="stat stat-overall">
@@ -34,7 +33,6 @@ const PlayerCard = () => {
                   <p>PPR Avg</p>
                 </div>
               </div>
-            </div>
           </div>
       </div>
     ))
