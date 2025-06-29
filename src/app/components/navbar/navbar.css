@@ -1,6 +1,7 @@
 nav {
     background-color: var(--background);
     position: relative;
+    border-bottom: 1px solid var(--white);
 }
 
 .nav-logo {
@@ -10,6 +11,9 @@ nav {
 .nav-inner {
     align-items: center;
     justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .nav-links {
@@ -23,13 +27,13 @@ nav {
     height: 100vh;
     flex-direction: column;
     text-align: right;
-    gap: 2rem;
     padding: 2rem 0;
     display: none;
+    gap: 2rem;
 }
 
 .nav-links.active {
-    display: block;
+    display: flex;
 }
 
 .nav-links li a {
@@ -55,4 +59,13 @@ nav {
     background-color: var(--white);
     width: 30px;
     height: 2px;
+    transition: transform 0.1s;
+}
+
+.burger.active .line1 {
+    transform: rotate(45deg) translateX(5px) translateY(2px);
+}
+
+.burger.active .line2 {
+    transform: rotate(-45deg) translateX(5px) translateY(-2px);
 }

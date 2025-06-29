@@ -5,27 +5,36 @@
 }
 
 :root {
-  --background: #0B1D3A;
+  --background: hsl(217, 68%, 6%);
   --theme: hsl(194, 100%, 49%);
   --white: #fff;
   --black: #000;
+  --sub-text: hsl(0, 0%, 75%);
 
   --permBlack: #000;
   --permWhite: #fff;
 }
 
 .light {
-  --background: #fff;
+  --background: hsl(0, 0%, 100%);
   --white: #000;
   --black: #fff;
+  --sub-text: hsl(0, 0%, 10%);
 }
 
 body {
   background-color: var(--background);
   color: var(--white);
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.content-wrapper, .nav-inner {
+h1 {
+  font-weight: 800;
+}
+
+.content-wrapper {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
@@ -43,4 +52,14 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-family: inherit;
+  font-weight: 600;
 }
