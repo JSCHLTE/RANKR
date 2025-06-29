@@ -2,6 +2,7 @@ nav {
     background-color: var(--background);
     position: relative;
     border-bottom: 1px solid var(--white);
+    z-index: 999;
 }
 
 .nav-logo {

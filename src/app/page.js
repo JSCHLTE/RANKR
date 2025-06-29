@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import './home.css'
+import PlayerSlider from "./PlayerSlider";
 
 export default function Home() {
   return (
@@ -15,7 +16,17 @@ export default function Home() {
         </div>
       </header>
       <section>
-        <h2>Choose Your True 1.01</h2>
+        <div className="section-item">
+          <div className="section-inner">
+            <div className="section-left">
+              <PlayerSlider />
+            </div>
+            <div className="section-right">
+              <h2>Choose Your True 1.01</h2>
+              <p>Don't listen to the ADP</p>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
