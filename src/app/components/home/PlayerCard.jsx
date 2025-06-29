@@ -8,6 +8,7 @@ const PlayerCard = () => {
     playerData.map((item, index) => (
         <div className="player-card" key={index}>
         <div className="player-card-top" style={{backgroundColor: item.color}}>
+          <Image src={item.teamImg} width={500} height={500} alt="player team" className='player-card-team'/>
           <div className="player-card-img">
             <Image src={item.pfp} width="200" height="200" alt='player card'/>
           </div>
@@ -29,7 +30,7 @@ const PlayerCard = () => {
                   <p>PPR Points</p>
                 </div>
                 <div className="stat stat-avg">
-                  <span>{item.PPRAvg.toFixed(2)}</span>
+                  <span>{item.PPRAvg.toFixed(2).replace(".00", "")}</span>
                   <p>PPR Avg</p>
                 </div>
               </div>

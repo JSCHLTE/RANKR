@@ -8,7 +8,8 @@ export const playerData = [
         POSRank: 1,
         PPRPoints: 403,
         PPRAvg: 23.70,
-        pfp: "/images/chase.jpg"
+        pfp: "/images/chase.jpg",
+        teamImg: "/images/bengals.webp"
     },
     {
         name: "Saquon Barkley",
@@ -16,10 +17,11 @@ export const playerData = [
         pos: "RB",
         team: "Eagles",
         color: "#004C54",
-        POSRank: 1,
+        POSRank: 2,
         PPRPoints: 355.30,
         PPRAvg: 22.20,
-        pfp: "/images/barkley.jpg"
+        pfp: "/images/barkley.jpg",
+        teamImg: "/images/eagles.webp"
     },
     {
         name: "Justin Jefferson",
@@ -30,7 +32,8 @@ export const playerData = [
         POSRank: 2,
         PPRPoints: 317.48,
         PPRAvg: 18.67,
-        pfp: "/images/jefferson.jpg"
+        pfp: "/images/jefferson.jpg",
+        teamImg: "/images/vikings.webp"
     },
     {
         name: "Bijan Robinson",
@@ -38,10 +41,11 @@ export const playerData = [
         pos: "RB",
         team: "Falcons",
         color: "#000000",
-        POSRank: 4,
+        POSRank: 3,
         PPRPoints: 341.70,
         PPRAvg: 20.10,
-        pfp: "/images/robinson.jpg"
+        pfp: "/images/robinson.jpg",
+        teamImg: "/images/falcons.webp"
     },
     {
         name: "Jahmyr Gibbs",
@@ -49,10 +53,11 @@ export const playerData = [
         pos: "RB",
         team: "Lions",
         color: "#0076B6",
-        POSRank: 3,
+        POSRank: 1,
         PPRPoints: 362.90,
         PPRAvg: 21.34,
-        pfp: "/images/gibbs.jpg"
+        pfp: "/images/gibbs.jpg",
+        teamImg: "/images/lions.webp"
     },
     {
         name: "CeeDee Lamb",
@@ -60,9 +65,10 @@ export const playerData = [
         pos: "WR",
         team: "Cowboys",
         color: "#002244",
-        POSRank: 9,
+        POSRank: 8,
         PPRPoints: 263.40,
         PPRAvg: 17.56,
-        pfp: "/images/lamb.jpg"
+        pfp: "/images/lamb.jpg",
+        teamImg: "/images/cowboys.webp"
     }
 ]

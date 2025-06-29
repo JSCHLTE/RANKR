@@ -6,6 +6,7 @@
 
 :root {
   --background: hsl(217, 68%, 6%);
+  --background-light: hsl(217, 68%, 17%);
   --theme: hsl(194, 100%, 49%);
   --white: #fff;
   --black: #000;

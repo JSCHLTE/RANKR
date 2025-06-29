@@ -1,0 +1,33 @@
+.player-slider {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border: 1px solid var(--theme);
+}
+
+.player-slider-inner {
+    width: 100%;
+    display: flex;
+    transition: transform 0.2s ease;
+}
+
+.slider-circle-wrapper {
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.slider-circle {
+    border: 1px solid var(--theme);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.slider-circle.active {
+    background-color: var(--theme);
+    cursor: default;
+}

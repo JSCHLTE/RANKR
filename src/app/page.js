@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import './home.css'
-import PlayerSlider from "./PlayerSlider";
+import '@/app/home.css'
+import PlayerSlider from "@/app/components/home/PlayerSlider";
 
 export default function Home() {
   return (
@@ -18,12 +18,12 @@ export default function Home() {
       <section>
         <div className="section-item">
           <div className="section-inner">
-            <div className="section-left">
-              <PlayerSlider />
+          <div className="section-top">
+              <h2 className="section-title">Choose Your 1.01</h2>
+              <p className="section-desc">Think ADP’s got it wrong? Build your own rankings and prove who really knows ball.</p>
             </div>
-            <div className="section-right">
-              <h2>Choose Your True 1.01</h2>
-              <p>Don't listen to the ADP</p>
+            <div className="section-bottom">
+              <PlayerSlider />
             </div>
           </div>
         </div>

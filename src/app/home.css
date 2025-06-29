@@ -37,18 +37,21 @@ header p {
     color: var(--sub-text);
 }
 
-.player-slider {
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+.section-top {
+    text-align: center;
 }
 
-.player-slider-inner {
-    width: 100%;
-    display: flex;
-    transition: transform 0.2s ease;
+.section-bottom {
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+}
+
+.section-desc {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: var(--sub-text);
 }
 
