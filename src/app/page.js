@@ -15,7 +15,7 @@ export default function Home() {
           <Link href="#" className="btn alt">How It Works?</Link>
         </div>
       </header>
-      <section>
+      <section id="stats">
         <div className="section-item">
           <div className="section-inner">
           <div className="section-top">
@@ -25,6 +25,22 @@ export default function Home() {
             <div className="section-bottom">
               <PlayerSlider />
             </div>
+          </div>
+        </div>
+      </section>
+      <section id="community">
+        <div className="community-wrapper">
+          <div className="community-intro">
+            <h2 className="section-title">Post Your Rankings</h2>
+            <p className="section-desc">Join the conversation. Post your rankings and see how other draft junkies are stacking their boards for fantasy domination.</p>
+          </div>
+        </div>
+      </section>
+      <section id="draft">
+        <div className="draft-wrapper">
+          <div className="draft-intro">
+            <h2 className="section-title">Draft With Your Rankings</h2>
+            <p className="section-desc">Turn your rankings into your ultimate draft weapon. Enter the war room knowing who’s your best pick at every turn. Hit Draft Mode in your rankings to check off drafted players and always keep your board one step ahead of the competition.</p>
           </div>
         </div>
       </section>

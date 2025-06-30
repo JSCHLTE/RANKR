@@ -2,7 +2,7 @@ header {
     text-align: center;
     flex-direction: column;
     height: 100vh;
-    max-height: 600px;
+    max-height: 700px;
 }
 
 .header-btn {
@@ -37,7 +37,7 @@ header p {
     color: var(--sub-text);
 }
 
-.section-top {
+.section-top, .community-intro, .draft-intro {
     text-align: center;
 }
 
@@ -53,5 +53,10 @@ header p {
     font-size: 1.25rem;
     margin-top: 1rem;
     color: var(--sub-text);
+}
+
+#stats, #community, #draft {
+    height: 100vh;
+    max-height: 700px;
 }
 
