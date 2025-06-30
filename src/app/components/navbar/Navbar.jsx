@@ -19,7 +19,7 @@ const Navbar = () => {
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="#">Home</Link></li>
           <li><Link href="#">How It Works</Link></li>
-          <li><Link href="#">Rankings</Link></li>
+          <li><Link href="rankings">Rankings</Link></li>
           <li><Link href="#">Community</Link></li>
           <li><Link href="#">Contact</Link></li>
         </ul>
