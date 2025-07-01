@@ -11,7 +11,7 @@ const PlayerSlider = () => {
     const [isPaused, setIsPaused] = useState(false)
 
     useEffect(() => {
-
+        console.log('hi')
         if(isPaused) return
 
         const sliderDuration = setTimeout(() => {
@@ -24,7 +24,7 @@ const PlayerSlider = () => {
 
   return (
     <>
-    <div className="player-slider" onMouseOver={() => setIsPaused(true)} onMouseOut={() => setIsPaused(false)}>
+    <div className="player-slider" onClick={() => setIsPaused(prev => !prev)} onMouseOver={() => setIsPaused(true)} onMouseOut={() => setIsPaused(false)}>
         <div className="player-slider-inner" style={{ transform: `translateX(-${sliderIndex * 100}%)`}}>
             <PlayerCard />
         </div>
