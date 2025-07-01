@@ -6,8 +6,9 @@ import { players } from "../../top400"
 const Players = () => {
 
   const [allPlayers, setAllPlayers] = useState(players);
-  const [searchedPlayers, setSearchedPlayers] = useState(allPlayers);
+  const [displayPlayers, setDisplayPlayers] = useState(allPlayers)
   const [searchValue, setSearchValue] = useState("");
+  const [positionFilter, setPositionFilter] = useState([]);
 
   const check = (player) => {
     if (player.position) {
@@ -18,17 +19,29 @@ const Players = () => {
   };
 
   useEffect(() => {
-    if(searchValue.trim().length <= 0) setSearchedPlayers(allPlayers)
-    setSearchedPlayers(allPlayers.filter(item => item.full_name.toLowerCase().includes(searchValue.toLowerCase())));
-  }, [searchValue])
+    if(searchValue.trim().length <= 0) setDisplayPlayers(allPlayers);
+    setDisplayPlayers(allPlayers.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
+  }, [searchValue]);
+
+  useEffect(() => {
+
+  }, [positionFilter]);
   
 
+  const handleFilter = (pos) => {
+    if(positionFilter.includes(pos)) return
+    setPositionFilter(prev => [...prev, pos])
+  }
 
+  useEffect(() => {
+    console.log(positionFilter)
+  }, [positionFilter])
 
   return (
     <>
     <input type='text' placeholder='Search player...' className='player-search' id="playerSearch" value={searchValue} onChange={({ target }) => setSearchValue(target.value)}/>
-        {searchedPlayers.map((player, index) => (
+    <div className="filter-items flex"><span>Position:</span><div className="filter-buttons flex"><button className={`${positionFilter.length <= 0 ? 'active' : ''}`} onClick={() => setPositionFilter([])}>All</button><button onClick={() => handleFilter("QB")} className={positionFilter.includes("QB") ? 'active' : ''}>QB</button><button onClick={() => handleFilter("RB")} className={positionFilter.includes("RB") ? 'active' : ''}>RB</button><button onClick={() => handleFilter("WR")} className={positionFilter.includes("WR") ? 'active' : ''}>WR</button><button onClick={() => handleFilter("TE")} className={positionFilter.includes("TE") ? 'active' : ''}>TE</button></div></div>
+        {displayPlayers.map((player, index) => (
             <div className='player-item flex' key={index}>
               <div className='player-item-img-wrapper'>
                 <img src={player.playerImg} onError={(e) => {
