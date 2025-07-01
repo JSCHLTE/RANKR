@@ -7,6 +7,7 @@ const Players = () => {
 
   const [allPlayers, setAllPlayers] = useState(players);
   const [displayPlayers, setDisplayPlayers] = useState(allPlayers)
+  const [filteredPlayers, setFilteredPlayers] = useState(allPlayers);
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
 
@@ -20,7 +21,7 @@ const Players = () => {
 
   useEffect(() => {
     if(searchValue.trim().length <= 0) setDisplayPlayers(allPlayers);
-    setDisplayPlayers(allPlayers.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
+    setDisplayPlayers(filteredPlayers.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
   }, [searchValue]);
   
 
@@ -33,8 +34,15 @@ const Players = () => {
   }
 
   useEffect(() => {
-    if(positionFilter.length <= 0) return setDisplayPlayers(allPlayers);
-    setDisplayPlayers(allPlayers.filter(player => positionFilter.includes(player.position)))
+    setSearchValue("");
+    if(positionFilter.length <= 0) {
+      setFilteredPlayers(allPlayers);
+      setDisplayPlayers(allPlayers);
+      return;
+    }
+    const filter = allPlayers.filter(player => positionFilter.includes(player.position))
+    setFilteredPlayers(filter)
+    setDisplayPlayers(filter)
   }, [positionFilter])
 
   return (

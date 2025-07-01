@@ -4,11 +4,17 @@ import Link from "next/link"
 import Image from "next/image"
 
 import './navbar.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 
 const Navbar = () => {
 
+  const pathname = usePathname();
   const [nav, setNav] = useState(false);
+
+  useEffect(() => {
+    setNav(false)
+  }, [pathname])
 
   return (
     <div className="nav-inner flex">

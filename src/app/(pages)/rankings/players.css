@@ -86,9 +86,13 @@
     cursor: pointer;
 }
 
-.filter-buttons button:hover, .filter-buttons button.active {
-    background-color: var(--theme);
-    color: var(--background);
+.filter-buttons button.active {
+    background-color: var(--theme) !important;
+    color: var(--background) !important;
+}
+
+.filter-buttons button:hover {
+    background-color: var(--background-light);
 }
 
 .filter-buttons button.active {
