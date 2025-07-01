@@ -22,19 +22,19 @@ const Players = () => {
     if(searchValue.trim().length <= 0) setDisplayPlayers(allPlayers);
     setDisplayPlayers(allPlayers.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
   }, [searchValue]);
-
-  useEffect(() => {
-
-  }, [positionFilter]);
   
 
   const handleFilter = (pos) => {
-    if(positionFilter.includes(pos)) return
+    if(positionFilter.includes(pos)) {
+      setPositionFilter(prev => prev.filter(item => item !== pos))
+      return
+    }
     setPositionFilter(prev => [...prev, pos])
   }
 
   useEffect(() => {
-    console.log(positionFilter)
+    if(positionFilter.length <= 0) return setDisplayPlayers(allPlayers);
+    setDisplayPlayers(allPlayers.filter(player => positionFilter.includes(player.position)))
   }, [positionFilter])
 
   return (
