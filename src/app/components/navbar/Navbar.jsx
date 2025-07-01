@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className="nav-inner flex">
       <div className="nav-left flex">
         <div className="nav-logo">
-          <p>Rank Junkie</p>
+          <p>RankJunkie</p>
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/">Home</Link></li>

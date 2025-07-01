@@ -24,18 +24,6 @@ export const playerData = [
         teamImg: "/images/eagles.webp"
     },
     {
-        name: "Justin Jefferson",
-        number: 18,
-        pos: "WR",
-        team: "Vikings",
-        color: "#4F2683",
-        POSRank: 2,
-        PPRPoints: 317.48,
-        PPRAvg: 18.67,
-        pfp: "/images/jefferson.jpg",
-        teamImg: "/images/vikings.webp"
-    },
-    {
         name: "Bijan Robinson",
         number: 7,
         pos: "RB",
@@ -58,6 +46,18 @@ export const playerData = [
         PPRAvg: 21.34,
         pfp: "/images/gibbs.jpg",
         teamImg: "/images/lions.webp"
+    },
+    {
+        name: "Justin Jefferson",
+        number: 18,
+        pos: "WR",
+        team: "Vikings",
+        color: "#4F2683",
+        POSRank: 2,
+        PPRPoints: 317.48,
+        PPRAvg: 18.67,
+        pfp: "/images/jefferson.jpg",
+        teamImg: "/images/vikings.webp"
     },
     {
         name: "CeeDee Lamb",

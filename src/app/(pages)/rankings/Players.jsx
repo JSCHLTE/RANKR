@@ -1,15 +1,13 @@
 "use client";
-import { useEffect, useState } from 'react';
-import { players } from '../../top400'
+
+import { useEffect, useState } from "react";
+import { players } from "../../top400"
 
 const Players = () => {
 
   const [allPlayers, setAllPlayers] = useState(players);
-
-  const [wrs, setWrs] = useState(players.filter(pos => pos.position === "WR"));
-  const [rbs, setRbs] = useState(players.filter(pos => pos.position === "RB"));
-  const [qbs, setQbs] = useState(players.filter(pos => pos.position === "QB"));
-  const [tes, setTes] = useState(players.filter(pos => pos.position === "TE"));
+  const [searchedPlayers, setSearchedPlayers] = useState(allPlayers);
+  const [searchValue, setSearchValue] = useState("");
 
   const check = (player) => {
     if (player.position) {
@@ -18,16 +16,25 @@ const Players = () => {
     }
     return null;
   };
+
+  useEffect(() => {
+    if(searchValue.trim().length <= 0) setSearchedPlayers(allPlayers)
+    setSearchedPlayers(allPlayers.filter(item => item.full_name.toLowerCase().includes(searchValue.toLowerCase())));
+  }, [searchValue])
   
 
 
 
   return (
     <>
-        {allPlayers.map((player, index) => (
+    <input type='text' placeholder='Search player...' className='player-search' id="playerSearch" value={searchValue} onChange={({ target }) => setSearchValue(target.value)}/>
+        {searchedPlayers.map((player, index) => (
             <div className='player-item flex' key={index}>
               <div className='player-item-img-wrapper'>
-                <img src={player.playerImg} />
+                <img src={player.playerImg} onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'images/player-default.webp'
+                }}/>
               </div>
               <div className='player-item-info-wrapper'>
                 <div className='player-item-info-name'>
