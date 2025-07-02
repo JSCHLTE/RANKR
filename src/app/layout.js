@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/app/components/navbar/Navbar";
 
 export const metadata = {
-  title: "Rank Junkie",
+  title: "RANKR",
   description: "Fantasy rankings app by Jordan Schulte",
 };
 

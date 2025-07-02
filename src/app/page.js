@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <header className="flex-center">
-        <h1>The Fantasy App for Draft Junkies</h1>
+        <h1>The Fantasy App for Draft Fanatics</h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
           <Link href="#" className="btn main">Get Started</Link>
@@ -32,7 +32,7 @@ export default function Home() {
         <div className="community-wrapper">
           <div className="community-intro">
             <h2 className="section-title">Post Your Rankings</h2>
-            <p className="section-desc">Join the conversation. Post your rankings and see how other draft junkies are stacking their boards for fantasy domination.</p>
+            <p className="section-desc">Join the conversation. Post your rankings and see how other people are stacking their boards for fantasy domination.</p>
           </div>
         </div>
       </section>

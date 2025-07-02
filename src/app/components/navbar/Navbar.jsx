@@ -20,12 +20,12 @@ const Navbar = () => {
     <div className="nav-inner flex">
       <div className="nav-left flex">
         <div className="nav-logo">
-          <p>RankJunkie</p>
+          <p>RANKR</p>
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/">Home</Link></li>
           <li><Link href="#">How It Works</Link></li>
-          <li><Link href="rankings">Rankings</Link></li>
+          <li><Link href="/rankings">Rankings</Link></li>
           <li><Link href="#">Community</Link></li>
           <li><Link href="#">Contact</Link></li>
         </ul>
