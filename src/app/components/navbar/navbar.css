@@ -5,7 +5,6 @@ nav {
     left: 0;
     z-index: 999;
     width: 100%;
-    border-bottom: 1px solid #fff;
 }
 
 .nav-logo {
@@ -76,7 +75,7 @@ nav {
 .line {
     background-color: var(--white);
     width: 30px;
-    height: 2px;
+    height: 3px;
     transition: transform 0.1s;
 }
 
@@ -85,5 +84,5 @@ nav {
 }
 
 .burger.active .line2 {
-    transform: rotate(-45deg) translateX(5px) translateY(-2px);
+    transform: rotate(-45deg) translateX(6px) translateY(-3px);
 }
