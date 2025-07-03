@@ -2,7 +2,7 @@ header {
     text-align: center;
     flex-direction: column;
     height: 100vh;
-    max-height: 700px;
+    max-height: 600px;
 }
 
 .header-btn {
@@ -47,6 +47,8 @@ header {
 
 #stats, #community, #draft {
     height: 100vh;
-    max-height: 700px;
+    max-height: 600px;
+    flex-direction: column;
+    justify-content: center;
 }
 

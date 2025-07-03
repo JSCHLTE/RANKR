@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className="nav-inner flex">
       <div className="nav-left flex">
         <div className="nav-logo">
-          <p>RANKR</p>
+          <Link href="/"><Image src='/images/rankr-logo-transparent-250x250.webp' width='100' height='100'/></Link>
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/">Home</Link></li>

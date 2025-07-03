@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import Navbar from "@/app/components/navbar/Navbar";
+import { AuthProvider } from "./providers/AuthProvider";
 
 export const metadata = {
   title: "RANKR",
@@ -16,12 +17,14 @@ export default function RootLayout({ children }) {
       <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
     </head>
       <body>
-        <nav>
-          <Navbar />
-        </nav>
-        <div className="content-wrapper">
-          {children}
-        </div>
+        <AuthProvider>
+          <nav>
+            <Navbar />
+          </nav>
+          <div className="content-wrapper">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

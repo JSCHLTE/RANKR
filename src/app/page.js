@@ -15,7 +15,7 @@ export default function Home() {
           <Link href="#" className="btn alt">How It Works?</Link>
         </div>
       </header>
-      <section id="stats">
+      <section id="stats" className="flex">
         <div className="section-item">
           <div className="section-inner">
           <div className="section-top">
