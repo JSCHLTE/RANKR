@@ -63,3 +63,21 @@
 #loginForm button:hover {
     box-shadow: 0 0 7.5px 1px var(--theme);
 }
+
+.formWarning {
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: red;
+}
+
+.limit-wrapper {
+    position: relative;
+}
+
+.charLimit {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 0.9rem;
+}

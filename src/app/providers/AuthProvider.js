@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from "../firebase"
 
 const AuthContext = createContext();
@@ -15,12 +15,18 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
+      if(user) console.log(`Signed in as: ${user.email}`)
     });
     return () => unsubscribe();
   }, []);
 
+  async function logout() {
+    await signOut(auth);
+    console.log('Signout successful!')
+  }
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );

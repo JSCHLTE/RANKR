@@ -6,11 +6,13 @@ import Image from "next/image"
 import './navbar.css'
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
+import { useAuth } from "@/app/providers/AuthProvider"
 
 const Navbar = () => {
 
   const pathname = usePathname();
   const [nav, setNav] = useState(false);
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     setNav(false)
@@ -28,6 +30,7 @@ const Navbar = () => {
           <li><Link href="/rankings">Rankings</Link></li>
           <li><Link href="#">Community</Link></li>
           <li><Link href="#">Contact</Link></li>
+          <li onClick={logout}><Link href="#">Logout</Link></li>
         </ul>
       </div>
       <div className="nav-right">
