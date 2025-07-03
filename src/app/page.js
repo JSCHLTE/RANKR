@@ -7,7 +7,7 @@ import PlayerSlider from "@/app/components/home/PlayerSlider";
 export default function Home() {
   return (
     <>
-      <header className="flex-center">
+      <header className="flex">
         <h1>The Fantasy App for Draft Fanatics</h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
