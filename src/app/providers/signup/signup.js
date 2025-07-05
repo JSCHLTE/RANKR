@@ -5,7 +5,10 @@ import { getTime } from '../getTime/getTime';
 
 const time = getTime();
 
-export async function signUp(email, password, username) {
+export async function signUp(email, password, displayName) {
+
+  const username = displayName.toLowerCase();
+
   // Check if username is taken
   const usernameRef = ref(db, `usernames/${username}`);
   const snapshot = await get(usernameRef);
@@ -20,10 +23,13 @@ export async function signUp(email, password, username) {
 
   const userData = {
     username,
+    displayName,
     email: cred.user.email,
     pfp: "",
     accountCreated: time,
-    icons: [],
+    icons: ["user"],
+    followers: [],
+    following: []
   };
 
   // Save user record

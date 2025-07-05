@@ -1,0 +1,46 @@
+.user-data {
+    margin-top: 5rem;
+    gap: 1rem;
+}
+
+.user-data-img-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-data-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-data-name {
+    flex-direction: column;
+}
+
+.user-data-username, .follow-text, .user-data-joined {
+    color: var(--sub-text);
+}
+
+.user-data-right-wrapper {
+    gap: 1rem;
+}
+
+.user-data-right-wrapper {
+    margin: 0.5rem 0;
+}
+
+.user-data-displayname {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.user-data-username {
+    font-size: 1.25rem;
+}
+
+.user-data-joined {
+    font-style: italic;
+}
