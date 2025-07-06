@@ -7,9 +7,10 @@
     height: unset;
 }
 
-.player-rankings-wrapper {
+.player-rankings-wrapper, .players-custom-wrapper {
     gap: 0.5rem;
     flex-direction: column;
+    min-height: 700px;
 }
 
 .player-item {
@@ -17,7 +18,11 @@
     align-items: center;
     padding: 0.5rem;
     border-radius: 10px;
-    cursor: pointer;
+}
+
+.player-item:active {
+    cursor: grabbing;
+    background-color: var(--theme);
 }
 
 .player-item .player-item-img-wrapper {

@@ -11,7 +11,6 @@ const PlayerSlider = () => {
     const [isPaused, setIsPaused] = useState(false)
 
     useEffect(() => {
-        console.log('hi')
         if(isPaused) return
 
         const sliderDuration = setTimeout(() => {

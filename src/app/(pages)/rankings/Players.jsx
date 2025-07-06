@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { players } from "../../top400"
+import { check } from "@/app/providers/posRanking/posRanking";
 
 const Players = () => {
 
@@ -10,14 +11,6 @@ const Players = () => {
   const [filteredPlayers, setFilteredPlayers] = useState(allPlayers);
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
-
-  const check = (player) => {
-    if (player.position) {
-      const truth = allPlayers.filter(i => i.position === player.position).findIndex(item => item.full_name === player.full_name)
-      return truth + 1
-    }
-    return null;
-  };
 
   useEffect(() => {
     if(searchValue.trim().length <= 0) setDisplayPlayers(allPlayers);
@@ -63,7 +56,7 @@ const Players = () => {
                 </div>
                 <div className='player-item-info-details flex'>
                   <span>Overall: {index + 1}</span>
-                  <span className={`player-pos ${player.position}`}>{player.position} {check(player, index)}</span>
+                  <span className={`player-pos ${player.position}`}>{player.position} {check(allPlayers, player)}</span>
                 </div>
               </div>
             </div>
