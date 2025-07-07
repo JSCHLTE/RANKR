@@ -41,7 +41,17 @@ const Players = () => {
   return (
     <>
     <input type='text' placeholder='Search player...' className='player-search' id="playerSearch" value={searchValue} onChange={({ target }) => setSearchValue(target.value)}/>
-    <div className="filter-items flex"><span>Position:</span><div className="filter-buttons flex"><button className={`${positionFilter.length <= 0 ? 'active' : ''}`} onClick={() => setPositionFilter([])}>All</button><button onClick={() => handleFilter("QB")} className={positionFilter.includes("QB") ? 'active' : ''}>QB</button><button onClick={() => handleFilter("RB")} className={positionFilter.includes("RB") ? 'active' : ''}>RB</button><button onClick={() => handleFilter("WR")} className={positionFilter.includes("WR") ? 'active' : ''}>WR</button><button onClick={() => handleFilter("TE")} className={positionFilter.includes("TE") ? 'active' : ''}>TE</button></div></div>
+    <div className="filter-items flex">
+      <span>Position:</span>
+      <div className="filter-buttons flex">
+        <button className={`${positionFilter.length <= 0 ? 'active' : ''}`} onClick={() => setPositionFilter([])}>All</button>
+        <button onClick={() => handleFilter("QB")} className={positionFilter.includes("QB") ? 'active' : ''}>QB</button>
+        <button onClick={() => handleFilter("RB")} className={positionFilter.includes("RB") ? 'active' : ''}>RB</button>
+        <button onClick={() => handleFilter("WR")} className={positionFilter.includes("WR") ? 'active' : ''}>WR</button>
+        <button onClick={() => handleFilter("TE")} className={positionFilter.includes("TE") ? 'active' : ''}>TE</button>
+        <button onClick={() => handleFilter("K")} className={positionFilter.includes("K") ? 'active' : ''}>K</button>
+        <button onClick={() => handleFilter("DEF")} className={positionFilter.includes("DEF") ? 'active' : ''}>DEF</button>
+        </div></div>
         {displayPlayers.map((player, index) => (
             <div className='player-item flex' key={index}>
               <div className='player-item-img-wrapper'>

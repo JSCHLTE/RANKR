@@ -48,6 +48,11 @@
     margin-left: 1rem;
 }
 
+.watermark {
+    position: absolute;
+    right: 0;
+}
+
 .player-name {
     font-weight: 800;
     font-size: 1.15rem;
@@ -129,4 +134,14 @@
 .player-pos.TE {
     background-color: #FFA500;
     border-color: #FFA500;
+}
+
+.player-pos.DEF {
+    background-color: #DC143C;
+    border-color: #DC143C;
+}
+
+.player-pos.K {
+    background-color: #7988A1;
+    border-color: #7988A1;
 }

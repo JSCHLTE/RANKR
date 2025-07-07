@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { players } from "@/app/top400"
 import { check } from '@/app/providers/posRanking/posRanking'
+import Image from 'next/image'
 
 import {
     DragDropContext,
@@ -13,6 +14,17 @@ import {
 const Players = () => {
 
     const [playerList, setPlayerList] = useState(players)
+
+    function downloadJSON() {
+        const json = JSON.stringify(playerList, null, 2);
+        const blob = new Blob([json], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "myData.json";
+        link.click();
+        }
 
     function handleOnDragEnd(result) {
         if(!result.destination) return;
@@ -30,6 +42,8 @@ const Players = () => {
         }
 
   return (
+    <>
+        <button onClick={downloadJSON}>Export</button>
     <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="players">
             {(provided) => (
@@ -78,6 +92,7 @@ const Players = () => {
             )}
         </Droppable>
     </DragDropContext>
+    </>
   )
 }
 

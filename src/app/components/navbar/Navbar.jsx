@@ -22,7 +22,7 @@ const Navbar = () => {
     <div className="nav-inner flex">
       <div className="nav-left flex">
         <div className="nav-logo">
-          <Link href="/"><Image src='/images/rankr-logo-transparent-250x250.webp' width='100' height='100'/></Link>
+          <Link href="/"><Image src='/images/lion-blue.svg' width='100' height='100' alt="SVG Graphic of a lion with a crown on the top of his head"/></Link>
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/">Home</Link></li>
