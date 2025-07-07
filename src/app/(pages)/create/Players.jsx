@@ -60,7 +60,6 @@ const Players = () => {
                 <div className='player-item flex'
                 ref={provided.innerRef}
                 {...provided.draggableProps}
-                {...provided.dragHandleProps}
                 style={{
                     height: "90px",
                     ...provided.draggableProps.style,
@@ -68,21 +67,33 @@ const Players = () => {
                     position: snapshot.isDragging ? 'fixed' : 'static',
                 }}
                 >
+                <div
+                className='drag-handle-tab flex-center'
+                {...provided.dragHandleProps}
+            >
+                <div className='lines-wrapper flex-center'>
+                    <div className='line-drag'></div>
+                    <div className='line-drag'></div>
+                    <div className='line-drag'></div>
+                </div>
+            </div>
+            <div className='player-item-all-wrapper flex'>
                 <div className='player-item-img-wrapper'>
-                    <img src={player.playerImg ? player.playerImg : "/images/player-default.webp"} onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'images/player-default.webp'
-                    }}/>
-                </div>
-                <div className='player-item-info-wrapper'>
-                    <div className='player-item-info-name'>
-                    <p className='player-name'>{player.full_name}</p>
+                        <img src={player.playerImg ? player.playerImg : "/images/player-default.webp"} onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'images/player-default.webp'
+                        }}/>
                     </div>
-                    <div className='player-item-info-details flex'>
-                    <span>Overall: {index + 1}</span>
-                    <span className={`player-pos ${player.position}`}>{player.position} {check(playerList, player)}</span>
+                    <div className='player-item-info-wrapper'>
+                        <div className='player-item-info-name'>
+                        <p className='player-name'>{player.full_name}</p>
+                        </div>
+                        <div className='player-item-info-details flex'>
+                        <span>Overall: {index + 1}</span>
+                        <span className={`player-pos ${player.position}`}>{player.position} {check(playerList, player)}</span>
+                        </div>
                     </div>
-                </div>
+            </div>
                 </div>
                 )}
             </Draggable>
