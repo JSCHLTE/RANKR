@@ -1,0 +1,17 @@
+.spinner-wrapper {
+    text-align: center;
+}
+
+.spinner-wrapper .logo {
+    animation: flicker infinite linear 1s;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    } 50% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}

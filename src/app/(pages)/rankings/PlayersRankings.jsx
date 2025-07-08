@@ -1,20 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { players } from "../../top400"
 import { check } from "@/app/providers/posRanking/posRanking";
 
-const PlayersRankings = () => {
+const PlayersRankings = ({ players }) => {
 
-  const [allPlayers, setAllPlayers] = useState(players);
-  const [displayPlayers, setDisplayPlayers] = useState(allPlayers)
-  const [filteredPlayers, setFilteredPlayers] = useState(allPlayers);
+  const [displayPlayers, setDisplayPlayers] = useState(players)
+  const [filteredPlayers, setFilteredPlayers] = useState(players);
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
 
   useEffect(() => {
-    if(searchValue.trim().length <= 0) setDisplayPlayers(allPlayers);
-    setDisplayPlayers(filteredPlayers.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
+    if(searchValue.trim().length <= 0) setDisplayPlayers(players);
+    setDisplayPlayers(filteredPlayers?.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
   }, [searchValue]);
   
 
@@ -29,11 +27,11 @@ const PlayersRankings = () => {
   useEffect(() => {
     setSearchValue("");
     if(positionFilter.length <= 0) {
-      setFilteredPlayers(allPlayers);
-      setDisplayPlayers(allPlayers);
+      setFilteredPlayers(players);
+      setDisplayPlayers(players);
       return;
     }
-    const filter = allPlayers.filter(player => positionFilter.includes(player.position))
+    const filter = players.filter(player => positionFilter.includes(player.position))
     setFilteredPlayers(filter)
     setDisplayPlayers(filter)
   }, [positionFilter])
@@ -54,7 +52,7 @@ const PlayersRankings = () => {
         </div></div>
 
         <div className='players-custom-wrapper flex'>
-          {displayPlayers.map((player, index) => (
+          {displayPlayers?.map((player, index) => (
             <div className='player-item flex' key={player.full_name}>
               <div className='player-item-all-wrapper flex'>
                 <div className='player-item-img-wrapper'>
