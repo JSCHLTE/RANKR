@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import PlayersEdit from './PlayersEdit';
 import PlayersRankings from './PlayersRankings';
 import { getDatabase, ref, set, get } from "firebase/database";
+import { db } from '@/app/firebase';
 import Loading from '@/app/components/loading/Loading';
 
 const Players = () => {
@@ -15,7 +16,6 @@ const Players = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       setLoading(true);
-      const db = getDatabase();
       const rankingsRef = ref(db, "rankr-rankings");
 
       try {
@@ -40,16 +40,33 @@ const Players = () => {
     fetchPlayers();
   }, []);
 
-  const savePlayers = (name) => {
-    console.log("hi" + name)
+  const saveRankings = () => {
+    setLoading(true);
+    
+    const playersRef = ref(db, "rankr-rankings");
+
+    set(playersRef, players)
+      .then(() => {
+        alert("Rankings have been saved!");
+        setLoading(null);
+        setEditMode(null);
+      })
+      .catch((error) => {
+        console.error("Error saving players: ", error);
+        setLoading(null);
+      })
+
   }
 
   if(loading) return <Loading />;
 
   return !loading && (
     <>
-      <button onClick={() => setEditMode(prev => !prev)}>{editMode ? "Save Rankings" : "Edit Rankings"}</button>
-      {editMode ? <PlayersEdit players={players} savePlayers={savePlayers}/> : <PlayersRankings players={players}/>}
+    <div className='edit-buttons flex-center'>
+      {editMode ? <button className='btn main' onClick={saveRankings}>Save Rankings</button> : <button className='btn main' onClick={() => setEditMode(prev => !prev)}>Edit Rankings</button>}
+      {editMode ? <button className='btn alt' onClick={() => setEditMode(null)}>Cancel</button> : ''}
+    </div>
+      {editMode ? <PlayersEdit players={players} setPlayers={setPlayers}/> : <PlayersRankings players={players}/>}
     </>
   )
 }

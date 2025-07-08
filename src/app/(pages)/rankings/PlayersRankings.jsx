@@ -67,7 +67,7 @@ const PlayersRankings = ({ players }) => {
                   </div>
                   <div className='player-item-info-details flex'>
                     <span>Overall: {player?.order}</span>
-                    <span className={`player-pos ${player.position}`}>{player.position} {check(displayPlayers, player)}</span>
+                    <span className={`player-pos ${player.position}`}>{player.position} {check(players, player)}</span>
                   </div>
                 </div>
               </div>

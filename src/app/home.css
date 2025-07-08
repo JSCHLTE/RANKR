@@ -16,18 +16,6 @@ header {
 .btn.main, .btn.alt {
     width: 150px;
     height: 45px;
-    border: 1px solid;
-}
-
-.btn.main {
-    background-color: var(--theme);
-    color: var(--permWhite);
-    border-color: var(--theme);
-}
-
-.btn.alt {
-    border-color: var(--white);
-    color: var(--white);
 }
 
 .section-top, .community-intro, .draft-intro {

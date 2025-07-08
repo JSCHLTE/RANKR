@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { players } from "../../top400"
 import { check } from "@/app/providers/posRanking/posRanking";
 
 import {
@@ -10,7 +8,7 @@ import {
   Draggable,
 } from "@hello-pangea/dnd";
 
-const PlayersEdit = ({ players }) => {
+const PlayersEdit = ({ players, setPlayers }) => {
 
   function handleOnDragEnd(result) {
     if(!result.destination) return;
@@ -24,7 +22,7 @@ const PlayersEdit = ({ players }) => {
         order: index + 1
     }))
 
-    setAllPlayers(updatedPlayers);
+    setPlayers(updatedPlayers);
     }
 
   return (
