@@ -22,7 +22,12 @@
     background-color: var(--theme);
     height: 100%;
     padding: 0 0.5rem;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.drag-handle-tab:hover {
+    cursor: grab;
 }
 
 .drag-handle-tab:active {
@@ -47,7 +52,6 @@
     border-radius: 10px;
     width: 100%;
     overflow: hidden;
-    padding: 0.5rem;
 }
 
 .player-item .player-item-img-wrapper {

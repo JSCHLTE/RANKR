@@ -11,7 +11,7 @@ export default function Home() {
         <h1>The Fantasy App for Draft Fanatics</h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
-          <Link href="#" className="btn main">Get Started</Link>
+          <Link href="/create" className="btn main">Get Started</Link>
           <Link href="#" className="btn alt">How It Works?</Link>
         </div>
       </header>
