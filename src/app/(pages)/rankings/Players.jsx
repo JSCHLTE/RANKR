@@ -40,12 +40,16 @@ const Players = () => {
     fetchPlayers();
   }, []);
 
+  const savePlayers = (name) => {
+    console.log("hi" + name)
+  }
+
   if(loading) return <Loading />;
 
   return !loading && (
     <>
       <button onClick={() => setEditMode(prev => !prev)}>{editMode ? "Save Rankings" : "Edit Rankings"}</button>
-      {editMode ? <PlayersEdit players={players}/> : <PlayersRankings players={players}/>}
+      {editMode ? <PlayersEdit players={players} savePlayers={savePlayers}/> : <PlayersRankings players={players}/>}
     </>
   )
 }
