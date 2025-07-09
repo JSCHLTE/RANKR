@@ -67,6 +67,7 @@ a {
   font-weight: 600;
   border: 1px solid;
   cursor: pointer;
+  transition: 0.1s ease;
 }
 
 .btn.main {
@@ -76,7 +77,7 @@ a {
 }
 
 .btn.main:hover {
-  box-shadow: 0 0 7.5px 1px var(--theme);
+  box-shadow: 0 0 15px 1px rgba(0, 192, 250, 0.5);
 }
 
 .btn.alt {
@@ -86,7 +87,7 @@ a {
 }
 
 .btn.alt:hover {
-  box-shadow: 0 0 7.5px 1px var(--permWhite);
+  box-shadow: 0 0 15px 1px rgba(255, 255, 255, 0.5);
 }
 
 header h1 {
