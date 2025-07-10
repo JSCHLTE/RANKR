@@ -1,5 +1,6 @@
 import Players from "./Players"
 import './players.css'
+import { PlayersList } from "@/app/providers/players/PlayersList"
 
 const Rankings = () => {
   return (
@@ -8,7 +9,9 @@ const Rankings = () => {
       <h1>Our Rankings</h1>
     </header>
     <main className="player-rankings-wrapper flex">
+    <PlayersList>
         <Players />
+    </PlayersList>
     </main>
     </>
   )

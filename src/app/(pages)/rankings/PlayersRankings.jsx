@@ -1,18 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { check } from "@/app/providers/posRanking/posRanking";
+import Loading from "@/app/components/loading/Loading";
 
-const PlayersRankings = ({ players }) => {
+const PlayersRankings = ({ players, loading }) => {
 
-  const [displayPlayers, setDisplayPlayers] = useState(players)
-  const [filteredPlayers, setFilteredPlayers] = useState(players);
+  const ordered = players.map((item, index) => ({
+    ...item,
+    order: index + 1
+  }))
+
+  const [displayPlayers, setDisplayPlayers] = useState(ordered)
+  const [filteredPlayers, setFilteredPlayers] = useState(ordered);
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
 
   useEffect(() => {
-    if(searchValue.trim().length <= 0) setDisplayPlayers(players);
-    setDisplayPlayers(filteredPlayers?.filter(player => player.full_name.toLowerCase().includes(searchValue.toLowerCase())));
+    if(searchValue.trim().length <= 0) setDisplayPlayers(ordered);
+    setDisplayPlayers(filteredPlayers?.filter(player => player?.full_name.toLowerCase().includes(searchValue.toLowerCase())));
   }, [searchValue]);
   
 
@@ -27,14 +33,16 @@ const PlayersRankings = ({ players }) => {
   useEffect(() => {
     setSearchValue("");
     if(positionFilter.length <= 0) {
-      setFilteredPlayers(players);
-      setDisplayPlayers(players);
+      setFilteredPlayers(ordered);
+      setDisplayPlayers(ordered);
       return;
     }
-    const filter = players.filter(player => positionFilter.includes(player.position))
+    const filter = players.filter(player => positionFilter.includes(player?.position))
     setFilteredPlayers(filter)
     setDisplayPlayers(filter)
   }, [positionFilter])
+
+  if(loading) return <Loading />
 
   return (
     <>
@@ -53,21 +61,21 @@ const PlayersRankings = ({ players }) => {
 
         <div className='players-custom-wrapper flex'>
           {displayPlayers?.map((player, index) => (
-            <div className='player-item flex' key={player.full_name}>
+            <div className='player-item flex' key={index}>
               <div className='player-item-all-wrapper flex'>
                 <div className='player-item-img-wrapper'>
-                  <img src={player.playerImg ? player.playerImg : "/images/player-default.webp"} onError={(e) => {
+                  <img src={player?.playerImg ? player?.playerImg : "/images/player-default.webp"} onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = 'images/player-default.webp'
                     }}/>
                 </div>
                 <div className='player-item-info-wrapper'>
                   <div className='player-item-info-name'>
-                    <p className='player-name'>{player.full_name}</p>
+                    <p className='player-name'>{player?.full_name}</p>
                   </div>
                   <div className='player-item-info-details flex'>
                     <span>Overall: {player?.order}</span>
-                    <span className={`player-pos ${player.position}`}>{player.position} {check(players, player)}</span>
+                    <span className={`player-pos ${player?.position}`}>{player?.position} {check(players, player)}</span>
                   </div>
                 </div>
               </div>
