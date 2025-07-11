@@ -8,11 +8,9 @@ const PlayerContext = createContext();
 
 export function PlayersList({ children } = {}) {
   const [players, setPlayers] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPlayers = async () => {
-      setLoading(true);
       const playersRef = ref(db, "players");
 
       try {
@@ -29,8 +27,6 @@ export function PlayersList({ children } = {}) {
         }
       } catch (error) {
         console.error("Error fetching players:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -38,7 +34,7 @@ export function PlayersList({ children } = {}) {
   }, []);
 
   return (
-    <PlayerContext.Provider value={{ players, loading }}>
+    <PlayerContext.Provider value={{ players }}>
       {children}
     </PlayerContext.Provider>
   );

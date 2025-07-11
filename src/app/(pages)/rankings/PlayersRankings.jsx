@@ -2,24 +2,24 @@
 
 import { createContext, useEffect, useState } from "react";
 import { check } from "@/app/providers/posRanking/posRanking";
+import { ref, get } from "firebase/database";
+import { db } from "../../firebase";
 import Loading from "@/app/components/loading/Loading";
 
-const PlayersRankings = ({ players, loading }) => {
+const PlayersRankings = ({ playerList }) => {
 
-  const ordered = players.map((item, index) => ({
-    ...item,
-    order: index + 1
-  }))
-
-  const [displayPlayers, setDisplayPlayers] = useState(ordered)
-  const [filteredPlayers, setFilteredPlayers] = useState(ordered);
+  const [displayPlayers, setDisplayPlayers] = useState(playerList);
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
 
-  useEffect(() => {
-    if(searchValue.trim().length <= 0) setDisplayPlayers(ordered);
-    setDisplayPlayers(filteredPlayers?.filter(player => player?.full_name.toLowerCase().includes(searchValue.toLowerCase())));
-  }, [searchValue]);
+    useEffect(() => {
+      if(searchValue.trim().length <= 0) return setDisplayPlayers(playerList);
+      setDisplayPlayers(playerList.filter(player => {
+        const searchTerm = searchValue.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const playerName = player.full_name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        return playerName.includes(searchTerm);
+      }))
+    }, [searchValue, playerList])
   
 
   const handleFilter = (pos) => {
@@ -33,16 +33,12 @@ const PlayersRankings = ({ players, loading }) => {
   useEffect(() => {
     setSearchValue("");
     if(positionFilter.length <= 0) {
-      setFilteredPlayers(ordered);
-      setDisplayPlayers(ordered);
+      setDisplayPlayers(playerList);
       return;
     }
-    const filter = players.filter(player => positionFilter.includes(player?.position))
-    setFilteredPlayers(filter)
+    const filter = playerList.filter(player => positionFilter.includes(player?.position))
     setDisplayPlayers(filter)
   }, [positionFilter])
-
-  if(loading) return <Loading />
 
   return (
     <>
@@ -74,8 +70,8 @@ const PlayersRankings = ({ players, loading }) => {
                     <p className='player-name'>{player?.full_name}</p>
                   </div>
                   <div className='player-item-info-details flex'>
-                    <span>Overall: {player?.order}</span>
-                    <span className={`player-pos ${player?.position}`}>{player?.position} {check(players, player)}</span>
+                    <span>Overall: {playerList.indexOf(player) + 1}</span>
+                    <span className={`player-pos ${player?.position}`}>{player?.position} {check(playerList, player)}</span>
                   </div>
                 </div>
               </div>

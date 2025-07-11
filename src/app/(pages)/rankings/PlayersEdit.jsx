@@ -8,12 +8,12 @@ import {
   Draggable,
 } from "@hello-pangea/dnd";
 
-const PlayersEdit = ({ players, setPlayers }) => {
+const PlayersEdit = ({ playerList, setPlayerList }) => {
 
   function handleOnDragEnd(result) {
     if(!result.destination) return;
 
-    const items = Array.from(players);
+    const items = Array.from(playerList);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
@@ -22,7 +22,7 @@ const PlayersEdit = ({ players, setPlayers }) => {
         order: index + 1
     }))
 
-    setPlayers(updatedPlayers);
+    setPlayerList(updatedPlayers);
     }
 
   return (
@@ -32,7 +32,7 @@ const PlayersEdit = ({ players, setPlayers }) => {
             <div className='players-custom-wrapper flex'
             {...provided.droppableProps}
               ref={provided.innerRef}>
-        {players.map((player, index) => (
+        {playerList.map((player, index) => (
             <Draggable
             key={player.full_name}
             draggableId={player.full_name}
@@ -71,8 +71,8 @@ const PlayersEdit = ({ players, setPlayers }) => {
                         <p className='player-name'>{player.full_name}</p>
                         </div>
                         <div className='player-item-info-details flex'>
-                        <span>Overall: {player?.order}</span>
-                        <span className={`player-pos ${player.position}`}>{player.position} {check(players, player)}</span>
+                        <span>Overall: {playerList.indexOf(player) + 1}</span>
+                        <span className={`player-pos ${player.position}`}>{player.position} {check(playerList, player)}</span>
                         </div>
                     </div>
             </div>
