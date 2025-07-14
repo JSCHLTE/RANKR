@@ -100,14 +100,14 @@ const PlayersRankings = ({ playerList }) => {
           ))}
         </div>
         { playerCard ? <div className="player-card-wrapper">
-          <div className="player-card-header">
+          <div className="player-card-header flex">
             <div className="player-card-header-img">
             <img src={playerCard?.playerImg ? playerCard?.playerImg : "/images/player-default.webp"} onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = 'images/player-default.webp'
                     }}/>
             </div>
-            <div className="player-card-header-info">
+            <div className="player-card-header-info flex">
               <div className="player-card-name">
                 <h4>{playerCard.full_name}</h4>
               </div>
@@ -118,7 +118,7 @@ const PlayersRankings = ({ playerList }) => {
                     </div>
                     <div className="player-card-player-info height">
                       <h5>Height</h5>
-                      <span>{getHeight(playerCard.height)}"</span>
+                      <span>{getHeight(playerCard.height)}</span>
                     </div>
                     <div className="player-card-player-info weight">
                       <h5>Weight</h5>
