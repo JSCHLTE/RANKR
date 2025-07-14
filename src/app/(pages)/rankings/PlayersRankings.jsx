@@ -108,10 +108,31 @@ const PlayersRankings = ({ playerList }) => {
                     }}/>
             </div>
             <div className="player-card-header-info">
-              <h4>{playerCard.full_name}</h4>
-              <span>{playerCard.age}</span>
-              <span>{getHeight(playerCard.height)}"</span>
-              <span>{playerCard.weight}</span>
+              <div className="player-card-name">
+                <h4>{playerCard.full_name}</h4>
+              </div>
+              <div className="player-card-player-info">
+                    <div className="player-card-player-info age">
+                      <h5>Age</h5>
+                      <span>{playerCard.age}</span>
+                    </div>
+                    <div className="player-card-player-info height">
+                      <h5>Height</h5>
+                      <span>{getHeight(playerCard.height)}"</span>
+                    </div>
+                    <div className="player-card-player-info weight">
+                      <h5>Weight</h5>
+                      <span>{playerCard.weight}</span>
+                    </div>
+                    <div className="player-card-player-info exp">
+                      <h5>Exp</h5>
+                      <span>{playerCard.years_exp}</span>
+                    </div>
+                    <div className="player-card-player-info college">
+                      <h5>College</h5>
+                      <span>{playerCard.college}</span>
+                    </div>
+              </div>
             </div>
           </div>
         </div> : "" }

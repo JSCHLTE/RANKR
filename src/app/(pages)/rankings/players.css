@@ -130,7 +130,7 @@
     background-color: var(--background);
     border: 1px solid var(--theme);
     color: var(--permWhite);
-    width: 60px;
+    width: 75px;
     height: 30px;
     border-radius: 10px;
     text-transform: uppercase;
@@ -198,4 +198,8 @@
     transform: translateX(-50%) translateY(-50%);
     background-color: var(--background-light);
     padding: 1rem;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 10px;
 }
