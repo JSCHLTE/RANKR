@@ -111,26 +111,46 @@ const PlayersRankings = ({ playerList }) => {
               <div className="player-card-name">
                 <h4>{playerCard.full_name}</h4>
               </div>
-              <div className="player-card-player-info">
+              <div className="player-card-player-info-wrapper flex">
                     <div className="player-card-player-info age">
-                      <h5>Age</h5>
-                      <span>{playerCard.age}</span>
+                      <div className="player-card-player-info-title-wrapper flex-center">
+                        <h5 className="player-card-player-info-title">Age</h5>
+                      </div>
+                      <div className="player-card-player-info-value-wrapper flex-center">
+                        <span className="player-card-player-value">{playerCard.age}</span>
+                      </div>
                     </div>
                     <div className="player-card-player-info height">
-                      <h5>Height</h5>
-                      <span>{getHeight(playerCard.height)}</span>
+                    <div className="player-card-player-info-title-wrapper flex-center">
+                        <h5 className="player-card-player-info-title">Height</h5>
+                      </div>
+                      <div className="player-card-player-info-value-wrapper flex-center">
+                        <span className="player-card-player-value">{getHeight(playerCard.height)}</span>
+                      </div>
                     </div>
                     <div className="player-card-player-info weight">
-                      <h5>Weight</h5>
-                      <span>{playerCard.weight}</span>
+                    <div className="player-card-player-info-title-wrapper flex-center">
+                        <h5 className="player-card-player-info-title">Weight</h5>
+                      </div>
+                      <div className="player-card-player-info-value-wrapper flex-center">
+                        <span className="player-card-player-value">{playerCard.weight}</span>
+                      </div>
                     </div>
                     <div className="player-card-player-info exp">
-                      <h5>Exp</h5>
-                      <span>{playerCard.years_exp}</span>
+                    <div className="player-card-player-info-title-wrapper flex-center">
+                        <h5 className="player-card-player-info-title">Exp</h5>
+                      </div>
+                      <div className="player-card-player-info-value-wrapper flex-center">
+                        <span className="player-card-player-value">{playerCard.years_exp}</span>
+                      </div>
                     </div>
                     <div className="player-card-player-info college">
-                      <h5>College</h5>
-                      <span>{playerCard.college}</span>
+                    <div className="player-card-player-info-title-wrapper flex-center">
+                        <h5 className="player-card-player-info-title">College</h5>
+                      </div>
+                      <div className="player-card-player-info-value-wrapper flex-center">
+                        <span className="player-card-player-value">{playerCard.college}</span>
+                      </div>
                     </div>
               </div>
             </div>
