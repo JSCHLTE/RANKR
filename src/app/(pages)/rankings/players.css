@@ -190,3 +190,12 @@
     background-color: #7988A1;
     border-color: #7988A1;
 }
+
+.player-card-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: var(--background-light);
+    padding: 1rem;
+}

@@ -9,6 +9,7 @@ import Loading from "@/app/components/loading/Loading";
 const PlayersRankings = ({ playerList }) => {
 
   const [displayPlayers, setDisplayPlayers] = useState(playerList);
+  const [playerCard, setPlayerCard] = useState();
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
 
@@ -28,6 +29,14 @@ const PlayersRankings = ({ playerList }) => {
       return
     }
     setPositionFilter(prev => [...prev, pos])
+  }
+
+  const getHeight = (height) => {
+    const feet = Math.floor(height / 12);
+    const inches = height % 12;
+    const heightString = `${feet}'${inches}"`;
+    console.log(heightString)
+    return heightString;
   }
 
   useEffect(() => {
@@ -68,7 +77,7 @@ const PlayersRankings = ({ playerList }) => {
 
         <div className='players-custom-wrapper flex'>
           {displayPlayers?.map((player, index) => (
-            <div className='player-item flex' key={index}>
+            <div className='player-item flex' key={index} onClick={() => setPlayerCard(player)}>
               <div className='player-item-all-wrapper flex'>
                 <div className='player-item-img-wrapper'>
                   <img src={player?.playerImg ? player?.playerImg : "/images/player-default.webp"} onError={(e) => {
@@ -90,6 +99,22 @@ const PlayersRankings = ({ playerList }) => {
             </div>
           ))}
         </div>
+        { playerCard ? <div className="player-card-wrapper">
+          <div className="player-card-header">
+            <div className="player-card-header-img">
+            <img src={playerCard?.playerImg ? playerCard?.playerImg : "/images/player-default.webp"} onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'images/player-default.webp'
+                    }}/>
+            </div>
+            <div className="player-card-header-info">
+              <h4>{playerCard.full_name}</h4>
+              <span>{playerCard.age}</span>
+              <span>{getHeight(playerCard.height)}"</span>
+              <span>{playerCard.weight}</span>
+            </div>
+          </div>
+        </div> : "" }
     </>
   )
 }
