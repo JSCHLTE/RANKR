@@ -73,6 +73,7 @@ const PlayersEdit = ({ playerList, setPlayerList }) => {
                         <div className='player-item-info-details flex'>
                         <span>Overall: {playerList.indexOf(player) + 1}</span>
                         <span className={`player-pos ${player.position}`}>{player.position} {check(playerList, player)}</span>
+                        { player?.years_exp === 0 && player?.position !== "DEF" ? <span className="player-rookie">Rookie</span> : "" }
                         </div>
                     </div>
             </div>

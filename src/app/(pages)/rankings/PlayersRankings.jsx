@@ -36,7 +36,17 @@ const PlayersRankings = ({ playerList }) => {
       setDisplayPlayers(playerList);
       return;
     }
-    const filter = playerList.filter(player => positionFilter.includes(player?.position))
+    let filter = playerList.filter(player => positionFilter.includes(player?.position))
+    if(positionFilter.includes("Rookie")) {
+      let rookies = playerList.filter(player => player?.years_exp === 0 && player?.position !== "DEF");
+      let filter = rookies.filter(player => positionFilter.includes(player?.position))
+      if(positionFilter.length > 1) {
+        setDisplayPlayers(filter);
+      } else {
+        setDisplayPlayers(rookies);
+      }
+      return;
+    }
     setDisplayPlayers(filter)
   }, [positionFilter])
 
@@ -51,6 +61,7 @@ const PlayersRankings = ({ playerList }) => {
         <button onClick={() => handleFilter("RB")} className={positionFilter.includes("RB") ? 'active' : ''}>RB</button>
         <button onClick={() => handleFilter("WR")} className={positionFilter.includes("WR") ? 'active' : ''}>WR</button>
         <button onClick={() => handleFilter("TE")} className={positionFilter.includes("TE") ? 'active' : ''}>TE</button>
+        <button onClick={() => handleFilter("Rookie")} className={positionFilter.includes("Rookie") ? 'active' : ''}>Rookie</button>
         <button onClick={() => handleFilter("K")} className={positionFilter.includes("K") ? 'active' : ''}>K</button>
         <button onClick={() => handleFilter("DEF")} className={positionFilter.includes("DEF") ? 'active' : ''}>DEF</button>
         </div></div>
@@ -72,6 +83,7 @@ const PlayersRankings = ({ playerList }) => {
                   <div className='player-item-info-details flex'>
                     <span>Overall: {playerList.indexOf(player) + 1}</span>
                     <span className={`player-pos ${player?.position}`}>{player?.position} {check(playerList, player)}</span>
+                    { player?.years_exp === 0 && player?.position !== "DEF" ? <span className="player-rookie">Rookie</span> : "" }
                   </div>
                 </div>
               </div>
