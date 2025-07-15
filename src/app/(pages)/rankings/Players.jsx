@@ -13,6 +13,7 @@ const Players = () => {
   const { players, loading } = usePlayerContext();
   const [rankings, setRankings] = useState();
   const [playerList, setPlayerList] = useState();
+  const [unsaved, setUnsaved] = useState();
   const [editMode, setEditMode] = useState(null);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ const Players = () => {
         .filter(Boolean);
 
       setPlayerList(orderedPlayers);
+      setUnsaved(orderedPlayers);
     }, [players, rankings]);
 
   const saveRankings = () => {
@@ -62,9 +64,10 @@ const Players = () => {
       })
   }
 
-  useEffect(() => {
-    console.log(playerList)
-  }, [playerList])
+  const cancelEdit = () => {
+    setEditMode(null);
+    setPlayerList(unsaved);
+  }
 
   if(loading) return <Loading />
 
@@ -72,7 +75,7 @@ const Players = () => {
     <>
     <div className='edit-buttons flex-center'>
       {editMode ? <button className='btn main' onClick={saveRankings}>Save Rankings</button> : <button className='btn main' onClick={() => setEditMode(prev => !prev)}>Edit Rankings</button>}
-      {editMode ? <button className='btn alt' onClick={() => setEditMode(null)}>Cancel</button> : ''}
+      {editMode ? <button className='btn alt' onClick={() => cancelEdit()}>Cancel</button> : ''}
     </div>
       {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} />}
     </>

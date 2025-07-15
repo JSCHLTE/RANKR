@@ -35,7 +35,6 @@ const PlayersRankings = ({ playerList }) => {
     const feet = Math.floor(height / 12);
     const inches = height % 12;
     const heightString = `${feet}'${inches}"`;
-    console.log(heightString)
     return heightString;
   }
 
@@ -154,6 +153,9 @@ const PlayersRankings = ({ playerList }) => {
                     </div>
               </div>
             </div>
+          </div>
+          <div className="player-card-seperator">
+            <p>STATS</p>
           </div>
         </div> : "" }
     </>
