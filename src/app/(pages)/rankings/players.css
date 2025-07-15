@@ -193,38 +193,62 @@
 
 /*Player card styles*/
 
-.player-card-header {
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
 .player-card-wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     background-color: var(--background-light);
-    padding: 1rem;
     width: 95%;
     max-width: 1200px;
     margin: 0 auto;
     border-radius: 10px;
     border: 1px solid var(--theme);
+    overflow: hidden;
+}
+
+.player-card-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    overflow: hidden;
+}
+
+.player-card-img-group {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.player-card-player-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.player-card-team-logo {
+    opacity: 0.5;
+}
+
+.player-card-img-group img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-card-header-left, .player-card-header-right {
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.player-card-header-right {
+    margin-left: 2rem;
 }
 
 .player-card-header-info {
     justify-content: center;
     flex-direction: column;
-}
-
-.player-card-header-img {
-    width: 150px;
-}
-
-.player-card-header-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin-top: 0.75rem;
 }
 
 .player-card-name {
@@ -232,7 +256,162 @@
 }
 
 .player-card-player-info-wrapper {
-    margin-top: 1rem;
-    gap: 1.5rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
+}
+
+.player-card-header {
+    padding: 1rem;
+}
+
+.player-card-player-info-title {
+    opacity: 0.85;
+    font-weight: 600;
+}
+
+.player-card-player-value, .player-card-player-info-title {
+    font-size: 1.15rem;
+}
+
+.player-card-player-info-value-wrapper {
+    margin: 0.25rem 0;
+}
+
+.player-card-header-left-pos-info {
+    justify-content: space-between;
+    background-color: var(--background);
+    padding: 0.5rem;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+
+/*Player card header colors*/
+.player-card-header.ari {
+    background-color: var(--ari);
+}
+
+.player-card-header.atl {
+    background-color: var(--atl);
+}
+
+.player-card-header.bal {
+    background-color: var(--bal);
+}
+
+.player-card-header.buf {
+    background-color: var(--buf);
+}
+
+.player-card-header.car {
+    background-color: var(--car);
+}
+
+.player-card-header.chi {
+    background-color: var(--chi);
+}
+
+.player-card-header.cin {
+    background-color: var(--cin);
+}
+
+.player-card-header.cle {
+    background-color: var(--cle);
+}
+
+.player-card-header.dal {
+    background-color: var(--dal);
+}
+
+.player-card-header.den {
+    background-color: var(--den);
+}
+
+.player-card-header.det {
+    background-color: var(--det);
+}
+
+.player-card-header.gb {
+    background-color: var(--gb);
+}
+
+.player-card-header.hou {
+    background-color: var(--hou);
+}
+
+.player-card-header.ind {
+    background-color: var(--ind);
+}
+
+.player-card-header.jax {
+    background-color: var(--jax);
+}
+
+.player-card-header.kc {
+    background-color: var(--kc);
+}
+
+.player-card-header.lv {
+    background-color: var(--lv);
+}
+
+.player-card-header.lac {
+    background-color: var(--lac);
+}
+
+.player-card-header.lar {
+    background-color: var(--lar);
+}
+
+.player-card-header.mia {
+    background-color: var(--mia);
+}
+
+.player-card-header.min {
+    background-color: var(--min);
+}
+
+.player-card-header.ne {
+    background-color: var(--ne);
+}
+
+.player-card-header.no {
+    background-color: var(--no);
+}
+
+.player-card-header.nyg {
+    background-color: var(--nyg);
+}
+
+.player-card-header.nyj {
+    background-color: var(--nyj);
+}
+
+.player-card-header.phi {
+    background-color: var(--phi);
+}
+
+.player-card-header.pit {
+    background-color: var(--pit);
+}
+
+.player-card-header.sf {
+    background-color: var(--sf);
+}
+
+.player-card-header.sea {
+    background-color: var(--sea);
+}
+
+.player-card-header.tb {
+    background-color: var(--tb);
+}
+
+.player-card-header.ten {
+    background-color: var(--ten);
+}
+
+.player-card-header.was {
+    background-color: var(--was);
 }
