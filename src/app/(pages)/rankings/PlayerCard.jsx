@@ -1,3 +1,5 @@
+import { teams } from "@/app/providers/teams/TeamProvider";
+
 const PlayerCard = ({
     player,
     onClose,
@@ -20,17 +22,20 @@ const PlayerCard = ({
                 className="player-card-player-img"
                 />
             </div>
-            <div className="player-card-header-left-pos-info flex">
-                <div className="team">{player.currentTeam}</div>
-                <div className="position"><p>{player.position}</p></div>
-                <div className="number"><p>#{player.number}</p></div>
-            </div>
         </div>
           <div className="player-card-header-right flex">
             <div className="player-card-name">
               <h4>{player.full_name}</h4>
             </div>
-            <div className="player-card-header-info flex">
+            <div className="player-card-header-left-pos-info flex">
+                <div className="number"><p>#{player.number}</p></div>
+                <div className="position"><p>{player.position}</p></div>
+                <div className="team">{teams[player.currentTeam].name}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="player-card-header-info flex">
               <div className="player-card-player-info-wrapper flex">
                 <div className="player-card-player-info age">
                   <div className="player-card-player-info-title-wrapper flex-center">
@@ -74,9 +79,6 @@ const PlayerCard = ({
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
       <div className="player-card-seperator">
         <p>STATS</p>
       </div>

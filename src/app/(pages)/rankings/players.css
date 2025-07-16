@@ -230,8 +230,8 @@
 
 .player-card-img-group {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .player-card-player-img {
@@ -256,17 +256,16 @@
 }
 
 .player-card-header-right {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 }
 
 .player-card-header-info {
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 0.75rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--theme);
 }
 
 .player-card-name {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .player-card-player-info-wrapper {
@@ -275,7 +274,7 @@
 }
 
 .player-card-header {
-    padding: 1rem;
+    padding: 0 1rem;
     background-color: var(--team-color);
 }
 
@@ -284,7 +283,7 @@
     font-weight: 600;
 }
 
-.player-card-player-value, .player-card-player-info-title {
+.player-card-player-value, .player-card-player-info-title, .player-card-header-left-pos-info {
     font-size: 1.15rem;
 }
 
@@ -293,9 +292,5 @@
 }
 
 .player-card-header-left-pos-info {
-    justify-content: space-between;
-    background-color: var(--background);
-    padding: 0.5rem;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+   gap: 0.5rem;
 }
