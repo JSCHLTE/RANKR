@@ -27,7 +27,7 @@ export const teams = {
     "LAC": { city: "Los Angeles", name: "Chargers" },
     "SF": { city: "San Francisco", name: "49ers" },
     "SEA": { city: "Seattle", name: "Seahawks" },
-    "LAR": { city: "Los Angeles", name: "Rams" },
+    "LA": { city: "Los Angeles", name: "Rams" },
     "TB": { city: "Tampa Bay", name: "Buccaneers" },
     "TEN": { city: "Tennessee", name: "Titans" },
     "WAS": { city: "Washington", name: "Commanders" }

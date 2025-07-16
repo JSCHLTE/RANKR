@@ -80,7 +80,27 @@ const PlayerCard = ({
               </div>
             </div>
       <div className="player-card-seperator">
-        <p>STATS</p>
+        { player.seasons ? 
+        <>
+          <p>STATS</p>
+          <select>
+            {player.seasons.map((item, index) => (
+              <option key={index}>{item.year}</option>
+            )).reverse()}
+          </select>
+        </>
+        : <p>Player is a rookie or no data found</p> }
+
+
+{ player.seasons ? 
+
+player.seasons.map((item, index) => (
+  <div className="player-stat-season">
+    {item.year} {item.team} {item.totals.gamesPlayed} {item.totals.fantasyPoints.toFixed(2)}
+  </div>
+)).reverse()
+ : ""}
+
       </div>
       <button onClick={onClose}>Close</button> {/* Simple close button */}
     </div>
