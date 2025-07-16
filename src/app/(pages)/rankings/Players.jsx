@@ -10,11 +10,12 @@ import { usePlayerContext } from '@/app/providers/players/PlayersList';
 
 const Players = () => {
 
-  const { players, loading } = usePlayerContext();
+  const { players } = usePlayerContext();
   const [rankings, setRankings] = useState();
   const [playerList, setPlayerList] = useState();
   const [unsaved, setUnsaved] = useState();
   const [editMode, setEditMode] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   useEffect(() => {
     const fetchRankings = async () => {
@@ -69,7 +70,7 @@ const Players = () => {
     setPlayerList(unsaved);
   }
 
-  if(loading) return <Loading />
+  if(!playerList) return <Loading />
 
   return (
     <>
@@ -77,7 +78,7 @@ const Players = () => {
       {editMode ? <button className='btn main' onClick={saveRankings}>Save Rankings</button> : <button className='btn main' onClick={() => setEditMode(prev => !prev)}>Edit Rankings</button>}
       {editMode ? <button className='btn alt' onClick={() => cancelEdit()}>Cancel</button> : ''}
     </div>
-      {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} />}
+      {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
     </>
   )
 }
