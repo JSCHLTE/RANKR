@@ -4,7 +4,7 @@ const PlayerCard = ({
     getHeight,
   }) => (
     <div className="player-card-wrapper">
-      <div className={`player-card-header flex ${player.currentTeam.toLowerCase()}`}>
+      <div className={`player-card-header flex`} style={{ '--team-color': `var(--${player.currentTeam.toLowerCase()})`}}>
         <div className="player-card-header-wrapper flex">
         <div className="player-card-header-left flex">
             <div className="player-card-img-group">

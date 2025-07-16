@@ -10,6 +10,11 @@ const PlayerList = ({
         <div className="player-item flex" key={player.full_name} onClick={() => onPlayerClick(player)}>
           <div className="player-item-all-wrapper flex">
             <div className="player-item-img-wrapper">
+            <img
+                src={`https://sleepercdn.com/images/team_logos/nfl/${player?.currentTeam?.toLowerCase()}.png`}
+                alt={`${player.currentTeam} logo`}
+                className="player-team-logo"
+                />
               <img
                 src={player.playerImg ?? "/images/player-default.webp"}
                 onError={(e) => (e.currentTarget.src = "/images/player-default.webp")}
