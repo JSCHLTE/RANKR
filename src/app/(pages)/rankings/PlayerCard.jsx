@@ -11,8 +11,8 @@ const PlayerCard = ({
         <div className="player-card-header-left flex">
             <div className="player-card-img-group">
             <img
-                src={`https://sleepercdn.com/images/team_logos/nfl/${player.currentTeam.toLowerCase()}.png`}
-                alt={`${player.currentTeam} logo`}
+                src={teams[player.currentTeam].logo}
+                alt={`${teams[player.currentTeam].name} logo`}
                 className="player-card-team-logo"
                 />
                 <img
@@ -95,8 +95,25 @@ const PlayerCard = ({
 { player.seasons ? 
 
 player.seasons.map((item, index) => (
-  <div className="player-stat-season">
-    {item.year} {item.team} {item.totals.gamesPlayed} {item.totals.fantasyPoints.toFixed(2)}
+  <div key={index} className="player-stat-season">
+    <img src={teams[player.currentTeam].logo} alt="logo" width="25px"/>
+    {`
+${item.team} ${item.year}
+GP:${item.totals?.gamesPlayed ?? "—"}
+Rec:${item.totals?.receptions ?? 0}
+RecYds:${item.totals?.receivingYards ?? 0}
+RecTD:${item.totals?.receivingTDs ?? 0}
+RushAtt:${item.totals?.rushingAttempts ?? 0}
+RushYds:${item.totals?.rushingYards ?? 0}
+RushTD:${item.totals?.rushingTDs ?? 0}
+Fum:${item.totals?.fumbles ?? 0}
+FP:${typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(2) : "—"}
+FP/G:${
+  item.totals?.gamesPlayed
+    ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(2)
+    : "—"
+}
+`}
   </div>
 )).reverse()
  : ""}
