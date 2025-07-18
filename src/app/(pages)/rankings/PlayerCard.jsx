@@ -80,7 +80,7 @@ const PlayerCard = ({
               </div>
             </div>
       <div className="player-card-seperator">
-        { player.seasons ? 
+        {/* { player.seasons ? 
         <>
           <p>STATS</p>
           <select>
@@ -89,34 +89,55 @@ const PlayerCard = ({
             )).reverse()}
           </select>
         </>
-        : <p>Player is a rookie or no data found</p> }
+        : <p>Player is a rookie or no data found</p> } */}
 
 
 { player.seasons ? 
+  <div className="player-stat-season-wrapper">
+    <table border="1">
+    <thead>
+        <tr>
+          <th>Team</th>
+          <th>Year</th>
+          <th>FP</th>
+          <th>FP/G</th>
+          <th>GP</th>
+          <th>Rec</th>
+          <th>RecYds</th>
+          <th>RecTD</th>
+          <th>RushAtt</th>
+          <th>RushYds</th>
+          <th>RushTD</th>
+          <th>Fum</th>
+        </tr>
+      </thead>
+      <tbody>
 
-player.seasons.map((item, index) => (
-  <div key={index} className="player-stat-season">
-    <img src={teams[player.currentTeam].logo} alt="logo" width="25px"/>
-    {`
-${item.team} ${item.year}
-GP:${item.totals?.gamesPlayed ?? "—"}
-Rec:${item.totals?.receptions ?? 0}
-RecYds:${item.totals?.receivingYards ?? 0}
-RecTD:${item.totals?.receivingTDs ?? 0}
-RushAtt:${item.totals?.rushingAttempts ?? 0}
-RushYds:${item.totals?.rushingYards ?? 0}
-RushTD:${item.totals?.rushingTDs ?? 0}
-Fum:${item.totals?.fumbles ?? 0}
-FP:${typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(2) : "—"}
-FP/G:${
-  item.totals?.gamesPlayed
-    ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(2)
-    : "—"
-}
-`}
-  </div>
-)).reverse()
- : ""}
+{player.seasons.map((item, index) => (
+<tr key={index}>
+          <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
+          <td>{item.year}</td>
+          <td className="table-stat">{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(2) : "—"}</td>
+          <td className="table-stat">{
+            item.totals?.gamesPlayed
+              ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(2)
+              : "—"
+          }</td>
+          <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
+          <td className="table-stat">{item.totals?.receptions ?? 0}</td>
+          <td className="table-stat">{item.totals?.receivingYards ?? 0}</td>
+          <td className="table-stat">{item.totals?.receivingTDs ?? 0}</td>
+          <td className="table-stat">{item.totals?.rushingAttempts ?? 0}</td>
+          <td className="table-stat">{item.totals?.rushingYards ?? 0}</td>
+          <td className="table-stat">{item.totals?.rushingTDs ?? 0}</td>
+          <td className="table-stat">{item.totals?.fumbles ?? 0}</td>
+        </tr>
+)).reverse()}
+
+
+      </tbody>
+    </table>
+  </div> : ""}
 
       </div>
       <button onClick={onClose}>Close</button> {/* Simple close button */}

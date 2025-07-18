@@ -294,3 +294,46 @@
 .player-card-header-left-pos-info {
    gap: 0.5rem;
 }
+
+.player-stat-season-wrapper {
+    padding: 1rem;
+}
+
+.player-stat-season {
+    align-items: center;
+}
+
+.player-stat-season-wrapper table {
+    border: 1px solid var(--theme);
+    border-radius: 10px;
+    border-spacing: 0.5rem;
+}
+
+.player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
+    padding: 0.5rem;
+    border: none;
+}
+
+.player-stat-season-wrapper table .logo-team {
+    display: flex;
+    align-items: center;
+}
+
+.player-stat-season-wrapper table img {
+    margin-right: 0.5rem;
+}
+
+.table-stat {
+    background-color: grey;
+    text-align: center;
+    width: 75px;
+    border-radius: 10px;
+}
+
+.table-stat.green {
+    background-color: rgba(0, 128, 0, 0.5);
+}
+
+.table-stat.red {
+    background-color: rgba(255, 0, 0, 0.5);
+}

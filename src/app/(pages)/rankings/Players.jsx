@@ -46,9 +46,9 @@ const Players = () => {
 
       const orderedPlayers = rankings
         .map((id) => players.find((p) => String(p.playerId) === String(id)))
-        .filter(Boolean);
+        .filter(Boolean)
 
-      setPlayerList(orderedPlayers);
+      setPlayerList(orderedPlayers.filter(player => player.status === "Active"));
       setUnsaved(orderedPlayers);
     }, [players, rankings]);
 
