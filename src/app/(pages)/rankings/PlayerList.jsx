@@ -1,8 +1,16 @@
 import Loading from "@/app/components/loading/Loading";
 import PlayerItem from "./PlayerItem"; // Adjust path as needed
 
-const PlayerList = ({ players, playerList, onPlayerClick }) => {
+const PlayerList = ({ players, playerList, setPlayerCard, getHeight, playerCard }) => {
   if (!playerList) return <Loading />;
+
+
+  const handlePlayerClick = (player) => {
+    setPlayerCard(prev => {
+      if(prev.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
+      return prev?.length >= 1 ? [...prev, player.playerId] : [player.playerId]
+    }) 
+  }
 
   return (
     <div className="players-custom-wrapper flex">
@@ -11,8 +19,10 @@ const PlayerList = ({ players, playerList, onPlayerClick }) => {
           key={player.full_name}
           player={player}
           overallRank={playerList.indexOf(player) + 1} // Or optimize to index + 1 if players === playerList
-          onClick={() => onPlayerClick(player)}
+          onClick={() => handlePlayerClick(player)}
           playerList={playerList}
+          getHeight={getHeight}
+          playerCard={playerCard}
         />
       ))}
     </div>

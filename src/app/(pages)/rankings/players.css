@@ -49,11 +49,14 @@
 .player-item {
     background-color: var(--background-light);
     border: 1px solid var(--background-light);
-    align-items: center;
     border-radius: 10px;
     width: 100%;
     overflow: hidden;
     cursor: pointer;
+}
+
+.player-item-inner {
+    align-items: center;
 }
 
 .player-item:hover {
@@ -267,7 +270,10 @@
 
 .player-card-header-info {
     padding: 1rem;
-    border-bottom: 1px solid var(--theme);
+    background-color: var(--background);
+    border: 1px solid var(--theme);
+    margin: 0 0.5rem;
+    border-radius: 10px;
 }
 
 .player-card-name {
@@ -303,17 +309,23 @@
 }
 
 .player-stat-season-wrapper {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .player-stat-season {
     align-items: center;
 }
 
-.player-stat-season-wrapper table {
+.player-stat-season-wrapper {
     border: 1px solid var(--theme);
     background-color: var(--background);
     border-radius: 10px;
+    margin: 0.5rem;
+    overflow-x: auto;
+}
+
+.player-stat-season-wrapper table {
+    border: none;
     border-spacing: 0.5rem;
 }
 
@@ -332,7 +344,7 @@
 }
 
 .table-stat {
-    background-color: rgba(128, 128, 128, 0.2);
+    background-color: var(--grey-bg);
     text-align: center;
     width: 75px;
     border-radius: 10px;

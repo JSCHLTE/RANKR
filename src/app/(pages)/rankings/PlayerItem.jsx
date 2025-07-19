@@ -1,4 +1,7 @@
 import { check } from "@/app/providers/posRanking/posRanking";
+import { PlayerStatsLabel } from "./PlayerStats";
+import { PlayerStatsValue } from "./PlayerStats";
+import { teams } from "@/app/providers/teams/TeamProvider";
 
 const PlayerItem = ({ 
   player, 
@@ -6,18 +9,20 @@ const PlayerItem = ({
   onClick, 
   playerList,
   dragHandleProps, // For drag handle in edit mode
-  isDragging // For drag-specific styles
+  isDragging, // For drag-specific styles
+  getHeight,
+  playerCard
 }) => {
   return (
     <div 
-      className="player-item flex" 
+      className="player-item" 
       onClick={onClick} // Optional, for static list
       style={{
-        height: "90px",
         zIndex: isDragging ? 1000 : 'auto',
         position: isDragging ? 'fixed' : 'static',
       }}
     >
+      <div className="player-item-inner">
       {dragHandleProps && ( // Conditionally render drag handle for edit mode
         <div className="drag-handle-tab flex-center" {...dragHandleProps}>
           <div className="lines-wrapper flex-center">
@@ -60,6 +65,115 @@ const PlayerItem = ({
           </div>
         </div>
       </div>
+      </div>
+
+
+      { player.seasons && playerCard?.includes(player.playerId) ? 
+      <>
+            <div className="player-card-header-info flex">
+              <div className="player-card-player-info-wrapper flex">
+                <div className="player-card-player-info age">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Age</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{player.age}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info height">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Height</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{getHeight(player.height)}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info weight">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Weight</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{player.weight}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info exp">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Exp</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{player.years_exp}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info college">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">College</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{player.college}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info college">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Number</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">#{player.number}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info college">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Position</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{player.position}</span>
+                  </div>
+                </div>
+                <div className="player-card-player-info college">
+                  <div className="player-card-player-info-title-wrapper flex-center">
+                    <h5 className="player-card-player-info-title">Team</h5>
+                  </div>
+                  <div className="player-card-player-info-value-wrapper flex-center">
+                    <span className="player-card-player-value">{teams[player.currentTeam].name}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+  <div className="player-stat-season-wrapper">
+    <table border="1">
+    <thead>
+        <tr>
+          <th>Team</th>
+          <th>Year</th>
+          <th>FP</th>
+          <th>FP/G</th>
+          <th>GP</th>
+          <PlayerStatsLabel pos={player.position} />
+        </tr>
+      </thead>
+      <tbody>
+
+{player.seasons.map((item, index) => (
+<tr key={index}>
+          <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
+          <td>{item.year}</td>
+          <td className="table-stat">{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(2) : "—"}</td>
+          <td className="table-stat">{
+            item.totals?.gamesPlayed
+              ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(2)
+              : "—"
+          }</td>
+          <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
+
+          <PlayerStatsValue player={player} item={item} />
+
+
+        </tr>
+)).reverse()}
+
+
+      </tbody>
+    </table>
+  </div></> : ""}
     </div>
   );
 };

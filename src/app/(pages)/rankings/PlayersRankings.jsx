@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
@@ -11,7 +11,11 @@ const PlayersRankings = ({ playerList }) => {
   
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
-  const [playerCard, setPlayerCard] = useState(null);
+  const [playerCard, setPlayerCard] = useState([]);
+
+  useEffect(() => {
+    console.log(playerCard)
+  }, [playerCard])
 
   const displayPlayers = useMemo(() => {
     let filtered = playerList;
@@ -74,11 +78,10 @@ const PlayersRankings = ({ playerList }) => {
       <PlayerList
         players={displayPlayers}
         playerList={playerList} // For global ranks
-        onPlayerClick={setPlayerCard}
+        setPlayerCard={setPlayerCard}
+        getHeight={getHeight}
+        playerCard={playerCard}
       />
-      {playerCard && (
-        <PlayerCard player={playerCard} onClose={() => setPlayerCard(null)} getHeight={getHeight} />
-      )}
     </>
   );
 };

@@ -21,6 +21,7 @@
   --yellow-bg: hsla(58, 67%, 45%, 0.2);
   --red: hsl(359, 67%, 48%);
   --red-bg: hsla(359, 67%, 48%, 0.2);
+  --grey-bg: rgba(128, 128, 128, 0.2);
 
   /*NFL Team Colors*/
 --ari: #97233F;   /* Arizona Cardinals (Cardinal Red) */
