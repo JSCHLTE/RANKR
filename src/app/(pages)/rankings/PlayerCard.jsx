@@ -1,4 +1,5 @@
 import { teams } from "@/app/providers/teams/TeamProvider";
+import { PlayerStatsLabel, PlayerStatsValue } from "./PlayerStats";
 
 const PlayerCard = ({
     player,
@@ -102,19 +103,7 @@ const PlayerCard = ({
           <th>FP</th>
           <th>FP/G</th>
           <th>GP</th>
-          <th>Rec</th>
-          <th>Targets</th>
-          <th>RecYds</th>
-          <th>RecTD</th>
-          <th>RushAtt</th>
-          <th>RushYds</th>
-          <th>RushTD</th>
-          <th>Fum</th>
-          <th>Attempts</th>
-          <th>Comp</th>
-          <th>Yards</th>
-          <th>Td's</th>
-          <th>Int</th>
+          <PlayerStatsLabel pos={player.position} />
         </tr>
       </thead>
       <tbody>
@@ -130,19 +119,10 @@ const PlayerCard = ({
               : "—"
           }</td>
           <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
-          <td className="table-stat">{item.totals?.receptions ?? 0}</td>
-          <td className="table-stat">{item.totals?.targets ?? 0}</td>
-          <td className="table-stat">{item.totals?.receivingYards ?? 0}</td>
-          <td className="table-stat">{item.totals?.receivingTDs ?? 0}</td>
-          <td className="table-stat">{item.totals?.rushingAttempts ?? 0}</td>
-          <td className="table-stat">{item.totals?.rushingYards ?? 0}</td>
-          <td className="table-stat">{item.totals?.rushingTDs ?? 0}</td>
-          <td className="table-stat">{item.totals?.fumbles ?? 0}</td>
-          <td className="table-stat">{item.totals?.passingAttempts ?? 0}</td>
-          <td className="table-stat">{item.totals?.passingCompletions ?? 0}</td>
-          <td className="table-stat">{item.totals?.passingYards ?? 0}</td>
-          <td className="table-stat">{item.totals?.passingTDs ?? 0}</td>
-          <td className="table-stat">{item.totals?.interceptions ?? 0}</td>
+
+          <PlayerStatsValue player={player} item={item} />
+
+
         </tr>
 )).reverse()}
 
