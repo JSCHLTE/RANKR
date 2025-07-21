@@ -15,7 +15,7 @@ const PlayerItem = ({
 }) => {
   return (
     <div 
-      className="player-item" 
+      className={`player-item ${playerCard.includes(player.playerId) ? 'active' : ''}`} 
       onClick={onClick} // Optional, for static list
       style={{
         zIndex: isDragging ? 1000 : 'auto',
@@ -66,7 +66,6 @@ const PlayerItem = ({
         </div>
       </div>
       </div>
-
 
       { player.seasons && playerCard?.includes(player.playerId) ? 
       <>
