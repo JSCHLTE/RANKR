@@ -143,9 +143,9 @@ const PlayerItem = ({
         <tr>
           <th>Team</th>
           <th>Year</th>
+          <th>GP</th>
           <th>FP</th>
           <th>FP/G</th>
-          <th>GP</th>
           <PlayerStatsLabel pos={player.position} />
         </tr>
       </thead>
@@ -155,13 +155,6 @@ const PlayerItem = ({
 <tr key={index}>
           <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
           <td>{item.year}</td>
-          <td className="table-stat">{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(2) : "—"}</td>
-          <td className="table-stat">{
-            item.totals?.gamesPlayed
-              ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(2)
-              : "—"
-          }</td>
-          <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
 
           <PlayerStatsValue player={player} item={item} />
 

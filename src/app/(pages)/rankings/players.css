@@ -219,7 +219,7 @@
 
 .player-card-player-info-wrapper {
     gap: 1.25rem;
-    flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 .player-card-player-info-title {
@@ -234,14 +234,6 @@
 
 .player-card-player-info-value-wrapper {
     margin: 0.25rem 0;
-}
-
-.player-card-header-left-pos-info {
-   gap: 0.5rem;
-}
-
-.player-stat-season-wrapper {
-    padding: 0.5rem;
 }
 
 .player-stat-season {
