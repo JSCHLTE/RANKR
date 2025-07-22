@@ -132,7 +132,7 @@ const PlayerCard = ({
   </div> : ""}
 
       </div>
-      <button onClick={onClose}>Close</button> {/* Simple close button */}
+      <button onClick={onClose}>Close</button>
     </div>
   );
 

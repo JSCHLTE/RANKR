@@ -13,17 +13,19 @@
     min-height: 700px;
 }
 
-.player-item-all-wrapper {
-    padding: 0.55rem;
+.player-item-header {
     align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 .drag-handle-tab {
     background-color: var(--theme);
-    height: 100%;
+    width: 30px;
     padding: 0 0.5rem;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    height: 100%;
 }
 
 .drag-handle-tab:hover {
@@ -52,15 +54,10 @@
     border-radius: 10px;
     width: 100%;
     overflow: hidden;
-    cursor: pointer;
 }
 
 .player-item-inner {
     align-items: center;
-}
-
-.player-item:hover {
-    border-color: var(--theme);
 }
 
 .player-item .player-item-img-wrapper {

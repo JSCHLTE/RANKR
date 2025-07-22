@@ -6,6 +6,7 @@ const PlayerList = ({ players, playerList, setPlayerCard, getHeight, playerCard 
 
 
   const handlePlayerClick = (player) => {
+    console.log("clicked")
     setPlayerCard(prev => {
       if(prev.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
       return prev?.length >= 1 ? [...prev, player.playerId] : [player.playerId]

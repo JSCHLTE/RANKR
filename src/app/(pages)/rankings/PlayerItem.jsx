@@ -15,15 +15,13 @@ const PlayerItem = ({
 }) => {
   return (
     <div 
-      className={`player-item ${playerCard.includes(player.playerId) ? 'active' : ''}`} 
-      onClick={onClick} // Optional, for static list
+      className={`player-item ${playerCard?.includes(player.playerId) ? 'active' : ''}`} 
       style={{
         zIndex: isDragging ? 1000 : 'auto',
         position: isDragging ? 'fixed' : 'static',
       }}
     >
-      <div className="player-item-inner">
-      {dragHandleProps && ( // Conditionally render drag handle for edit mode
+        {dragHandleProps && ( // Conditionally render drag handle for edit mode
         <div className="drag-handle-tab flex-center" {...dragHandleProps}>
           <div className="lines-wrapper flex-center">
             <div className="line-drag"></div>
@@ -32,8 +30,10 @@ const PlayerItem = ({
           </div>
         </div>
       )}
-      <div className="player-item-all-wrapper flex">
-        <div className="player-item-img-wrapper">
+      <div className="player-item-inner">
+      <div className="player-item-all-wrapper">
+      <div className="player-item-header flex" onClick={onClick}>
+      <div className="player-item-img-wrapper">
           {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
             <img
               src={`https://sleepercdn.com/images/team_logos/nfl/${player.currentTeam.toLowerCase()}.png`}
@@ -66,7 +66,7 @@ const PlayerItem = ({
         </div>
       </div>
       </div>
-
+</div>
       { player.seasons && playerCard?.includes(player.playerId) ? 
       <>
             <div className="player-card-header-info flex">
