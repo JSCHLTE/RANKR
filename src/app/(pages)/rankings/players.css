@@ -23,9 +23,9 @@
     background-color: var(--theme);
     width: 30px;
     padding: 0 0.5rem;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    height: 100%;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+    height: 80px;
 }
 
 .drag-handle-tab:hover {

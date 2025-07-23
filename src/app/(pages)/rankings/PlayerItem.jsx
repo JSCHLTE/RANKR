@@ -21,7 +21,10 @@ const PlayerItem = ({
         position: isDragging ? 'fixed' : 'static',
       }}
     >
-        {dragHandleProps && ( // Conditionally render drag handle for edit mode
+      <div className="player-item-inner">
+      <div className="player-item-all-wrapper">
+      <div className="player-item-header flex" onClick={onClick}>
+      {dragHandleProps && ( // Conditionally render drag handle for edit mode
         <div className="drag-handle-tab flex-center" {...dragHandleProps}>
           <div className="lines-wrapper flex-center">
             <div className="line-drag"></div>
@@ -30,9 +33,6 @@ const PlayerItem = ({
           </div>
         </div>
       )}
-      <div className="player-item-inner">
-      <div className="player-item-all-wrapper">
-      <div className="player-item-header flex" onClick={onClick}>
       <div className="player-item-img-wrapper">
           {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
             <img
