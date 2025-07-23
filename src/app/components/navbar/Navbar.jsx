@@ -26,10 +26,8 @@ const Navbar = () => {
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/">Home</Link></li>
-          <li><Link href="#">How It Works</Link></li>
           <li><Link href="/rankings">Rankings</Link></li>
-          <li><Link href="#">Community</Link></li>
-          <li><Link href="#">Contact</Link></li>
+          <li><Link href="/create">Create</Link></li>
           <li onClick={logout}><Link href="#">Logout</Link></li>
         </ul>
       </div>

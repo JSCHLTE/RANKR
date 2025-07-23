@@ -78,6 +78,7 @@ nav {
     width: 30px;
     height: 3px;
     transition: transform 0.1s;
+    border-radius: 5px;
 }
 
 .burger.active .line1 {
