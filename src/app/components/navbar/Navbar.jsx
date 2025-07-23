@@ -28,6 +28,7 @@ const Navbar = () => {
           <li><Link href="/">Home</Link></li>
           <li><Link href="/rankings">Rankings</Link></li>
           <li><Link href="/create">Create</Link></li>
+          <li><Link href="/players">Players</Link></li>
           <li onClick={logout}><Link href="#">Logout</Link></li>
         </ul>
       </div>

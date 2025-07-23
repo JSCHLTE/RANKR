@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
+import { getHeight } from "@/app/providers/players/getHeight";
 
 const POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
 
@@ -51,12 +52,6 @@ const PlayersRankings = ({ playerList }) => {
     setPositionFilter(prev =>
       prev.includes(pos) ? prev.filter(item => item !== pos) : [...prev, pos]
     );
-  };
-
-  const getHeight = (height) => {
-    const feet = Math.floor(height / 12);
-    const inches = height % 12;
-    return `${feet}'${inches}"`;
   };
 
   return (

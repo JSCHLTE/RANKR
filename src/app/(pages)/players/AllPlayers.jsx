@@ -1,40 +1,36 @@
-import { check } from "@/app/providers/posRanking/posRanking";
-import { PlayerStatsLabel } from "./PlayerStats";
-import { PlayerStatsValue } from "./PlayerStats";
-import { teams } from "@/app/providers/teams/TeamProvider";
+"use client"
+
+import React, { useState } from 'react'
+import { usePlayerContext } from '@/app/providers/players/PlayersList'
 import "../CSS/playerItem.css"
 import "../CSS/playerTable.css"
+import { getHeight } from '@/app/providers/players/getHeight'
+import { teams } from '@/app/providers/teams/TeamProvider'
+import { PlayerStatsLabel } from '../rankings/PlayerStats'
+import { PlayerStatsValue } from '../rankings/PlayerStats'
 
-const PlayerItem = ({ 
-  player, 
-  overallRank, 
-  onClick, 
-  playerList,
-  dragHandleProps, // For drag handle in edit mode
-  isDragging, // For drag-specific styles
-  getHeight,
-  playerCard
-}) => {
+const AllPlayers = () => {
+
+    const { players } = usePlayerContext();
+    const [playerCard, setPlayerCard] = useState([]);
+
+    const handlePlayerClick = (player) => {
+        setPlayerCard(prev => {
+          if(prev.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
+          return prev?.length >= 1 ? [...prev, player.playerId] : [player.playerId]
+        }) 
+      }
+
   return (
-    <div 
-      className={`player-item ${playerCard?.includes(player.playerId) ? 'active' : ''}`} 
-      style={{
-        zIndex: isDragging ? 1000 : 'auto',
-        position: isDragging ? 'fixed' : 'static',
-      }}
+    <>
+        <p>Player</p>
+        {players?.map((player, index) => (
+            <div 
+      className={`player-item ${playerCard?.includes(player.playerId) ? 'active' : ''}`} key={index}
     >
       <div className="player-item-inner">
       <div className="player-item-all-wrapper">
-      <div className="player-item-header flex" onClick={onClick}>
-      {dragHandleProps && ( // Conditionally render drag handle for edit mode
-        <div className="drag-handle-tab flex-center" {...dragHandleProps}>
-          <div className="lines-wrapper flex-center">
-            <div className="line-drag"></div>
-            <div className="line-drag"></div>
-            <div className="line-drag"></div>
-          </div>
-        </div>
-      )}
+      <div className="player-item-header flex" onClick={() => handlePlayerClick(player)}>
       <div className="player-item-img-wrapper">
           {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
             <img
@@ -57,11 +53,11 @@ const PlayerItem = ({
             <p className="player-name">{player.full_name}</p>
           </div>
           <div className="player-item-info-details flex">
-            <span>Overall: {overallRank}</span>
             <span className={`player-pos ${player.position}`}>
-              {player.position} {check(playerList, player)}
+              {player.position}
             </span>
-            {player.years_exp === 0 && player.position !== "DEF" ? (
+            {player.years_exp === 0 ? "" : <span className='player-pos'>Seasons: {player.years_exp}</span> }
+            {player.years_exp === 0 && player.position !== "DEF" && player.status === "Active" ? (
               <span className="player-rookie">Rookie</span>
             ) : null}
           </div>
@@ -153,23 +149,25 @@ const PlayerItem = ({
       </thead>
       <tbody>
 
-{player.seasons.map((item, index) => (
-<tr key={index}>
-          <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
-          <td>{item.year}</td>
+        {player.seasons.map((item, index) => (
+        <tr key={index}>
+                <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
+                <td>{item.year}</td>
 
-          <PlayerStatsValue player={player} item={item} />
+                <PlayerStatsValue player={player} item={item} />
 
 
-        </tr>
-)).reverse()}
+                </tr>
+        )).reverse()}
 
 
       </tbody>
     </table>
   </div></> : ""}
     </div>
-  );
-};
+        ))}
+    </>
+  )
+}
 
-export default PlayerItem;
+export default AllPlayers

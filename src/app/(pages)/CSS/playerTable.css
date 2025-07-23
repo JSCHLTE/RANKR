@@ -1,0 +1,102 @@
+.player-card-header-info {
+    padding: 1rem;
+    background-color: var(--background);
+    border: 1px solid var(--theme);
+    margin: 0 0.5rem;
+    border-radius: 10px;
+}
+
+.player-card-player-info-wrapper, .player-stat-season-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--theme) var(--background-light);
+    gap: 1.25rem;
+    overflow-x: auto;
+  }
+  
+  .player-card-player-info-wrapper::-webkit-scrollbar, .player-stat-season-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .player-card-player-info-wrapper::-webkit-scrollbar-track, .player-stat-season-wrapper::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 4px;
+  }
+  
+  .player-card-player-info-wrapper::-webkit-scrollbar-thumb, .player-stat-season-wrapper::-webkit-scrollbar-thumb {
+    background: var(--theme);
+    border-radius: 4px;
+  }
+  
+  .player-card-player-info-wrapper::-webkit-scrollbar-thumb:hover, .player-stat-season-wrapper::-webkit-scrollbar-thumb:hover {
+    background: hsl(194, 100%, 55%); /* Slightly lighter theme color on hover */
+  }
+
+.player-card-player-info-title {
+    opacity: 0.85;
+    font-weight: 500;
+    font-size: 1.10rem;
+}
+
+.player-card-player-value, .player-card-header-left-pos-info {
+    font-size: 1.15rem;
+}
+
+.player-card-player-value {
+    text-align: center;
+}
+
+.player-card-player-info-value-wrapper {
+    margin: 0.25rem 0;
+}
+
+.player-stat-season {
+    align-items: center;
+}
+
+.player-stat-season-wrapper {
+    border: 1px solid var(--theme);
+    background-color: var(--background);
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+
+.player-stat-season-wrapper table {
+    border: none;
+    border-spacing: 0.5rem;
+}
+
+.player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
+    padding: 0.5rem;
+    border: none;
+}
+
+.player-stat-season-wrapper table .logo-team {
+    display: flex;
+    align-items: center;
+}
+
+.player-stat-season-wrapper table img {
+    margin-right: 0.5rem;
+}
+
+.table-stat {
+    background-color: var(--grey-bg);
+    text-align: center;
+    width: 75px;
+    border-radius: 10px;
+}
+
+.table-stat.green {
+    color: var(--green);
+    background-color: var(--green-bg);
+}
+
+.table-stat.yellow {
+    color: var(--yellow);
+    background-color: var(--yellow-bg);
+}
+
+.table-stat.red {
+    color: var(--red);
+    background-color: var(--red-bg);
+}
