@@ -50,10 +50,10 @@ const AllPlayers = () => {
         </div>
         <div className="player-item-info-wrapper">
           <div className="player-item-info-name">
-            <p className="player-name">{player.full_name}</p>
+            <p className="player-name">{player.full_name ? player.full_name : "N/A"}</p>
           </div>
           <div className="player-item-info-details flex">
-            <span className={`player-pos ${player.position}`}>
+            <span className={`player-pos ${player.position ? player.position : "N/A"}`}>
               {player.position}
             </span>
             {player.years_exp === 0 ? "" : <span className='player-pos'>Seasons: {player.years_exp}</span> }
@@ -74,7 +74,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Age</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.age}</span>
+                    <span className="player-card-player-value">{player.age ? player.age : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info height">
@@ -90,7 +90,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Weight</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.weight}</span>
+                    <span className="player-card-player-value">{player.weight ? player.weight : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info exp">
@@ -98,7 +98,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Exp</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.years_exp}</span>
+                    <span className="player-card-player-value">{player.years_exp ? player.years_exp : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -106,7 +106,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">College</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.college}</span>
+                    <span className="player-card-player-value">{player.college ? player.college : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -114,7 +114,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Number</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">#{player.number}</span>
+                    <span className="player-card-player-value">{player.number ? `${player.number}` : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -122,7 +122,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Position</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.position}</span>
+                    <span className="player-card-player-value">{player.position ? player.position : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -130,7 +130,7 @@ const AllPlayers = () => {
                     <h5 className="player-card-player-info-title">Team</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{teams[player.currentTeam].name}</span>
+                    <span className="player-card-player-value">{teams[player.currentTeam]?.name ? teams[player.currentTeam].name : "N/A"}</span>
                   </div>
                 </div>
               </div>

@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
-import { getHeight } from "@/app/providers/players/getHeight";
 
 const POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
 
@@ -73,7 +72,6 @@ const PlayersRankings = ({ playerList }) => {
         players={displayPlayers}
         playerList={playerList} // For global ranks
         setPlayerCard={setPlayerCard}
-        getHeight={getHeight}
         playerCard={playerCard}
       />
     </>

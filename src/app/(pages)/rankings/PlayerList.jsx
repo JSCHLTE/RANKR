@@ -1,7 +1,7 @@
 import Loading from "@/app/components/loading/Loading";
 import PlayerItem from "./PlayerItem"; // Adjust path as needed
 
-const PlayerList = ({ players, playerList, setPlayerCard, getHeight, playerCard }) => {
+const PlayerList = ({ players, playerList, setPlayerCard, playerCard }) => {
   if (!playerList) return <Loading />;
 
 
@@ -22,7 +22,6 @@ const PlayerList = ({ players, playerList, setPlayerCard, getHeight, playerCard 
           overallRank={playerList.indexOf(player) + 1} // Or optimize to index + 1 if players === playerList
           onClick={() => handlePlayerClick(player)}
           playerList={playerList}
-          getHeight={getHeight}
           playerCard={playerCard}
         />
       ))}

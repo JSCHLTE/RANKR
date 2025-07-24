@@ -2,6 +2,7 @@ import { check } from "@/app/providers/posRanking/posRanking";
 import { PlayerStatsLabel } from "./PlayerStats";
 import { PlayerStatsValue } from "./PlayerStats";
 import { teams } from "@/app/providers/teams/TeamProvider";
+import { getHeight } from "@/app/providers/players/getHeight";
 import "../CSS/playerItem.css"
 import "../CSS/playerTable.css"
 
@@ -12,7 +13,6 @@ const PlayerItem = ({
   playerList,
   dragHandleProps, // For drag handle in edit mode
   isDragging, // For drag-specific styles
-  getHeight,
   playerCard
 }) => {
   return (
@@ -54,12 +54,12 @@ const PlayerItem = ({
         </div>
         <div className="player-item-info-wrapper">
           <div className="player-item-info-name">
-            <p className="player-name">{player.full_name}</p>
+            <p className="player-name">{player.full_name ? player.full_name : "N/A"}</p>
           </div>
           <div className="player-item-info-details flex">
-            <span>Overall: {overallRank}</span>
-            <span className={`player-pos ${player.position}`}>
-              {player.position} {check(playerList, player)}
+            <span>Overall: {overallRank ? overallRank : "N/A"}</span>
+            <span className={`player-pos ${player.position ? player.position : "N/A"}`}>
+              {player.position ? player.position : "N/A"} {check(playerList, player)}
             </span>
             {player.years_exp === 0 && player.position !== "DEF" ? (
               <span className="player-rookie">Rookie</span>
@@ -78,7 +78,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Age</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.age}</span>
+                    <span className="player-card-player-value">{player.age ? player.age : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info height">
@@ -94,7 +94,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Weight</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.weight}</span>
+                    <span className="player-card-player-value">{player.weight ? player.weight : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info exp">
@@ -102,7 +102,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Exp</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.years_exp}</span>
+                    <span className="player-card-player-value">{player.years_exp ? player.years_exp : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -110,7 +110,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">College</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.college}</span>
+                    <span className="player-card-player-value">{player.college ? player.college : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -118,7 +118,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Number</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">#{player.number}</span>
+                    <span className="player-card-player-value">{player.number ? `${player.number}` : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -126,7 +126,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Position</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.position}</span>
+                    <span className="player-card-player-value">{player.position ? player.position : "N/A"}</span>
                   </div>
                 </div>
                 <div className="player-card-player-info college">
@@ -134,7 +134,7 @@ const PlayerItem = ({
                     <h5 className="player-card-player-info-title">Team</h5>
                   </div>
                   <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{teams[player.currentTeam].name}</span>
+                    <span className="player-card-player-value">{teams[player.currentTeam]?.name ? teams[player.currentTeam]?.name : "N/A"}</span>
                   </div>
                 </div>
               </div>
