@@ -13,11 +13,12 @@ const PlayerItem = ({
   playerList,
   dragHandleProps, // For drag handle in edit mode
   isDragging, // For drag-specific styles
-  playerCard
+  playerCard,
 }) => {
+
   return (
     <div 
-      className={`player-item ${playerCard?.includes(player.playerId) ? 'active' : ''}`} 
+      className={`player-item ${playerCard.playerId?.includes(player.playerId) ? 'active' : ''}`} 
       style={{
         zIndex: isDragging ? 1000 : 'auto',
         position: isDragging ? 'fixed' : 'static',

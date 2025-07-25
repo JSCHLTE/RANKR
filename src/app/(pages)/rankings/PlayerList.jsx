@@ -1,18 +1,22 @@
 import Loading from "@/app/components/loading/Loading";
 import PlayerItem from "./PlayerItem"; // Adjust path as needed
+import { getStats } from "@/app/providers/players/getStats";
 
-const PlayerList = ({ players, playerList, setPlayerCard, playerCard }) => {
+const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
   if (!playerList) return <Loading />;
 
 
   const handlePlayerClick = (player) => {
-    console.log("clicked")
-    setPlayerCard(prev => {
-      if(prev.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
-      return prev?.length >= 1 ? [...prev, player.playerId] : [player.playerId]
+    setPlayerCard(async prev => {
+      if(prev.playerId?.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
+        return {
+          ...prev,
+          [player.playerId]: { stats: getStats(player.playerId) }
+        };
     }) 
   }
 
+  
   return (
     <div className="players-custom-wrapper flex">
       {players?.map((player, index) => (
