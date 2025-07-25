@@ -69,7 +69,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      { player.seasons && playerCard?.includes(player.playerId) ? 
+      {/* { player.seasons && playerCard?.includes(player.playerId) ? 
       <>
             <div className="player-card-header-info flex">
               <div className="player-card-player-info-wrapper flex">
@@ -167,7 +167,7 @@ const PlayerItem = ({
 
       </tbody>
     </table>
-  </div></> : ""}
+  </div></> : ""} */}
     </div>
   );
 };

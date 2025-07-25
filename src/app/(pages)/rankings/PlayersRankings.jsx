@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
 
-const POSITIONS = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF'];
+const POSITIONS = ['QB', 'RB', 'WR', 'TE'];
 
 const PlayersRankings = ({ playerList }) => {
   

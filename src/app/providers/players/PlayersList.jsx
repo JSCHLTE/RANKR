@@ -11,7 +11,7 @@ export function PlayersList({ children } = {}) {
 
   useEffect(() => {
     const fetchPlayers = async () => {
-      const playersRef = ref(db, "players");
+      const playersRef = ref(db, "fantasy-players");
 
       try {
         const snapshot = await get(playersRef);

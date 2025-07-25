@@ -1,5 +1,5 @@
 import React from 'react'
-import "../rankings/players.css"
+import "../css/players.css"
 import CreateRankings from './CreateRankings'
 import "./create.css"
 
