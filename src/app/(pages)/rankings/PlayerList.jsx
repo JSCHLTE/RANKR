@@ -6,15 +6,27 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
   if (!playerList) return <Loading />;
 
 
-  const handlePlayerClick = (player) => {
-    setPlayerCard(async prev => {
-      if(prev.playerId?.includes(player.playerId)) return prev.filter(item => item !== player.playerId) 
-        return {
-          ...prev,
-          [player.playerId]: { stats: getStats(player.playerId) }
-        };
-    }) 
-  }
+  const handlePlayerClick = async (player) => {
+    const existingPlayerIndex = playerCard.findIndex(obj => obj.playerId === player.playerId);
+    
+    if (existingPlayerIndex !== -1) {
+      setPlayerCard(prev => prev.filter((_, index) => index !== existingPlayerIndex));
+      return;
+    }
+    
+    const rawStats = await getStats(player.playerId);
+    const cleanStats = rawStats.flatMap(seasonObj => {
+      return Object.entries(seasonObj).map(([year, seasonData]) => ({
+        year: parseInt(year),
+        ...seasonData
+      }));
+    });
+    
+    setPlayerCard(prev => ([
+      ...prev,
+      { playerId: player.playerId, stats: cleanStats }
+    ]));
+  };
 
   
   return (

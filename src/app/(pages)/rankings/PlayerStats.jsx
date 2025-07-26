@@ -87,7 +87,7 @@ export const PlayerStatsLabel = ({ pos }) => {
   )
 }
 
-export const PlayerStatsValue = ({ player, item }) => {
+export const PlayerStatsValue = ({ playerCard, item, player }) => {
 
     const seasonTotals = {
 

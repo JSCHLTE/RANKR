@@ -16,9 +16,11 @@ const PlayerItem = ({
   playerCard,
 }) => {
 
+  const playerSeasons = playerCard.find(obj => obj.playerId === player.playerId);
+
   return (
     <div 
-      className={`player-item ${playerCard.playerId?.includes(player.playerId) ? 'active' : ''}`} 
+      className={`player-item ${playerCard.some(obj => obj.playerId === player.playerId) ? 'active' : ''}`}  
       style={{
         zIndex: isDragging ? 1000 : 'auto',
         position: isDragging ? 'fixed' : 'static',
@@ -70,7 +72,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      {/* { player.seasons && playerCard?.includes(player.playerId) ? 
+      { playerCard.some(obj => obj.playerId === player.playerId) ? 
       <>
             <div className="player-card-header-info flex">
               <div className="player-card-player-info-wrapper flex">
@@ -154,21 +156,24 @@ const PlayerItem = ({
       </thead>
       <tbody>
 
-{player.seasons.map((item, index) => (
-<tr key={index}>
+{playerSeasons?.stats?.map((item, index) => {
+  console.log(item, "yg")
+  return (
+    <tr key={index}>
           <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
           <td>{item.year}</td>
 
-          <PlayerStatsValue player={player} item={item} />
+          <PlayerStatsValue playerCard={playerCard} item={item} player={player}/>
 
 
         </tr>
-)).reverse()}
+  )
+}).reverse()}
 
 
       </tbody>
     </table>
-  </div></> : ""} */}
+  </div></> : ""}
     </div>
   );
 };

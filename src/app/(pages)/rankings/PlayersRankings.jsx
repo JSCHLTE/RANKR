@@ -10,7 +10,7 @@ const PlayersRankings = ({ playerList }) => {
   
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
-  const [playerCard, setPlayerCard] = useState([{}]);
+  const [playerCard, setPlayerCard] = useState([]);
 
   useEffect(() => {
     console.log(playerCard)
