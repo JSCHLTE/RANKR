@@ -100,3 +100,8 @@
     color: var(--red);
     background-color: var(--red-bg);
 }
+
+.table-section {
+    border: 1px solid var(--theme) !important;
+    border-radius: 10px;
+}

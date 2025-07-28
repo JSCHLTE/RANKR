@@ -6,14 +6,27 @@ export const PlayerStatsLabel = ({ pos }) => {
             { pos === "WR" ? 
           
           <>
-            <th>Rec</th>
+          <tr>
+            <th colSpan={5} className='table-section'>Details</th>
+            <th colSpan={4} className='table-section'>Receiving</th>
+            <th colSpan={4} className='table-section'>Rushing</th>
+          </tr>
+          <tr>
+
+            <th>Team</th>
+            <th>Year</th>
+            <th>Games</th>
+            <th>FP</th>
+            <th>FP/G</th>
             <th>Targets</th>
+            <th>Rec</th>
             <th>RecYds</th>
             <th>RecTD</th>
             <th>RushAtt</th>
             <th>RushYds</th>
             <th>RushTD</th>
             <th>Fum</th>
+          </tr>
           </>
 
           : "" }
@@ -21,46 +34,83 @@ export const PlayerStatsLabel = ({ pos }) => {
         { pos === "RB" ? 
                 
                 <>
-                <th>RushAtt</th>
-                <th>RushYds</th>
-                <th>RushTD</th>
-                <th>Fum</th>
-                <th>Rec</th>
-                <th>Targets</th>
-                <th>RecYds</th>
-                <th>RecTD</th>
-                </>
-
+                <tr>
+            <th colSpan={5} className='table-section'>Details</th>
+            <th colSpan={3} className='table-section'>Rushing</th>
+            <th colSpan={4} className='table-section'>Receiving</th>
+          </tr>
+          <tr>
+            <th>Team</th>
+            <th>Year</th>
+            <th>Games</th>
+            <th>FP</th>
+            <th>FP/G</th>
+            <th>RushAtt</th>
+            <th>RushYds</th>
+            <th>RushTD</th>
+            <th>Targets</th>
+            <th>Rec</th>
+            <th>RecYds</th>
+            <th>RecTD</th>
+            <th>Fum</th>
+          </tr>
+          </>
                 : "" }
 
         { pos === "QB" ? 
-                        
-                        <>
-          <th>ATT</th>
-          <th>CMP%</th>
-          <th>YDS</th>
-          <th>TDS</th>
-          <th>INT</th>
-          <th>ATT</th>
-          <th>YDS</th>
-          <th>TDS</th>
-          <th>FUM</th>
-                        </>
+
+          <>
+                <tr>
+            <th colSpan={5} className='table-section'>Details</th>
+            <th colSpan={5} className='table-section'>Passing</th>
+            <th colSpan={4} className='table-section'>Rushing</th>
+          </tr>
+          <tr>
+            <th>Team</th>
+            <th>Year</th>
+            <th>Games</th>
+            <th>FP</th>
+            <th>FP/G</th>
+            <th>ATT</th>
+            <th>CMP%</th>
+            <th>YDS</th>
+            <th>TDS</th>
+            <th>INT</th>
+            <th>RushAtt</th>
+            <th>RushYds</th>
+            <th>RushTD</th>
+            <th>Fum</th>
+          </tr>
+          </>
+                      
 
                         : "" }
 
         { pos === "TE" ? 
                                 
-                                <>
-                    <th>Rec</th>
-                    <th>Targets</th>
-                    <th>RecYds</th>
-                    <th>RecTD</th>
-                    <th>RushAtt</th>
-                    <th>RushYds</th>
-                    <th>RushTD</th>
-                    <th>Fum</th>
-                                </>
+          <>
+          <tr>
+            <th colSpan={5} className='table-section'>Details</th>
+            <th colSpan={4} className='table-section'>Receiving</th>
+            <th colSpan={4} className='table-section'>Rushing</th>
+          </tr>
+          <tr>
+
+            <th>Team</th>
+            <th>Year</th>
+            <th>Games</th>
+            <th>FP</th>
+            <th>FP/G</th>
+            <th>Targets</th>
+            <th>Rec</th>
+            <th>RecYds</th>
+            <th>RecTD</th>
+            <th>RushAtt</th>
+            <th>RushYds</th>
+            <th>RushTD</th>
+            <th>Fum</th>
+          </tr>
+          </>
 
                                 : "" }
 
@@ -143,6 +193,10 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
         }
       },
       "RB": {
+        "fantasyPoints": {
+          low: 184,
+          mid: 289
+        },
         "rushingAttempts": {
           low: 174,
           mid: 254
@@ -232,8 +286,8 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
               ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(1)
               : "—"
             }</td>
-            <td className={getStat(item.totals?.receptions, seasonTotals.WR.receptions.low, seasonTotals.WR.receptions.mid)}>{item.totals?.receptions ?? 0}</td>
             <td className={getStat(item.totals?.targets, seasonTotals.WR.targets.low, seasonTotals.WR.targets.mid)}>{item.totals?.targets ?? 0}</td>
+            <td className={getStat(item.totals?.receptions, seasonTotals.WR.receptions.low, seasonTotals.WR.receptions.mid)}>{item.totals?.receptions ?? 0}</td>
             <td className={getStat(item.totals?.receivingYards, seasonTotals.WR.receivingYards.low, seasonTotals.WR.receivingYards.mid)}>{item.totals?.receivingYards ?? 0}</td>
             <td className={getStat(item.totals?.receivingTDs, seasonTotals.WR.receivingTDs.low, seasonTotals.WR.receivingTDs.mid)}>{item.totals?.receivingTDs ?? 0}</td>
             <td className="table-stat">{item.totals?.rushingAttempts ?? 0}</td>
@@ -247,6 +301,7 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
           { player.position === "TE" ? 
           
             <>
+            <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
             <td className="table-stat">{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(1) : "—"}</td>
             <td className="table-stat">{
             item.totals?.gamesPlayed
@@ -268,8 +323,9 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
           { player.position === "RB" ? 
                     
             <>
-              <td className="table-stat">{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(1) : "—"}</td>
-              <td className="table-stat">{
+            <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
+              <td className={getStat(item.totals?.fantasyPoints, seasonTotals.RB.fantasyPoints.low, seasonTotals.RB.fantasyPoints.mid)}>{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(1) : "—"}</td>
+              <td className={getStat(item.totals?.fantasyPoints, seasonTotals.RB.fantasyPoints.low, seasonTotals.RB.fantasyPoints.mid)}>{
                 item.totals?.gamesPlayed
                 ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(1)
                 : "—"
@@ -289,7 +345,7 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
           { player.position === "QB" ? 
                               
             <>
-                        <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
+            <td className={`table-stat ${item.totals?.gamesPlayed <= 14 ? "red" : "green"}`}>{item.totals?.gamesPlayed ?? "—"}</td>
             <td className={getStat(item.totals?.fantasyPoints, seasonTotals.QB.fantasyPoints.low, seasonTotals.QB.fantasyPoints.mid)}>{typeof item.totals?.fantasyPoints === "number" ? item.totals.fantasyPoints.toFixed(1) : "—"}</td>
             <td className={getStat(item.totals?.fantasyPoints, seasonTotals.QB.fantasyPoints.low, seasonTotals.QB.fantasyPoints.mid)}>{
             item.totals?.gamesPlayed

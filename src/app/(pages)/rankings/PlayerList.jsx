@@ -1,10 +1,13 @@
+"use client"
+
 import Loading from "@/app/components/loading/Loading";
 import PlayerItem from "./PlayerItem"; // Adjust path as needed
 import { getStats } from "@/app/providers/players/getStats";
+import { useState } from "react";
 
 const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
-  if (!playerList) return <Loading />;
 
+  if (!playerList) return <Loading />;
 
   const handlePlayerClick = async (player) => {
     const existingPlayerIndex = playerCard.findIndex(obj => obj.playerId === player.playerId);

@@ -12,10 +12,6 @@ const PlayersRankings = ({ playerList }) => {
   const [positionFilter, setPositionFilter] = useState([]);
   const [playerCard, setPlayerCard] = useState([]);
 
-  useEffect(() => {
-    console.log(playerCard)
-  }, [playerCard])
-
   const displayPlayers = useMemo(() => {
     let filtered = playerList;
 

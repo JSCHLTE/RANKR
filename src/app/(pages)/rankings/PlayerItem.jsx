@@ -1,10 +1,7 @@
 import { check } from "@/app/providers/posRanking/posRanking";
-import { PlayerStatsLabel } from "./PlayerStats";
-import { PlayerStatsValue } from "./PlayerStats";
-import { teams } from "@/app/providers/teams/TeamProvider";
-import { getHeight } from "@/app/providers/players/getHeight";
 import "../CSS/playerItem.css"
 import "../CSS/playerTable.css"
+import PlayerTable from "./PlayerTable";
 
 const PlayerItem = ({ 
   player, 
@@ -72,108 +69,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      { playerCard.some(obj => obj.playerId === player.playerId) ? 
-      <>
-            <div className="player-card-header-info flex">
-              <div className="player-card-player-info-wrapper flex">
-                <div className="player-card-player-info age">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Age</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.age ? player.age : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info height">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Height</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{getHeight(player.height)}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info weight">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Weight</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.weight ? player.weight : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info exp">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Exp</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.years_exp ? player.years_exp : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info college">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">College</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.college ? player.college : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info college">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Number</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.number ? `${player.number}` : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info college">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Position</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{player.position ? player.position : "N/A"}</span>
-                  </div>
-                </div>
-                <div className="player-card-player-info college">
-                  <div className="player-card-player-info-title-wrapper flex-center">
-                    <h5 className="player-card-player-info-title">Team</h5>
-                  </div>
-                  <div className="player-card-player-info-value-wrapper flex-center">
-                    <span className="player-card-player-value">{teams[player.currentTeam]?.name ? teams[player.currentTeam]?.name : "N/A"}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-  <div className="player-stat-season-wrapper">
-    <table border="1">
-    <thead>
-        <tr>
-          <th>Team</th>
-          <th>Year</th>
-          <th>GP</th>
-          <th>FP</th>
-          <th>FP/G</th>
-          <PlayerStatsLabel pos={player.position} />
-        </tr>
-      </thead>
-      <tbody>
-
-{playerSeasons?.stats?.map((item, index) => {
-  console.log(item, "yg")
-  return (
-    <tr key={index}>
-          <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
-          <td>{item.year}</td>
-
-          <PlayerStatsValue playerCard={playerCard} item={item} player={player}/>
-
-
-        </tr>
-  )
-}).reverse()}
-
-
-      </tbody>
-    </table>
-  </div></> : ""}
+      { playerCard.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} /> : ""}
     </div>
   );
 };
