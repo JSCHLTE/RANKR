@@ -13,11 +13,11 @@ const PlayerItem = ({
   playerCard,
 }) => {
 
-  const playerSeasons = playerCard.find(obj => obj.playerId === player.playerId);
+  const playerSeasons = playerCard?.find(obj => obj.playerId === player.playerId);
 
   return (
     <div 
-      className={`player-item ${playerCard.some(obj => obj.playerId === player.playerId) ? 'active' : ''}`}  
+      className={`player-item ${playerCard?.some(obj => obj.playerId === player.playerId) ? 'active' : ''}`}  
       style={{
         zIndex: isDragging ? 1000 : 'auto',
         position: isDragging ? 'fixed' : 'static',
@@ -69,7 +69,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      { playerCard.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} /> : ""}
+      { playerCard?.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} /> : ""}
     </div>
   );
 };
