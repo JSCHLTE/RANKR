@@ -62,7 +62,7 @@
 
 .player-stat-season-wrapper table {
     border: none;
-    border-spacing: 0.5rem;
+    border-spacing: 0.25rem;
 }
 
 .player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
@@ -102,6 +102,5 @@
 }
 
 .table-section {
-    border: 1px solid var(--theme) !important;
-    border-radius: 10px;
+    border-bottom: 1px solid var(--theme) !important;
 }

@@ -36,7 +36,7 @@ export const PlayerStatsLabel = ({ pos }) => {
                 <>
                 <tr>
             <th colSpan={5} className='table-section'>Details</th>
-            <th colSpan={3} className='table-section'>Rushing</th>
+            <th colSpan={4} className='table-section'>Rushing</th>
             <th colSpan={4} className='table-section'>Receiving</th>
           </tr>
           <tr>
@@ -48,11 +48,11 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>RushAtt</th>
             <th>RushYds</th>
             <th>RushTD</th>
+            <th>Fum</th>
             <th>Targets</th>
             <th>Rec</th>
             <th>RecYds</th>
             <th>RecTD</th>
-            <th>Fum</th>
           </tr>
           </>
                 : "" }
@@ -333,11 +333,11 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
               <td className={getStat(item.totals?.rushingAttempts, seasonTotals.RB.rushingAttempts.low, seasonTotals.RB.rushingAttempts.mid)}>{item.totals?.rushingAttempts ?? 0}</td>
               <td className={getStat(item.totals?.rushingYards, seasonTotals.RB.rushingYards.low, seasonTotals.RB.rushingYards.mid)}>{item.totals?.rushingYards ?? 0}</td>
               <td className={getStat(item.totals?.rushingTDs, seasonTotals.RB.rushingTDs.low, seasonTotals.RB.rushingTDs.mid)}>{item.totals?.rushingTDs ?? 0}</td>
+              <td className="table-stat">{item.totals?.fumbles ?? 0}</td>
               <td className={getStat(item.totals?.targets, seasonTotals.RB.targets.low, seasonTotals.RB.targets.mid)}>{item.totals?.targets ?? 0}</td>
               <td className={getStat(item.totals?.receptions, seasonTotals.RB.receptions.low, seasonTotals.RB.receptions.mid)}>{item.totals?.receptions ?? 0}</td>
               <td className={getStat(item.totals?.receivingYards, seasonTotals.RB.receivingYards.low, seasonTotals.RB.receivingYards.mid)}>{item.totals?.receivingYards ?? 0}</td>
               <td className={getStat(item.totals?.receivingTDs, seasonTotals.RB.receivingTDs.low, seasonTotals.RB.receivingTDs.mid)}>{item.totals?.receivingTDs ?? 0}</td>
-              <td className="table-stat">{item.totals?.fumbles ?? 0}</td>
             </>
                     
           : "" }
@@ -353,7 +353,7 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
               : "—"
             }</td>
               <td className={getStat(item.totals?.passingAttempts, seasonTotals.QB.passingAttempts.low, seasonTotals.QB.passingAttempts.mid)}>{item.totals?.passingAttempts ?? 0}</td>
-              <td className={getStat((item.totals?.passingCompletions / item.totals?.passingAttempts * 100).toFixed(1), seasonTotals.QB.passingPct.low, seasonTotals.QB.passingPct.mid)}>{(item.totals?.passingCompletions / item.totals?.passingAttempts * 100).toFixed(1) ?? 0}%</td>
+              <td className={getStat((item.totals?.completions / item.totals?.passingAttempts * 100).toFixed(1), seasonTotals.QB.passingPct.low, seasonTotals.QB.passingPct.mid)}>{(item.totals?.completions / item.totals?.passingAttempts * 100).toFixed(1) ?? 0}%</td>
               <td className={getStat(item.totals?.passingYards, seasonTotals.QB.passingYards.low, seasonTotals.QB.passingYards.mid)}>{item.totals?.passingYards ?? 0}</td>
               <td className={getStat(item.totals?.passingTDs, seasonTotals.QB.passingTDs.low, seasonTotals.QB.passingTDs.mid)}>{item.totals?.passingTDs ?? 0}</td>
               <td className="table-stat">{item.totals?.interceptions ?? 0}</td>
