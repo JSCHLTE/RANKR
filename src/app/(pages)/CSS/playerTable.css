@@ -34,11 +34,11 @@
 .player-card-player-info-title {
     opacity: 0.85;
     font-weight: 500;
-    font-size: 1.10rem;
+    font-size: 1.15rem;
 }
 
 .player-card-player-value, .player-card-header-left-pos-info {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
 }
 
 .player-card-player-value {
@@ -58,16 +58,27 @@
     background-color: var(--background);
     border-radius: 10px;
     margin: 0.5rem;
+    padding: 0.5rem;
 }
 
 .player-stat-season-wrapper table {
     border: none;
-    border-spacing: 0.25rem;
+    border-spacing: 0.5rem;
+}
+
+.player-stat-season-wrapper table th {
+    text-transform: uppercase;
+}
+
+.player-stat-season-wrapper table th td {
+    border-spacing: 0.5rem;
 }
 
 .player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
     padding: 0.5rem;
-    border: none;
+    border: 1px solid #333;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .player-stat-season-wrapper table .logo-team {
@@ -83,7 +94,6 @@
     background-color: var(--grey-bg);
     text-align: center;
     width: 75px;
-    border-radius: 10px;
 }
 
 .table-stat.green {
@@ -102,5 +112,5 @@
 }
 
 .table-section {
-    border-bottom: 1px solid var(--theme) !important;
+    background-color: var(--background-light);
 }

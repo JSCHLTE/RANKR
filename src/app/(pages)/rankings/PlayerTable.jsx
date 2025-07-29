@@ -85,6 +85,7 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
 <tbody>
 
 {playerSeasons?.stats?.map((item, index) => {
+  if(item.year === 2025) return;
 return (
 <tr key={index}>
   <td className="logo-team"><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</td>
