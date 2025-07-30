@@ -1,6 +1,10 @@
 import React from 'react'
+import { POSITION_STAT_FIELDS } from './playerStatsPosition'
 
 export const PlayerStatsLabel = ({ pos }) => {
+
+  const labels = POSITION_STAT_FIELDS
+
   return (
     <>
             { pos === "WR" ? 
@@ -13,19 +17,19 @@ export const PlayerStatsLabel = ({ pos }) => {
           </tr>
           <tr>
 
-            <th>Team</th>
-            <th>Year</th>
-            <th>Games</th>
-            <th>PPR</th>
-            <th>FP/G</th>
-            <th>Targets</th>
-            <th>Rec</th>
-            <th>RecYds</th>
-            <th>RecTD</th>
-            <th>RushAtt</th>
-            <th>RushYds</th>
-            <th>RushTD</th>
-            <th>Fum</th>
+            <th>{labels.team.label}</th>
+            <th>{labels.year.label}</th>
+            <th>{labels.games.label}</th>
+            <th>{labels.ppr.label}</th>
+            <th>{labels.pprg.label}</th>
+            <th>{labels.targets.label}</th>
+            <th>{labels.receptions.label}</th>
+            <th>{labels.recYards.label}</th>
+            <th>{labels.recTds.label}</th>
+            <th>{labels.carries.label}</th>
+            <th>{labels.rushYds.label}</th>
+            <th>{labels.rushTds.label}</th>
+            <th>{labels.fumbles.label}</th>
           </tr>
           </>
 
@@ -40,19 +44,19 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th colSpan={4} className='table-section'>Receiving</th>
           </tr>
           <tr>
-            <th>Team</th>
-            <th>Year</th>
-            <th>Games</th>
-            <th>FP</th>
-            <th>FP/G</th>
-            <th>RushAtt</th>
-            <th>RushYds</th>
-            <th>RushTD</th>
-            <th>Fum</th>
-            <th>Targets</th>
-            <th>Rec</th>
-            <th>RecYds</th>
-            <th>RecTD</th>
+            <th>{labels.team.label}</th>
+            <th>{labels.year.label}</th>
+            <th>{labels.games.label}</th>
+            <th>{labels.ppr.label}</th>
+            <th>{labels.pprg.label}</th>
+            <th>{labels.carries.label}</th>
+            <th>{labels.rushYds.label}</th>
+            <th>{labels.rushTds.label}</th>
+            <th>{labels.fumbles.label}</th>
+            <th>{labels.targets.label}</th>
+            <th>{labels.receptions.label}</th>
+            <th>{labels.recYards.label}</th>
+            <th>{labels.recTds.label}</th>
           </tr>
           </>
                 : "" }
@@ -66,20 +70,20 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th colSpan={4} className='table-section'>Rushing</th>
           </tr>
           <tr>
-            <th>Team</th>
-            <th>Year</th>
-            <th>Games</th>
-            <th>FP</th>
-            <th>FP/G</th>
-            <th>ATT</th>
-            <th>CMP%</th>
-            <th>YDS</th>
-            <th>TDS</th>
-            <th>INT</th>
-            <th>RushAtt</th>
-            <th>RushYds</th>
-            <th>RushTD</th>
-            <th>Fum</th>
+          <th>{labels.team.label}</th>
+            <th>{labels.year.label}</th>
+            <th>{labels.games.label}</th>
+            <th>{labels.ppr.label}</th>
+            <th>{labels.pprg.label}</th>
+            <th>{labels.attempts.label}</th>
+            <th>{labels.completionP.label}</th>
+            <th>{labels.passingYards.label}</th>
+            <th>{labels.passingTds.label}</th>
+            <th>{labels.interceptions.label}</th>
+            <th>{labels.carries.label}</th>
+            <th>{labels.rushYds.label}</th>
+            <th>{labels.rushTds.label}</th>
+            <th>{labels.fumbles.label}</th>
           </tr>
           </>
                       
@@ -94,17 +98,16 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th colSpan={4} className='table-section'>Receiving</th>
           </tr>
           <tr>
-
-            <th>Team</th>
-            <th>Year</th>
-            <th>Games</th>
-            <th>FP</th>
-            <th>FP/G</th>
-            <th>Targets</th>
-            <th>Rec</th>
-            <th>RecYds</th>
-            <th>RecTD</th>
-            <th>Fum</th>
+            <th>{labels.team.label}</th>
+            <th>{labels.year.label}</th>
+            <th>{labels.games.label}</th>
+            <th>{labels.ppr.label}</th>
+            <th>{labels.pprg.label}</th>
+            <th>{labels.targets.label}</th>
+            <th>{labels.receptions.label}</th>
+            <th>{labels.recYards.label}</th>
+            <th>{labels.recTds.label}</th>
+            <th>{labels.fumbles.label}</th>
           </tr>
           </>
 
