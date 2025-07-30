@@ -79,7 +79,7 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
       </div>
     </div>
 <div className="player-stat-season-wrapper">
-<PlayerYear />
+{/* <PlayerYear /> */}
 <table border="1" className='stats-table'>
 <thead>
   <PlayerStatsLabel pos={player.position} />
@@ -90,8 +90,8 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
   if(item.year === 2025) return;
 return (
 <tr key={index}>
-  <td className="border-left"><div className='logo-team'><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</div></td>
-  <td><div>{item.year}</div></td>
+  <td><div className='table-stat team'><div className='logo-team'><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</div></div></td>
+  <td><div className='table-stat'>{item.year}</div></td>
 
   <PlayerStatsValue playerCard={playerCard} item={item} player={player}/>
 

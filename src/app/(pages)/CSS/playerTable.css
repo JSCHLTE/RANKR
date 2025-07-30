@@ -56,7 +56,7 @@
     background-color: var(--background);
     border-radius: 10px;
     margin: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.75rem 0.75rem 1rem;
 }
 
 .player-stat-season-wrapper table {
@@ -66,15 +66,16 @@
 
 .player-stat-season-wrapper table th {
     text-transform: uppercase;
+    padding: 0.35rem 0.35rem 0 0;
 }
-.player-stat-season-wrapper table td {
-    padding: 0.5rem 0.5rem 0 0;
+.player-stat-season-wrapper table td  {
+    padding: 0.35rem 0.35rem 0 0;
     width: 75px;
     height: 30px;
 }
 
-.player-stat-season-wrapper table td:nth-child(6) {
-    padding: 0.5rem 0.5rem 0 0.5rem;
+.spacing-left {
+    padding: 0.35rem 0.35rem 0 0.35rem !important;
 }
 
 .player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
@@ -90,14 +91,16 @@
 .player-stat-season-wrapper table .logo-team {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .player-stat-season-wrapper table img {
-    margin-right: 0.5rem;
+    margin-right: 0.25rem;
 }
 
 .table-stat {
     background-color: var(--grey-bg);
+    border: 1px solid var(--white);
     text-align: center;
     width: 75px;
 }
@@ -105,29 +108,27 @@
 .table-stat.green {
     color: var(--green);
     background-color: var(--green-bg);
+    border-color: var(--green);
 }
 
 .table-stat.yellow {
     color: var(--yellow);
     background-color: var(--yellow-bg);
+    border-color: var(--yellow);
 }
 
 .table-stat.red {
     color: var(--red);
     background-color: var(--red-bg);
+    border-color: var(--red);
 }
 
 .table-section {
-    background-color: var(--background-light);
-    border-bottom: 1px solid var(--white) !important;
+    border-bottom: 1px solid var(--white-t) !important;
 }
 
-.border-right, .table-section {
-    border-right: 1px solid var(--white) !important;
-}
-
-.border-left {
-    border-left: 1px solid var(--white) !important;
+.border-right {
+    border-right: 1px solid var(--white-t) !important;
 }
 
 .playerYearGroup {
@@ -141,12 +142,12 @@
 }
 
 .playerYearGroup button {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid var(--theme);
+    border: none;
     color: var(--white);
     font-size: 1rem;
 }
