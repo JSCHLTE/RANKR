@@ -1,7 +1,6 @@
 .player-card-header-info {
     padding: 1rem;
     background-color: var(--background);
-    border: 1px solid var(--theme);
     margin: 0 0.5rem;
     border-radius: 10px;
 }
@@ -54,7 +53,6 @@
 }
 
 .player-stat-season-wrapper {
-    border: 1px solid var(--theme);
     background-color: var(--background);
     border-radius: 10px;
     margin: 0.5rem;
@@ -63,22 +61,30 @@
 
 .player-stat-season-wrapper table {
     border: none;
-    border-spacing: 0.5rem;
+    border-collapse: collapse;
 }
 
 .player-stat-season-wrapper table th {
     text-transform: uppercase;
 }
+.player-stat-season-wrapper table td {
+    padding: 0.5rem 0.5rem 0 0;
+    width: 75px;
+    height: 30px;
+}
 
-.player-stat-season-wrapper table th td {
-    border-spacing: 0.5rem;
+.player-stat-season-wrapper table td:nth-child(6) {
+    padding: 0.5rem 0.5rem 0 0.5rem;
 }
 
 .player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
-    padding: 0.5rem;
-    border: 1px solid #333;
-    border-radius: 10px;
+    border: none;
+}
+
+.player-stat-season-wrapper table td div, .player-stat-season-wrapper table th {
+    line-height: 30px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .player-stat-season-wrapper table .logo-team {
@@ -112,5 +118,39 @@
 }
 
 .table-section {
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--white) !important;
+}
+
+.border-right, .table-section {
+    border-right: 1px solid var(--white) !important;
+}
+
+.border-left {
+    border-left: 1px solid var(--white) !important;
+}
+
+.playerYearGroup {
+    width: 135px;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.playerYearGroup span {
+    font-size: 1.25rem;
+}
+
+.playerYearGroup button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--theme);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.playerYearGroup button:hover {
     background-color: var(--background-light);
 }

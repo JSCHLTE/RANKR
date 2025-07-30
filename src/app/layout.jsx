@@ -2,6 +2,7 @@ import "./globals.css";
 
 import Navbar from "@/app/components/navbar/Navbar";
 import { AuthProvider } from "./providers/AuthProvider";
+import Script from "next/script";
 
 export const metadata = {
   title: "RANKR",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+      <Script src="https://kit.fontawesome.com/ad03dfc62c.js" crossorigin="anonymous" strategy="lazyOnload"></Script>
       <link rel="icon" href="/images/lion-blue.svg" />
     </head>
       <body>
