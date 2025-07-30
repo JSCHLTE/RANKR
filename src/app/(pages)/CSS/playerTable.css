@@ -59,6 +59,10 @@
     padding: 0.75rem 0.75rem 1rem;
 }
 
+.stats-error {
+    padding: 0.5rem;
+}
+
 .player-stat-season-wrapper table {
     border: none;
     border-collapse: collapse;
@@ -100,7 +104,7 @@
 
 .table-stat {
     background-color: var(--grey-bg);
-    border: 1px solid var(--white);
+    border: 1px solid var(--grey-bg);
     text-align: center;
     width: 75px;
 }
@@ -108,19 +112,19 @@
 .table-stat.green {
     color: var(--green);
     background-color: var(--green-bg);
-    border-color: var(--green);
+    border-color: var(--green-bg);
 }
 
 .table-stat.yellow {
     color: var(--yellow);
     background-color: var(--yellow-bg);
-    border-color: var(--yellow);
+    border-color: var(--yellow-bg);
 }
 
 .table-stat.red {
     color: var(--red);
     background-color: var(--red-bg);
-    border-color: var(--red);
+    border-color: var(--red-bg);
 }
 
 .table-section {

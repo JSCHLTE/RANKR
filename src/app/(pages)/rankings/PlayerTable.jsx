@@ -10,7 +10,7 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
 
   return (
     <>
-    <div className="player-card-header-info flex">
+    {/* <div className="player-card-header-info flex">
       <div className="player-card-player-info-wrapper flex">
         <div className="player-card-player-info age">
           <div className="player-card-player-info-title-wrapper flex-center">
@@ -77,8 +77,8 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
           </div>
         </div>
       </div>
-    </div>
-<div className="player-stat-season-wrapper">
+    </div> */}
+    { player?.years_exp > 0 ? <div className="player-stat-season-wrapper">
 {/* <PlayerYear /> */}
 <table border="1" className='stats-table'>
 <thead>
@@ -103,7 +103,8 @@ return (
 
 </tbody>
 </table>
-</div></>
+</div> : <p className='stats-error'>{player.full_name} is either a rookie or his stats are not in our database.</p> }
+</>
   )
 }
 
