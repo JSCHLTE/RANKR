@@ -5,6 +5,10 @@
     border-radius: 10px;
 }
 
+.player-stat-season-wrapper {
+    position: relative;
+}
+
 .player-card-player-info-wrapper, .player-stat-season-wrapper {
     scrollbar-width: thin;
     scrollbar-color: var(--theme) var(--background-light);

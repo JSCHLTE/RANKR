@@ -3,7 +3,7 @@
 import Loading from "@/app/components/loading/Loading";
 import PlayerItem from "./PlayerItem"; // Adjust path as needed
 import { getStats } from "@/app/providers/players/getStats";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
 
@@ -27,10 +27,13 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
     
     setPlayerCard(prev => ([
       ...prev,
-      { playerId: player.playerId, stats: cleanStats }
+      { playerId: player.playerId, stats: cleanStats, mode: 'logs' }
     ]));
   };
 
+  useEffect(() => {
+    console.log(playerCard)
+  }, [playerCard])
   
   return (
     <div className="players-custom-wrapper flex">
@@ -42,6 +45,7 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
           onClick={() => handlePlayerClick(player)}
           playerList={playerList}
           playerCard={playerCard}
+          setPlayerCard={setPlayerCard}
         />
       ))}
     </div>

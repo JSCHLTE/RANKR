@@ -5,8 +5,9 @@ import { teams } from "@/app/providers/teams/TeamProvider";
 import { getHeight } from "@/app/providers/players/getHeight";
 import Loading from '@/app/components/loading/Loading';
 import PlayerYear from './PlayerYear';
+import PlayerTableToggle from './PlayerTableToggle';
 
-const PlayerTable = ({ player, playerSeasons, playerCard }) => {
+const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
 
   return (
     <>
@@ -78,8 +79,12 @@ const PlayerTable = ({ player, playerSeasons, playerCard }) => {
         </div>
       </div>
     </div> */}
-    { player?.years_exp > 0 ? <div className="player-stat-season-wrapper">
-{/* <PlayerYear /> */}
+    { player?.years_exp > 0 ? 
+    <>
+    <div className='player-stats-wrapper'>
+    {/* <PlayerYear /> */}
+    <PlayerTableToggle player={player} playerCard={playerCard} setPlayerCard={setPlayerCard} />
+    <div className="player-stat-season-wrapper">
 <table border="1" className='stats-table'>
 <thead>
   <PlayerStatsLabel pos={player.position} />
@@ -103,7 +108,8 @@ return (
 
 </tbody>
 </table>
-</div> : <p className='stats-error'>{player.full_name} is either a rookie or his stats are not in our database.</p> }
+</div>
+</div></> : <p className='stats-error'>{player.full_name} is either a rookie or his stats are not in our database.</p> }
 </>
   )
 }

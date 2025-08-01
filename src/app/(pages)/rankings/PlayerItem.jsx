@@ -11,6 +11,7 @@ const PlayerItem = ({
   dragHandleProps, // For drag handle in edit mode
   isDragging, // For drag-specific styles
   playerCard,
+  setPlayerCard
 }) => {
 
   const playerSeasons = playerCard?.find(obj => obj.playerId === player.playerId);
@@ -69,7 +70,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      { playerCard?.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} /> : ""}
+      { playerCard?.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} setPlayerCard={setPlayerCard} /> : ""}
     </div>
   );
 };

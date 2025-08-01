@@ -1,0 +1,22 @@
+.table-filter {
+    justify-content: right;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.table-career, .table-logs {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-family: inherit;
+    background-color: var(--background);
+    cursor: pointer;
+    color: var(--white);
+    font-size: 1rem;
+    border: 2px solid var(--background);
+}
+
+.table-career.active, .table-logs.active {
+    border-color: var(--theme);
+}

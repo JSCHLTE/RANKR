@@ -11,8 +11,6 @@ export const getStats = async (playerId) => {
           const statsArray = Array.isArray(data)
             ? data
             : Object.values(data);
-
-          console.log(statsArray[0][2023], " look at this one")
           return statsArray;
         } else {
           console.log("No player data available");
