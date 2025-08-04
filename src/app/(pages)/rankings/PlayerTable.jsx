@@ -6,9 +6,12 @@ import { getHeight } from "@/app/providers/players/getHeight";
 import Loading from '@/app/components/loading/Loading';
 import PlayerYear from './PlayerYear';
 import PlayerTableToggle from './PlayerTableToggle';
+import PlayerLogs from './PlayerLogs';
 
 const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
 
+  // Check if career mode is active for this specific player
+  const isCareerMode = playerCard.find(({ mode, playerId }) => mode === "career" && playerId === player.playerId);
   return (
     <>
     {/* <div className="player-card-header-info flex">
@@ -82,14 +85,14 @@ const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
     { player?.years_exp > 0 ? 
     <>
     <div className='player-stats-wrapper'>
-    {/* <PlayerYear /> */}
     <PlayerTableToggle player={player} playerCard={playerCard} setPlayerCard={setPlayerCard} />
     <div className="player-stat-season-wrapper">
+{ isCareerMode ? 
 <table border="1" className='stats-table'>
-<thead>
-  <PlayerStatsLabel pos={player.position} />
-</thead>
-<tbody>
+  <thead>
+    <PlayerStatsLabel pos={player.position} />
+  </thead>
+  <tbody>
 
 {playerSeasons?.stats?.map((item, index) => {
   if(item.year === 2025) return;
@@ -107,7 +110,12 @@ return (
 
 
 </tbody>
-</table>
+</table> : 
+<>
+<PlayerYear />
+<PlayerLogs playerLogs={playerSeasons.stats}/>
+</>}
+  
 </div>
 </div></> : <p className='stats-error'>{player.full_name} is either a rookie or his stats are not in our database.</p> }
 </>
