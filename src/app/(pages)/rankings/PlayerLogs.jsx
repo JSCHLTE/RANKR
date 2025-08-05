@@ -38,7 +38,7 @@ const PlayerLogs = ({ playerLogs }) => {
                         {gamesArray.map((game, index) => (
                             <div key={index}>
                                 {/* Add your game display logic here */}
-                                <p>Game: {JSON.stringify(game.fantasyPoints)}</p>
+                                <p>{game.opponent}</p>
                             </div>
                         ))}
                     </div>

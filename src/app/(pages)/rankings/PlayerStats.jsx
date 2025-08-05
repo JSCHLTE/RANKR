@@ -284,8 +284,6 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
       return `table-stat ${type <= low ? "green" : type <= mid ? "yellow" : "red"}`
   }
 
-  console.log(item.totals?.fantasyPoints, " fskjfksdjf")
-
     return (
       <>
                 { player.position === "WR" ? 
