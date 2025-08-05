@@ -112,7 +112,7 @@ return (
 </tbody>
 </table> : 
 <>
-<PlayerLogs playerLogs={playerSeasons.stats}/>
+  <PlayerLogs playerLogs={playerSeasons.stats} pos={player.position} />
 </>}
   
 </div>
