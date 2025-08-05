@@ -30,10 +30,6 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
       { playerId: player.playerId, stats: cleanStats, mode: 'logs' }
     ]));
   };
-
-  useEffect(() => {
-    console.log(playerCard)
-  }, [playerCard])
   
   return (
     <div className="players-custom-wrapper flex">

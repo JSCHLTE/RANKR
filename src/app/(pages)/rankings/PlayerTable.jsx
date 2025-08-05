@@ -112,7 +112,6 @@ return (
 </tbody>
 </table> : 
 <>
-<PlayerYear />
 <PlayerLogs playerLogs={playerSeasons.stats}/>
 </>}
   

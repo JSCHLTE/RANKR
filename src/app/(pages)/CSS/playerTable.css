@@ -163,3 +163,12 @@
 .playerYearGroup button:hover {
     background-color: var(--background-light);
 }
+
+.playerYearGroup button.inactive {
+    cursor: default;
+    opacity: 0.25;
+}
+
+.playerYearGroup button.inactive:hover {
+    background-color: transparent;
+}
