@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import { POSITION_STAT_FIELDS } from './playerStatsPosition' 
 
+import "../CSS/playerTable.css"
+
 const PlayerLogs = ({ playerLogs, pos }) => {
 
     const [years, setYears] = useState(playerLogs.map(item => item.year));
@@ -28,6 +30,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
             <button onClick={increase} className={yearIndex >= years.length - 1 ? "inactive" : ""} disabled={yearIndex >= years.length - 1 ? true : false}><i className="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
+    <div className='player-stat-season-wrapper'>
     <table border="1" className='stats-table'>
         <tr>
             <th>DETAILS</th>
@@ -84,20 +87,20 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                     <>
                         {gamesArray.map((game, index) => (
                             <tr key={index}>
-                                <td>Week {index}</td>
-                                <td>{game.opponent}</td>
-                                <td>{game.fantasyPoints?.toFixed(1)}</td>
-                                <td>{game.weeklyRank}</td>
+                                <td><div className='table-stat'>Week {index}</div></td>
+                                <td><div className='table-stat'>{game.opponent}</div></td>
+                                <td><div>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
+                                <td><div>{game.weeklyRank}</div></td>
                                 { pos == "WR" ? 
                                 <>
-                                    <td>{game.targets}</td>
-                                    <td>{game.receptions}</td>
-                                    <td>{game.receivingYards}</td>
-                                    <td>{game.receivingTDs}</td>
-                                    <td>{game.rushingAttempts}</td>
-                                    <td>{game.rushingYards}</td>
-                                    <td>{game.rushingTDs}</td>
-                                    <td>{game.fumbles}</td>
+                                    <td><div>{game.targets}</div></td>
+                                    <td><div>{game.receptions}</div></td>
+                                    <td><div>{game.receivingYards}</div></td>
+                                    <td><div>{game.receivingTDs}</div></td>
+                                    <td><div>{game.rushingAttempts}</div></td>
+                                    <td><div>{game.rushingYards}</div></td>
+                                    <td><div>{game.rushingTDs}</div></td>
+                                    <td><div>{game.fumbles}</div></td>
                                 </>
                                 : "" }
                             </tr>
@@ -109,6 +112,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
             }
         })}
         </table>
+        </div>
     </div>
   )
 }
