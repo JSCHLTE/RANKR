@@ -1,6 +1,9 @@
 "use client"
 import React, { useState } from 'react'
-import { POSITION_STAT_FIELDS } from './playerStatsPosition' 
+import { POSITION_STAT_FIELDS } from '@/app/providers/statLabels/statLabels'
+import { getStat, getStatLow } from '@/app/providers/statColor/statColor'
+
+import { gameTotals } from '@/app/providers/statColor/statValues'
 
 import "../CSS/playerTable.css"
 
@@ -89,18 +92,18 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                             <tr key={index}>
                                 <td><div className='table-stat'>Week {index}</div></td>
                                 <td><div className='table-stat'>{game.opponent}</div></td>
-                                <td><div>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
+                                <td><div className={`${getStat(game.fantasyPoints, gameTotals.WR.fantasyPoints.low, gameTotals.WR.fantasyPoints.mid)}`}>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
                                 <td><div>{game.weeklyRank}</div></td>
                                 { pos == "WR" ? 
                                 <>
-                                    <td><div>{game.targets}</div></td>
-                                    <td><div>{game.receptions}</div></td>
-                                    <td><div>{game.receivingYards}</div></td>
-                                    <td><div>{game.receivingTDs}</div></td>
-                                    <td><div>{game.rushingAttempts}</div></td>
-                                    <td><div>{game.rushingYards}</div></td>
-                                    <td><div>{game.rushingTDs}</div></td>
-                                    <td><div>{game.fumbles}</div></td>
+                                    <td><div className={`${getStat(game.targets, gameTotals.WR.targets.low, gameTotals.WR.targets.mid)}`}>{game.targets}</div></td>
+                                    <td><div className={`${getStat(game.receptions, gameTotals.WR.receptions.low, gameTotals.WR.receptions.mid)}`}>{game.receptions}</div></td>
+                                    <td><div className={`${getStat(game.receivingYards, gameTotals.WR.receivingYards.low, gameTotals.WR.receivingYards.mid)}`}>{game.receivingYards}</div></td>
+                                    <td><div className={`${getStat(game.receivingTDs, gameTotals.WR.receivingTDs.low, gameTotals.WR.receivingTDs.mid)}`}>{game.receivingTDs}</div></td>
+                                    <td><div className={`${getStat(game.rushingAttempts, gameTotals.WR.rushingAttempts.low, gameTotals.WR.rushingAttempts.mid)}`}>{game.rushingAttempts}</div></td>
+                                    <td><div className={`${getStat(game.rushingYards, gameTotals.WR.rushingYards.low, gameTotals.WR.rushingYards.mid)}`}>{game.rushingYards}</div></td>
+                                    <td><div className={`${getStat(game.rushingTDs, gameTotals.WR.rushingTDs.low, gameTotals.WR.rushingTDs.mid)}`}>{game.rushingTDs}</div></td>
+                                    <td><div className={`${getStat(game.fumbles, gameTotals.WR.fumbles.low, gameTotals.WR.fumbles.mid)}`}>{game.fumbles}</div></td>
                                 </>
                                 : "" }
                             </tr>

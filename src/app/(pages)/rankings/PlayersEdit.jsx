@@ -1,8 +1,7 @@
 "use client";
 
-import { check } from "@/app/providers/posRanking/posRanking"; // If needed elsewhere
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import PlayerItem from "./PlayerItem"; // Adjust path as needed
+import PlayerItem from "./PlayerItem";
 import Loading from "@/app/components/loading/Loading";
 
 const PlayersEdit = ({ playerList, setPlayerList }) => {
