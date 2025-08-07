@@ -11,6 +11,25 @@ export const seasonTotals = {
 
     */
 
+    "RANK": {
+      "QB": {
+        low: 10,
+        mid: 21
+      },
+      "WR": {
+        low: 15,
+        mid: 30
+      },
+      "RB": {
+        low: 13,
+        mid: 27
+      },
+      "TE": {
+        low: 8,
+        mid: 16
+      }
+    },
+
     "WR": {
       "fantasyPoints": {
         low: 184,

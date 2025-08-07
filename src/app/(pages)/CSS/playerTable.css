@@ -144,7 +144,7 @@
 .playerYearGroup {
     width: 135px;
     justify-content: space-between;
-    margin: 0 0 1rem;
+    margin: 0.5rem 0 1.25rem;
 }
 
 .playerYearGroup span {
