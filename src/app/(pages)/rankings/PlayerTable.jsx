@@ -116,7 +116,7 @@ return (
 </>}
   
 </div>
-</div></> : <p className='stats-error'>{player.full_name} is either a rookie or his stats are not in our database.</p> }
+</div></> : <p className='stats-error'>Stats for {player.full_name} are not available.</p> }
 </>
   )
 }

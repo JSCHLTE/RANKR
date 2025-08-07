@@ -20,7 +20,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
     }
 
     const increase = () => {
-        if(yearIndex >= years.length - 1) return
+        if(yearIndex >= years.length - 2) return
         setYearIndex(prev => ++prev);
     }
 
@@ -30,7 +30,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
         <div className='playerYearGroup flex-center'>
             <button onClick={decrease} className={yearIndex <= 0 ? "inactive" : ""} disabled={yearIndex <= 0 ? true : false}><i className="fa-solid fa-chevron-left"></i></button>
             <span>{years[yearIndex]}</span>
-            <button onClick={increase} className={yearIndex >= years.length - 1 ? "inactive" : ""} disabled={yearIndex >= years.length - 1 ? true : false}><i className="fa-solid fa-chevron-right"></i></button>
+            <button onClick={increase} className={yearIndex >= years.length - 2 ? "inactive" : ""} disabled={yearIndex >= years.length - 1 ? true : false}><i className="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
     <table border="1" className='stats-table'>
@@ -116,7 +116,6 @@ const PlayerLogs = ({ playerLogs, pos }) => {
         </tr>
         {playerLogs.map((item, index) => {
             if(item.year == years[yearIndex]) {
-                // Convert games object to array if it's not already an array
                 const gamesArray = Array.isArray(item.games) 
                     ? item.games 
                     : Object.values(item.games || {});
@@ -130,7 +129,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                 { pos == "WR" ? 
                                 <>
                                     <td><div className={`${getStat(game.fantasyPoints, gameTotals.WR.fantasyPoints.low, gameTotals.WR.fantasyPoints.mid)}`}>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
-                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.low, gameTotals.rank.mid)}`}>{game.weeklyRank}</div></td>
+                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.WR.low, gameTotals.rank.WR.mid)}`}>{game.weeklyRank}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.targets, gameTotals.WR.targets.low, gameTotals.WR.targets.mid)}`}>{game.targets}</div></td>
                                     <td><div className={`${getStat(game.receptions, gameTotals.WR.receptions.low, gameTotals.WR.receptions.mid)}`}>{game.receptions}</div></td>
                                     <td><div className={`${getStat(game.receivingYards, gameTotals.WR.receivingYards.low, gameTotals.WR.receivingYards.mid)}`}>{game.receivingYards}</div></td>
@@ -145,7 +144,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                 { pos == "RB" ? 
                                 <>
                                     <td><div className={`${getStat(game.fantasyPoints, gameTotals.RB.fantasyPoints.low, gameTotals.RB.fantasyPoints.mid)}`}>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
-                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.low, gameTotals.rank.mid)}`}>{game.weeklyRank}</div></td>
+                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.RB.low, gameTotals.rank.RB.mid)}`}>{game.weeklyRank}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.rushingAttempts, gameTotals.RB.rushingAttempts.low, gameTotals.RB.rushingAttempts.mid)}`}>{game.rushingAttempts}</div></td>
                                     <td><div className={`${getStat(game.rushingYards, gameTotals.RB.rushingYards.low, gameTotals.RB.rushingYards.mid)}`}>{game.rushingYards}</div></td>
                                     <td><div className={`${getStat(game.rushingTDs, gameTotals.RB.rushingTDs.low, gameTotals.RB.rushingTDs.mid)}`}>{game.rushingTDs}</div></td>
@@ -160,7 +159,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                 { pos == "TE" ? 
                                 <>
                                     <td><div className={`${getStat(game.fantasyPoints, gameTotals.TE.fantasyPoints.low, gameTotals.TE.fantasyPoints.mid)}`}>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
-                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.low, gameTotals.rank.mid)}`}>{game.weeklyRank}</div></td>
+                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.TE.low, gameTotals.rank.TE.mid)}`}>{game.weeklyRank}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.targets, gameTotals.TE.targets.low, gameTotals.TE.targets.mid)}`}>{game.targets}</div></td>
                                     <td><div className={`${getStat(game.receptions, gameTotals.TE.receptions.low, gameTotals.TE.receptions.mid)}`}>{game.receptions}</div></td>
                                     <td><div className={`${getStat(game.receivingYards, gameTotals.TE.receivingYards.low, gameTotals.TE.receivingYards.mid)}`}>{game.receivingYards}</div></td>
@@ -171,11 +170,11 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                 { pos == "QB" ? 
                                 <>
                                     <td><div className={`${getStat(game.fantasyPoints, gameTotals.QB.fantasyPoints.low, gameTotals.QB.fantasyPoints.mid)}`}>{game.fantasyPoints ? game.fantasyPoints?.toFixed(1) : "-"}</div></td>
-                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.low, gameTotals.rank.mid)}`}>{game.weeklyRank}</div></td>
+                                    <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.QB.low, gameTotals.rank.QB.mid)}`}>{game.weeklyRank}</div></td>
 
                                     <td className='spacing-left'><div className={`${getStat(game.passingAttempts, gameTotals.QB.passingAttempts.low, gameTotals.QB.passingAttempts.mid)}`}>{game.passingAttempts}</div></td>
-                                    <td><div className={getStat((game.completions / game.passingAttempts * 100).toFixed(1), gameTotals.QB.passingPct.low, gameTotals.QB.passingPct.mid)}>{(item.totals?.completions / item.totals?.passingAttempts * 100).toFixed(1) ?? 0}%</div></td>
-                                    <td><div className={`${getStat(game.passingTDs, gameTotals.QB.passingTDs.low, gameTotals.QB.passingYards.mid)}`}>{game.passingYards}</div></td>
+                                    <td><div className={getStat((game.completions / game.passingAttempts * 100).toFixed(1), gameTotals.QB.passingPct.low, gameTotals.QB.passingPct.mid)}>{(game.completions / game.passingAttempts * 100).toFixed(1) ?? 0}%</div></td>
+                                    <td><div className={`${getStat(game.passingYards, gameTotals.QB.passingTDs.low, gameTotals.QB.passingYards.mid)}`}>{game.passingYards}</div></td>
                                     <td><div className={`${getStat(game.passingTDs, gameTotals.QB.passingTDs.low, gameTotals.QB.passingTDs.mid)}`}>{game.passingTDs}</div></td>
                                     <td className='border-right'><div className={`${getStatLow(game.interceptions, gameTotals.QB.interceptions.low, gameTotals.QB.interceptions.mid)}`}>{game.interceptions}</div></td>
 

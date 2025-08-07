@@ -14,8 +14,8 @@ export const PlayerStatsLabel = ({ pos }) => {
           
           <>
           <tr>
-            <th colSpan={5} className='table-section'>Details</th>
-            <th colSpan={4} className='table-section'>Receiving</th>
+            <th colSpan={5} className='table-section border-right'>Details</th>
+            <th colSpan={4} className='table-section border-right'>Receiving</th>
             <th colSpan={4} className='table-section'>Rushing</th>
           </tr>
           <tr>
@@ -42,8 +42,8 @@ export const PlayerStatsLabel = ({ pos }) => {
                 
                 <>
                 <tr>
-            <th colSpan={5} className='table-section'>Details</th>
-            <th colSpan={4} className='table-section'>Rushing</th>
+            <th colSpan={5} className='table-section border-right'>Details</th>
+            <th colSpan={4} className='table-section border-right'>Rushing</th>
             <th colSpan={4} className='table-section'>Receiving</th>
           </tr>
           <tr>
@@ -68,8 +68,8 @@ export const PlayerStatsLabel = ({ pos }) => {
 
           <>
                 <tr>
-            <th colSpan={5} className='table-section'>Details</th>
-            <th colSpan={5} className='table-section'>Passing</th>
+            <th colSpan={5} className='table-section border-right'>Details</th>
+            <th colSpan={5} className='table-section border-right'>Passing</th>
             <th colSpan={4} className='table-section'>Rushing</th>
           </tr>
           <tr>
@@ -97,7 +97,7 @@ export const PlayerStatsLabel = ({ pos }) => {
                                 
           <>
           <tr>
-            <th colSpan={5} className='table-section'>Details</th>
+            <th colSpan={5} className='table-section border-right'>Details</th>
             <th colSpan={4} className='table-section'>Receiving</th>
           </tr>
           <tr>

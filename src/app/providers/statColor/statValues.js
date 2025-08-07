@@ -160,8 +160,22 @@ export const seasonTotals = {
   export const gameTotals = {
 
     rank: {
-      low: 18,
-      mid: 33
+      WR: {
+        low: 18,
+        mid: 33
+      },
+      QB: {
+        low: 11,
+        mid: 21
+      },
+      RB: {
+        low: 13,
+        mid: 27
+      },
+      TE: {
+        low: 8,
+        mid: 16
+      }
     },
 
     WR: {
@@ -198,27 +212,27 @@ export const seasonTotals = {
             mid: 0.5
           },
           "fumbles": {
-            low: 1,
-            mid: 3
+            low: 0,
+            mid: 1
           }
     },
 
     TE: {
       "fantasyPoints": {
-          low: 12.99,
-          mid: 25.55
+          low: 7.4,
+          mid: 14.9
         },
         "receptions": {
           low: 3,
-          mid: 8
+          mid: 6
         },
         "targets": {
-          low: 4,
-          mid: 10
+          low: 3,
+          mid: 8
         },
         "receivingYards": {
-          low: 59,
-          mid: 120
+          low: 34,
+          mid: 67
         },
         "receivingTDs": {
           low: 0,
@@ -228,83 +242,83 @@ export const seasonTotals = {
 
     RB: {
       "fantasyPoints": {
-          low: 12.99,
-          mid: 25.55
+          low: 12.75,
+          mid: 25.4
         },
         "rushingAttempts": {
-          low: 0,
-          mid: 2
+          low: 9,
+          mid: 20
         },
         "rushingYards": {
-          low: 4,
-          mid: 9
+          low: 49,
+          mid: 100
         },
         "rushingTDs": {
           low: 0,
-          mid: 0.5
+          mid: 1
         },
         "receptions": {
-          low: 3,
-          mid: 8
+          low: 1,
+          mid: 4
         },
         "targets": {
-          low: 4,
-          mid: 10
+          low: 2,
+          mid: 5
         },
         "receivingYards": {
-          low: 59,
-          mid: 120
+          low: 19,
+          mid: 40
         },
         "receivingTDs": {
           low: 0,
           mid: 0.5
         },
         "fumbles": {
-          low: 1,
-          mid: 3
+          low: 0,
+          mid: 1
         }
   },
 
   QB: {
     "fantasyPoints": {
-        low: 12.99,
-        mid: 25.55
+        low: 13.9,
+        mid: 27.9
       },
       "passingAttempts": {
-        low: 439,
-        mid: 514
+        low: 16,
+        mid: 32
       },
       "passingPct": {
-        low: 61,
-        mid: 64
+        low: 45,
+        mid: 55
       },
       "passingYards": {
-        low: 3300,
-        mid: 4099
+        low: 114,
+        mid: 233
       },
       "passingTDs": {
-        low: 23,
-        mid: 31
-      },
-      "interceptions": {
-        low: 6,
-        mid: 9
-      },
-      "rushingAttempts": {
-        low: 0,
+        low: 1,
         mid: 2
       },
-      "rushingYards": {
-        low: 4,
-        mid: 9
-      },
-      "rushingTDs": {
+      "interceptions": {
         low: 0,
         mid: 0.5
       },
+      "rushingAttempts": {
+        low: 3,
+        mid: 6
+      },
+      "rushingYards": {
+        low: 29,
+        mid: 59
+      },
+      "rushingTDs": {
+        low: 0,
+        mid: 1
+      },
       "fumbles": {
-        low: 1,
-        mid: 3
+        low: 0,
+        mid: 0.5
       }
 }
 
