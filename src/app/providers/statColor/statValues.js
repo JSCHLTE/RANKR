@@ -159,6 +159,11 @@ export const seasonTotals = {
 
   export const gameTotals = {
 
+    rank: {
+      low: 18,
+      mid: 33
+    },
+
     WR: {
         "fantasyPoints": {
             low: 12.99,
@@ -196,6 +201,111 @@ export const seasonTotals = {
             low: 1,
             mid: 3
           }
-    }
+    },
+
+    TE: {
+      "fantasyPoints": {
+          low: 12.99,
+          mid: 25.55
+        },
+        "receptions": {
+          low: 3,
+          mid: 8
+        },
+        "targets": {
+          low: 4,
+          mid: 10
+        },
+        "receivingYards": {
+          low: 59,
+          mid: 120
+        },
+        "receivingTDs": {
+          low: 0,
+          mid: 0.5
+        }
+  },
+
+    RB: {
+      "fantasyPoints": {
+          low: 12.99,
+          mid: 25.55
+        },
+        "rushingAttempts": {
+          low: 0,
+          mid: 2
+        },
+        "rushingYards": {
+          low: 4,
+          mid: 9
+        },
+        "rushingTDs": {
+          low: 0,
+          mid: 0.5
+        },
+        "receptions": {
+          low: 3,
+          mid: 8
+        },
+        "targets": {
+          low: 4,
+          mid: 10
+        },
+        "receivingYards": {
+          low: 59,
+          mid: 120
+        },
+        "receivingTDs": {
+          low: 0,
+          mid: 0.5
+        },
+        "fumbles": {
+          low: 1,
+          mid: 3
+        }
+  },
+
+  QB: {
+    "fantasyPoints": {
+        low: 12.99,
+        mid: 25.55
+      },
+      "passingAttempts": {
+        low: 439,
+        mid: 514
+      },
+      "passingPct": {
+        low: 61,
+        mid: 64
+      },
+      "passingYards": {
+        low: 3300,
+        mid: 4099
+      },
+      "passingTDs": {
+        low: 23,
+        mid: 31
+      },
+      "interceptions": {
+        low: 6,
+        mid: 9
+      },
+      "rushingAttempts": {
+        low: 0,
+        mid: 2
+      },
+      "rushingYards": {
+        low: 4,
+        mid: 9
+      },
+      "rushingTDs": {
+        low: 0,
+        mid: 0.5
+      },
+      "fumbles": {
+        low: 1,
+        mid: 3
+      }
+}
 
   }

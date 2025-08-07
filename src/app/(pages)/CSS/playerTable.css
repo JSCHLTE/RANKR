@@ -133,6 +133,8 @@
 
 .table-section {
     border-bottom: 1px solid var(--white-t) !important;
+    background-color: var(--background-light);
+    border-radius: 0 !important;
 }
 
 .border-right {
@@ -142,7 +144,7 @@
 .playerYearGroup {
     width: 135px;
     justify-content: space-between;
-    margin: 0.5rem 0;
+    margin: 0 0 1rem;
 }
 
 .playerYearGroup span {
@@ -175,4 +177,12 @@
 
 .playerYearGroup button:active {
     transform: scale(0.9);
+}
+
+table tr .table-section:nth-child(1) {
+    border-top-left-radius: 10px !important;
+}
+
+table tr .table-section:nth-last-child(1) {
+    border-top-right-radius: 10px !important;
 }
