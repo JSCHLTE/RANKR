@@ -3,7 +3,6 @@ import { PlayerStatsLabel } from "./PlayerStats";
 import { PlayerStatsValue } from "./PlayerStats";
 import { teams } from "@/app/providers/teams/TeamProvider";
 import { getHeight } from "@/app/providers/players/getHeight";
-import Loading from '@/app/components/loading/Loading';
 import PlayerYear from './PlayerYear';
 import PlayerTableToggle from './PlayerTableToggle';
 import PlayerLogs from './PlayerLogs';
@@ -12,6 +11,7 @@ const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
 
   // Check if career mode is active for this specific player
   const isCareerMode = playerCard.find(({ mode, playerId }) => mode === "career" && playerId === player.playerId);
+
   return (
     <>
     {/* <div className="player-card-header-info flex">

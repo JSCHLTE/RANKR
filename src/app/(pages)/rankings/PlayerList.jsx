@@ -9,7 +9,10 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
 
   if (!playerList) return <Loading />;
 
+  const [loading, setLoading] = useState(null);
+
   const handlePlayerClick = async (player) => {
+    setLoading(true);
     const existingPlayerIndex = playerCard.findIndex(obj => obj.playerId === player.playerId);
     
     if (existingPlayerIndex !== -1) {
@@ -42,6 +45,7 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
           playerList={playerList}
           playerCard={playerCard}
           setPlayerCard={setPlayerCard}
+          loading={loading}
         />
       ))}
     </div>
