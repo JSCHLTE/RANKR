@@ -38,14 +38,14 @@ const PlayerLogs = ({ playerLogs, pos }) => {
             <th colSpan="4" className='table-section border-right'>DETAILS</th>
             { pos == "WR" ? 
             <>
-                <th colSpan="4" className='table-section border-right'>Receiving</th>
+                <th colSpan="5" className='table-section border-right'>Receiving</th>
                 <th colSpan="4" className='table-section'>Rushing</th>
             </> 
             : "" }
             { pos == "RB" ? 
             <>
-                <th colSpan="4" className='table-section border-right'>Rushing</th>
-                <th colSpan="4" className='table-section'>Receiving</th>
+                <th colSpan="5" className='table-section border-right'>Rushing</th>
+                <th colSpan="5" className='table-section'>Receiving</th>
             </>
             : "" }
             { pos == "QB" ? 
@@ -70,7 +70,8 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                 <th className='spacing-left'>{labels.targets.label}</th>
                 <th>{labels.receptions.label}</th>
                 <th>{labels.recYards.label}</th>
-                <th className='border-right'>{labels.recTds.label}</th>
+                <th>{labels.recTds.label}</th>
+                <th className='border-right'>YPT</th>
                 <th className='spacing-left'>{labels.carries.label}</th>
                 <th>{labels.rushYds.label}</th>
                 <th>{labels.rushTds.label}</th>
@@ -82,11 +83,13 @@ const PlayerLogs = ({ playerLogs, pos }) => {
             <>
                 <th>{labels.carries.label}</th>
                 <th>{labels.rushYds.label}</th>
+                <th>YDS/A</th>
                 <th>{labels.rushTds.label}</th>
                 <th className='border-right'>{labels.fumbles.label}</th>
                 <th className='spacing-left'>{labels.targets.label}</th>
                 <th>{labels.receptions.label}</th>
                 <th>{labels.recYards.label}</th>
+                <th>YPT</th>
                 <th>{labels.recTds.label}</th>
             </>
             : "" }
@@ -133,7 +136,8 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                     <td className='spacing-left'><div className={`${getStat(game.targets, gameTotals.WR.targets.low, gameTotals.WR.targets.mid)}`}>{game.targets}</div></td>
                                     <td><div className={`${getStat(game.receptions, gameTotals.WR.receptions.low, gameTotals.WR.receptions.mid)}`}>{game.receptions}</div></td>
                                     <td><div className={`${getStat(game.receivingYards, gameTotals.WR.receivingYards.low, gameTotals.WR.receivingYards.mid)}`}>{game.receivingYards}</div></td>
-                                    <td className='border-right'><div className={`${getStat(game.receivingTDs, gameTotals.WR.receivingTDs.low, gameTotals.WR.receivingTDs.mid)}`}>{game.receivingTDs}</div></td>
+                                    <td><div className={`${getStat(game.receivingTDs, gameTotals.WR.receivingTDs.low, gameTotals.WR.receivingTDs.mid)}`}>{game.receivingTDs}</div></td>
+                                    <td className='border-right'><div className='table-stat'>{(game.receivingYards / game.targets).toFixed(1)}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.rushingAttempts, gameTotals.WR.rushingAttempts.low, gameTotals.WR.rushingAttempts.mid)}`}>{game.rushingAttempts}</div></td>
                                     <td><div className={`${getStat(game.rushingYards, gameTotals.WR.rushingYards.low, gameTotals.WR.rushingYards.mid)}`}>{game.rushingYards}</div></td>
                                     <td><div className={`${getStat(game.rushingTDs, gameTotals.WR.rushingTDs.low, gameTotals.WR.rushingTDs.mid)}`}>{game.rushingTDs}</div></td>
@@ -147,11 +151,13 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                     <td className='border-right'><div className={`${getStatLow(game.weeklyRank, gameTotals.rank.RB.low, gameTotals.rank.RB.mid)}`}>{game.weeklyRank}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.rushingAttempts, gameTotals.RB.rushingAttempts.low, gameTotals.RB.rushingAttempts.mid)}`}>{game.rushingAttempts}</div></td>
                                     <td><div className={`${getStat(game.rushingYards, gameTotals.RB.rushingYards.low, gameTotals.RB.rushingYards.mid)}`}>{game.rushingYards}</div></td>
+                                    <td><div className={`${getStat(game.rushingYards, gameTotals.RB.rushingYards.low, gameTotals.RB.rushingYards.mid)}`}>{(game.rushingYards / game.rushingAttempts).toFixed(1)}</div></td>
                                     <td><div className={`${getStat(game.rushingTDs, gameTotals.RB.rushingTDs.low, gameTotals.RB.rushingTDs.mid)}`}>{game.rushingTDs}</div></td>
                                     <td className='border-right'><div className={`${getStatLow(game.fumbles, gameTotals.RB.fumbles.low, gameTotals.RB.fumbles.mid)}`}>{game.fumbles}</div></td>
                                     <td className='spacing-left'><div className={`${getStat(game.targets, gameTotals.RB.targets.low, gameTotals.RB.targets.mid)}`}>{game.targets}</div></td>
                                     <td><div className={`${getStat(game.receptions, gameTotals.RB.receptions.low, gameTotals.RB.receptions.mid)}`}>{game.receptions}</div></td>
                                     <td><div className={`${getStat(game.receivingYards, gameTotals.RB.receivingYards.low, gameTotals.RB.receivingYards.mid)}`}>{game.receivingYards}</div></td>
+                                    <td><div className='table-stat'>{(game.receivingYards / game.targets).toFixed(1)}</div></td>
                                     <td><div className={`${getStat(game.receivingTDs, gameTotals.RB.receivingTDs.low, gameTotals.RB.receivingTDs.mid)}`}>{game.receivingTDs}</div></td>
                                 </>
                                 : "" }
