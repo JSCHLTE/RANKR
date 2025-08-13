@@ -81,7 +81,7 @@ export const PlayerStatsLabel = ({ pos }) => {
                 <tr>
             <th colSpan={6} className='table-section border-right'>Details</th>
             <th colSpan={6} className='table-section border-right'>Passing</th>
-            <th colSpan={4} className='table-section'>Rushing</th>
+            <th colSpan={5} className='table-section'>Rushing</th>
           </tr>
           <tr>
           <th>{labels.team.label}</th>
@@ -99,6 +99,7 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>{labels.carries.label}</th>
             <th>{labels.rushYds.label}</th>
             <th>{labels.rushTds.label}</th>
+            <th>&lt;5 ATT</th>
             <th>{labels.fumbles.label}</th>
           </tr>
           </>
@@ -110,8 +111,8 @@ export const PlayerStatsLabel = ({ pos }) => {
                                 
           <>
           <tr>
-            <th colSpan={6} className='table-section border-right'>Details</th>
-            <th colSpan={4} className='table-section'>Receiving</th>
+            <th colSpan={7} className='table-section border-right'>Details</th>
+            <th colSpan={6} className='table-section'>Receiving</th>
           </tr>
           <tr>
             <th>{labels.team.label}</th>
@@ -120,10 +121,13 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>{labels.ppr.label}</th>
             <th>{labels.pprg.label}</th>
             <th>RANK</th>
+            <th className='border-right'>SNP%</th>
             <th>{labels.targets.label}</th>
             <th>{labels.receptions.label}</th>
             <th>{labels.recYards.label}</th>
             <th>{labels.recTds.label}</th>
+            <th>YPT</th>
+            <th>TS%</th>
           </tr>
           </>
 
@@ -172,11 +176,14 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
               ? (item.totals.fantasyPoints / item.totals.gamesPlayed).toFixed(1)
               : "—"
             }</div></td>
-            <td className='border-right'><div className={getStatLow(item.totals?.seasonalRank, seasonTotals.RANK.TE.low, seasonTotals.RANK.TE.mid)}>{item.totals?.seasonalRank ?? 0}</div></td>
+            <td><div className={getStatLow(item.totals?.seasonalRank, seasonTotals.RANK.TE.low, seasonTotals.RANK.TE.mid)}>{item.totals?.seasonalRank ?? 0}</div></td>
+            <td className='border-right'><div className='table-stat'>{(item.totals?.snapPct * 100).toFixed(2)}</div></td>
             <td className='spacing-left'><div className={getStat(item.totals?.targets, seasonTotals.TE.targets.low, seasonTotals.TE.targets.mid)}>{item.totals?.targets ?? 0}</div></td>
             <td><div className={getStat(item.totals?.receptions, seasonTotals.TE.receptions.low, seasonTotals.TE.receptions.mid)}>{item.totals?.receptions ?? 0}</div></td>
             <td><div className={getStat(item.totals?.receivingYards, seasonTotals.TE.receivingYards.low, seasonTotals.TE.receivingYards.mid)}>{item.totals?.receivingYards ?? 0}</div></td>
             <td><div className={getStat(item.totals?.receivingTDs, seasonTotals.TE.receivingTDs.low, seasonTotals.TE.receivingTDs.mid)}>{item.totals?.receivingTDs ?? 0}</div></td>
+            <td><div className='table-stat'>{(item.totals?.receivingYards / item.totals?.targets).toFixed(1)}</div></td>
+            <td><div className='table-stat'>{(item.totals?.targetShare * 100).toFixed(2)}</div></td>
             </>
           
           : "" }
@@ -230,6 +237,7 @@ export const PlayerStatsValue = ({ playerCard, item, player }) => {
               <td className='spacing-left'><div className={getStat(item.totals?.rushingAttempts, seasonTotals.QB.rushingAttempts.low, seasonTotals.QB.rushingAttempts.mid)}>{item.totals?.rushingAttempts ?? 0}</div></td>
               <td><div className={getStat(item.totals?.rushingYards, seasonTotals.QB.rushingYards.low, seasonTotals.QB.rushingYards.mid)}>{item.totals?.rushingYards ?? 0}</div></td>
               <td><div className={getStat(item.totals?.rushingTDs, seasonTotals.QB.rushingTDs.low, seasonTotals.QB.rushingTDs.mid)}>{item.totals?.rushingTDs ?? 0}</div></td>
+              <td><div className='table-stat'>{item.totals?.rushAttemptsInside5}</div></td>
               <td><div className={getStatLow(item.totals?.fumbles, seasonTotals.QB.fumbles.low, seasonTotals.QB.fumbles.mid)}>{item.totals?.fumbles ?? 0}</div></td>
             </>
                               
