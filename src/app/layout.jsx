@@ -20,14 +20,14 @@ export default function RootLayout({ children }) {
       <link rel="icon" href="/images/lion-blue.svg" />
     </head>
       <body>
+      <div className="content-wrapper">
         <AuthProvider>
           <nav>
             <Navbar />
           </nav>
-          <div className="content-wrapper">
             {children}
-          </div>
         </AuthProvider>
+        </div>
       </body>
     </html>
   );

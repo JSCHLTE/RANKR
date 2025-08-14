@@ -8,11 +8,16 @@ export default function Home() {
   return (
     <>
       <header className="flex">
+      <div className="video-wrapper">
+        <video autoPlay muted loop playsInline src="https://ik.imagekit.io/al6vo6yqt/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4?updatedAt=1755197145894"></video>
+      </div>
+        <div className="header-info">
         <h1>The Fantasy App for Draft Fanatics</h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
           <Link href="/create" className="btn main">Get Started</Link>
           <Link href="#" className="btn alt">How It Works?</Link>
+        </div>
         </div>
       </header>
       <section id="stats" className="flex">
@@ -28,19 +33,19 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="community">
-        <div className="community-wrapper">
-          <div className="community-intro">
-            <h2 className="section-title">Post Your Rankings</h2>
-            <p className="section-desc">Join the conversation. Post your rankings and see how other people are stacking their boards for fantasy domination.</p>
-          </div>
-        </div>
-      </section>
       <section id="draft">
         <div className="draft-wrapper">
           <div className="draft-intro">
             <h2 className="section-title">Draft With Your Rankings</h2>
             <p className="section-desc">Turn your rankings into your ultimate draft weapon. Enter the war room knowing who’s your best pick at every turn. Hit Draft Mode in your rankings to check off drafted players and always keep your board one step ahead of the competition.</p>
+          </div>
+        </div>
+      </section>
+      <section id="community">
+        <div className="community-wrapper">
+          <div className="community-intro">
+            <h2 className="section-title">Post Your Rankings</h2>
+            <p className="section-desc">Join the conversation. Post your rankings and see how other people are stacking their boards for fantasy domination.</p>
           </div>
         </div>
       </section>
