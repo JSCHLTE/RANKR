@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 import { login } from "@/app/providers/signin/signin";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+
+  const router = useRouter();
 
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -24,7 +27,7 @@ const handleSubmit = async (e) => {
 
   try {
     const userCredential = await login(userInfo.email, userInfo.password);
-    console.log("User logged in:", userCredential.user);
+    router.push("/");
   } catch (err) {
     console.error(err);
     alert(err.message);

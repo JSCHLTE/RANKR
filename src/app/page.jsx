@@ -12,7 +12,7 @@ export default function Home() {
         <video autoPlay muted loop playsInline src="https://ik.imagekit.io/al6vo6yqt/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4?updatedAt=1755197145894"></video>
       </div>
         <div className="header-info">
-        <h1>The Fantasy App for Draft Fanatics</h1>
+        <h1 className="knewave">The <span className="blue">Fantasy</span> App for Draft <span className="blue">Fanatics</span></h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
           <Link href="/create" className="btn main">Get Started</Link>
@@ -38,6 +38,9 @@ export default function Home() {
           <div className="draft-intro">
             <h2 className="section-title">Draft With Your Rankings</h2>
             <p className="section-desc">Turn your rankings into your ultimate draft weapon. Enter the war room knowing who’s your best pick at every turn. Hit Draft Mode in your rankings to check off drafted players and always keep your board one step ahead of the competition.</p>
+          </div>
+          <div className="section-bottom draft-img">
+            <Image src="/images/draft.webp" width={800} height={400}/>
           </div>
         </div>
       </section>

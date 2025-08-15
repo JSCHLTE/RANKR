@@ -25,12 +25,16 @@ header::before {
     position: absolute;
     content: "";
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.65);
     z-index: -1;
 }
 
 .header-info {
     margin-top: -80px;
+}
+
+.blue {
+    color: var(--theme);
 }
 
 .header-btn {
@@ -61,15 +65,28 @@ header p {
 
 .section-desc {
     font-size: 1.25rem;
-    margin-top: 1rem;
     color: var(--sub-text);
+    max-width: 650px;
+    margin: 1rem auto;
 }
 
 #stats, #community, #draft {
-    height: 100vh;
     flex-direction: column;
     justify-content: center;
     display: flex;
-    align-content: center;
+    margin-bottom: 100px;
+}
+
+.draft-img {
+    max-width: 800px;
+    margin: 2rem auto 0;
+}
+
+.draft-img img {
+    border-radius: 10px;
+    border: 1px solid var(--theme);
+    width: 100%;
+    object-fit: cover;
+    object-position: top left;
 }
 

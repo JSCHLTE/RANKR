@@ -5,7 +5,7 @@ import "../login/login.css"
 const Signup = () => {
   return (
     <main className='login-wrapper'>
-        <h1>Signup</h1>
+        <h1 className="knewave">Signup</h1>
         <SignupForm />
         <p>Already have an account? <Link href="/login">Login</Link>.</p>
     </main>

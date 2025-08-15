@@ -125,7 +125,8 @@ a {
 }
 
 .btn.alt:hover {
-  box-shadow: 0 0 15px 1px rgba(7, 5, 5, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
@@ -134,10 +135,12 @@ header h1 {
 
 header p {
   font-size: 1.5rem;
-  margin-top: 0.5rem;
-  color: var(--sub-text);
 }
 
 button, input {
   font-family: inherit;
+}
+
+.knewave {
+  font-family: "Knewave", system-ui;
 }

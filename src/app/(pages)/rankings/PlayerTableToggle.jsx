@@ -6,7 +6,6 @@ const PlayerTableToggle = ({ player, playerCard, setPlayerCard }) => {
     const pCard = playerCard.find(item => item.playerId === player.playerId)?.mode
 
     const handleTable = (p, mode) => {
-        console.log(playerCard)
         setPlayerCard(prev => prev.map(item => {
             if(item.playerId === p.playerId) {
                 return {...item, mode: mode}

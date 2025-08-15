@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-
+import Loading from '@/app/components/loading/Loading'
 import { ref, get } from 'firebase/database'
 import { db } from '@/app/firebase'
 import { useParams } from 'next/navigation'
@@ -39,7 +39,7 @@ const User = () => {
 
     }, [slug])
 
-    if(!userData) return <p>Loading...</p>
+    if(!userData) return <Loading />
 
   return (
     <>

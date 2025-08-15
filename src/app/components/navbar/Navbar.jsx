@@ -7,16 +7,34 @@ import './navbar.css'
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/app/providers/AuthProvider"
+import { getUser } from "@/app/providers/getUser/getUser"
 
 const Navbar = () => {
 
   const pathname = usePathname();
   const [nav, setNav] = useState(false);
+  const [username, setUsername] = useState(null);
   const { user, logout } = useAuth();
 
   useEffect(() => {
     setNav(false)
   }, [pathname])
+
+  useEffect(() => {
+    
+    const userId = user?.uid;
+
+    const fetchUser = async() => {
+      const data = await getUser(userId);
+      if(data) {
+        setUsername(data.username)
+      } else {
+        setUsername(null)
+      }
+    }
+
+    fetchUser();
+  }, [user])
 
   return (
     <div className="nav-inner flex">
@@ -29,7 +47,15 @@ const Navbar = () => {
           <li><Link href="/rankings">Rankings</Link></li>
           <li><Link href="/create">Create</Link></li>
           <li><Link href="/players">Players</Link></li>
-          <li onClick={logout}><Link href="#">Logout</Link></li>
+          {user ?
+          <>
+            <li><Link href={`/users/${username}`}>My Profile</Link></li>
+            <li onClick={logout}><Link href="/">Logout</Link></li>
+          </>
+          : <>
+          <li><Link href="/login">Login</Link></li>
+          <li><Link href="/signup">Signup</Link></li>
+          </>}
         </ul>
       </div>
       <div className="nav-right">
