@@ -16,8 +16,10 @@ const Navbar = () => {
   const [username, setUsername] = useState(null);
   const { user, logout } = useAuth();
 
+  //For the nav mneu (burger)
   useEffect(() => {
     setNav(false)
+    console.log(pathname)
   }, [pathname])
 
   useEffect(() => {
@@ -43,18 +45,18 @@ const Navbar = () => {
           <Link href="/"><Image src='/images/blue-long.svg' width='175' height='80' alt="SVG Graphic of a lion with a crown on the top of his head"/></Link>
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/rankings">Rankings</Link></li>
-          <li><Link href="/create">Create</Link></li>
-          <li><Link href="/players">Players</Link></li>
+          <li><Link href="/" className={pathname === "/" ? "active" : ""}>Home</Link></li>
+          <li><Link href="/rankings" className={pathname === "/rankings" ? "active" : ""}>Rankings</Link></li>
+          <li><Link href="/create" className={pathname === "/create" ? "active" : ""}>Create</Link></li>
+          <li><Link href="/players" className={pathname === "/players" ? "active" : ""}>Players</Link></li>
           {user ?
           <>
-            <li><Link href={`/users/${username}`}>My Profile</Link></li>
+            <li><Link href={`/users/${username}`} className={pathname === `/users/${username}` ? "active" : ""}>My Profile</Link></li>
             <li onClick={logout}><Link href="/">Logout</Link></li>
           </>
           : <>
-          <li><Link href="/login">Login</Link></li>
-          <li><Link href="/signup">Signup</Link></li>
+          <li><Link href="/login" className={pathname === `/login` ? "active" : ""}>Login</Link></li>
+          <li><Link href="/signup" className={pathname === `/signup` ? "active" : ""}>Signup</Link></li>
           </>}
         </ul>
       </div>

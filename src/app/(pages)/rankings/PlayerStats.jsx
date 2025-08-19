@@ -27,13 +27,13 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>{labels.pprg.label}</th>
             <th>RANK</th>
             <th className='border-right'>SNP%</th>
-            <th>{labels.targets.label}</th>
+            <th className='spacing-left'>{labels.targets.label}</th>
             <th>{labels.receptions.label}</th>
             <th>{labels.recYards.label}</th>
             <th>{labels.recTds.label}</th>
             <th>YPT</th>
             <th className='border-right'>TS%</th>
-            <th>{labels.carries.label}</th>
+            <th className='spacing-left'>{labels.carries.label}</th>
             <th>{labels.rushYds.label}</th>
             <th>{labels.rushTds.label}</th>
             <th>{labels.fumbles.label}</th>
@@ -90,13 +90,13 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>{labels.ppr.label}</th>
             <th>{labels.pprg.label}</th>
             <th className='border-right'>RANK</th>
-            <th>{labels.attempts.label}</th>
+            <th className='spacing-left'>{labels.attempts.label}</th>
             <th>{labels.completionP.label}</th>
             <th>{labels.passingYards.label}</th>
             <th>YPA</th>
             <th>{labels.passingTds.label}</th>
             <th className='border-right'>{labels.interceptions.label}</th>
-            <th>{labels.carries.label}</th>
+            <th className='spacing-left'>{labels.carries.label}</th>
             <th>{labels.rushYds.label}</th>
             <th>{labels.rushTds.label}</th>
             <th>&lt;5 ATT</th>
@@ -122,7 +122,7 @@ export const PlayerStatsLabel = ({ pos }) => {
             <th>{labels.pprg.label}</th>
             <th>RANK</th>
             <th className='border-right'>SNP%</th>
-            <th>{labels.targets.label}</th>
+            <th className='spacing-left'>{labels.targets.label}</th>
             <th>{labels.receptions.label}</th>
             <th>{labels.recYards.label}</th>
             <th>{labels.recTds.label}</th>

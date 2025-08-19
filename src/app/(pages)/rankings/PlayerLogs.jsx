@@ -101,7 +101,7 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                 <th>{labels.passingYards.label}</th>
                 <th>{labels.passingTds.label}</th>
                 <th className='border-right'>{labels.interceptions.label}</th>
-                <th>{labels.carries.label}</th>
+                <th className='spacing-left'>{labels.carries.label}</th>
                 <th>{labels.rushYds.label}</th>
                 <th>{labels.rushTds.label}</th>
                 <th>{labels.fumbles.label}</th>
