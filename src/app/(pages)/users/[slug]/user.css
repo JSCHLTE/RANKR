@@ -4,10 +4,11 @@
 }
 
 .user-data-img-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     overflow: hidden;
+    border: 2px solid var(--theme);
 }
 
 .user-data-img-wrapper img {
@@ -35,6 +36,12 @@
 .user-data-displayname {
     font-weight: 800;
     font-size: 1.5rem;
+    align-items: center;
+}
+
+.user-data-displayname img {
+    margin-left: 0.25rem;
+    width: 30px;
 }
 
 .user-data-username {

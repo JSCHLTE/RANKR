@@ -1,5 +1,6 @@
 import React from 'react'
 import User from './User'
+import Rankings from './Rankings'
 import "./user.css"
 
 const page = () => {
@@ -8,6 +9,9 @@ const page = () => {
     <div>
       <div className='user-data flex-center'>
         <User />
+      </div>
+      <div className='user-rankings'>
+        <Rankings />
       </div>
     </div>
   )

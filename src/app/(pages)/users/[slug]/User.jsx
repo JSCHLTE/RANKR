@@ -50,7 +50,7 @@ const User = () => {
         </div>
         <div className='user-data-right'>
             <div className='user-data-name flex'>
-                <span className='user-data-displayname'>{userData.displayName}</span>
+                <span className='user-data-displayname flex'>{userData.displayName} {userData.icons.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
                 <span className='user-data-username'>@{userData.username}</span>
             </div>
             <div className='user-data-right-wrapper flex'>

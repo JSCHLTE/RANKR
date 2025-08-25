@@ -7,7 +7,7 @@ import PlayerSlider from "@/app/components/home/PlayerSlider";
 export default function Home() {
   return (
     <>
-      <header className="flex">
+      <header className="flex video">
       <div className="video-wrapper">
         <video autoPlay muted loop playsInline src="https://ik.imagekit.io/al6vo6yqt/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4?updatedAt=1755197145894"></video>
       </div>

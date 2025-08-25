@@ -19,7 +19,6 @@ const Navbar = () => {
   //For the nav mneu (burger)
   useEffect(() => {
     setNav(false)
-    console.log(pathname)
   }, [pathname])
 
   useEffect(() => {

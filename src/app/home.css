@@ -1,4 +1,4 @@
-header {
+.video {
     text-align: center;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@ header {
     margin-top: 80px;
 }
 
-header video {
+.video video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -22,7 +22,7 @@ header video {
     object-fit: cover;
 }
 
-header::before {
+.video::before {
     position: absolute;
     content: "";
     inset: 0;
