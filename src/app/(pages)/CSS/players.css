@@ -16,7 +16,7 @@
 .player-item-header {
     align-items: center;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.35rem;
 }
 
 .drag-handle-tab {
@@ -86,10 +86,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.player-item-info-wrapper {
-    margin-left: 1rem;
 }
 
 .player-name {
