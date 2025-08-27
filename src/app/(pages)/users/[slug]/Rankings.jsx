@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
-import { ref, get } from "firebase/database";
+import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
 
 import { getUser } from '@/app/providers/getUser/getUser';
@@ -15,9 +15,15 @@ const Rankings = () => {
     const user = auth.currentUser;
     const uid = user?.uid;
 
+    console.log(uid)
+
     const fetchRankings = async () => {
       try {
-        const rankingsRef = ref(db, `rankings`);
+        const rankingsRef = query(
+          ref(db, `rankings`),
+          orderByChild("uid"),
+          equalTo(uid)
+        );
         const snapshot = await get(rankingsRef);
 
         if(snapshot.exists()) {
