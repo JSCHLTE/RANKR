@@ -4,25 +4,18 @@ import React, { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
-
 import { getUser } from '@/app/providers/getUser/getUser';
 
-const Rankings = () => {
+const Rankings = ({ slug }) => {
 
     const [rankings, setRankings] = useState();
-
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const uid = user?.uid;
-
-    console.log(uid)
 
     const fetchRankings = async () => {
       try {
         const rankingsRef = query(
           ref(db, `rankings`),
-          orderByChild("uid"),
-          equalTo(uid)
+          orderByChild("author"),
+          equalTo(slug)
         );
         const snapshot = await get(rankingsRef);
 
@@ -43,13 +36,17 @@ const Rankings = () => {
       fetchRankings();
     }, []);
 
-    useEffect(() => {
-      console.log(rankings)
-    }, [rankings])
-
   return (
     <div>
-    <p>webp</p>
+    {rankings ? 
+      rankings.map((item, index) => (
+        <div key={index} className='ranking-item'>
+          <div className='ranking-title-wrapper'>
+            <h3>{item.title}</h3>
+          </div>
+        </div>
+      )) : `No rankings found for ${slug}`
+     }
     </div>
   )
 }

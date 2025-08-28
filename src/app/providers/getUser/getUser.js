@@ -1,7 +1,18 @@
 import { ref, get } from 'firebase/database'
 import { db } from '@/app/firebase'
 
-export const getUser = async (uid) => {
+export const getUser = async (slug) => {
+
+    const usernameRef = ref(db, `usernames/${slug}`)
+    const snapshot = await get(usernameRef);
+
+    if(!snapshot.exists) {
+        alert(`No user found under ${slug}`);
+        return;
+    }
+
+    const uid = snapshot.val();
+
     const userRef = ref(db, `users/${uid}`)
     const userSnap = await get(userRef);
 

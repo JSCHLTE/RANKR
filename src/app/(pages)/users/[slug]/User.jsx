@@ -4,40 +4,10 @@ import React, { useEffect, useState } from 'react'
 import Loading from '@/app/components/loading/Loading'
 import { ref, get } from 'firebase/database'
 import { db } from '@/app/firebase'
-import { useParams } from 'next/navigation'
 
-const User = () => {
+const User = ({ slug, user }) => {
 
-    const { slug } = useParams();
-    const [userData, setUserData] = useState(null);
-
-    useEffect(() => {
-        if(!slug) return;
-        
-        const fetchData = async () => {
-            const usernameRef = ref(db, `usernames/${slug}`)
-            const snapshot = await get(usernameRef);
-
-            if(!snapshot.exists) {
-                setUserData(null)
-                return;
-            }
-
-            const uid = snapshot.val();
-
-            const userRef = ref(db, `users/${uid}`)
-            const userSnap = await get(userRef);
-
-            if(userSnap.exists()) {
-                setUserData(userSnap.val())
-            } else {
-                setUserData(null)
-            }
-        }
-
-        fetchData();
-
-    }, [slug])
+    const [userData, setUserData] = useState(user);
 
     if(!userData) return <Loading />
 
