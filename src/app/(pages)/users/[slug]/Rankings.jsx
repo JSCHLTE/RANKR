@@ -4,10 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
-import { getUser } from '@/app/providers/getUser/getUser';
+import { useParams } from 'next/navigation';
+import { getUserBySlug } from '@/app/providers/getUser/getUser';
 
-const Rankings = ({ slug }) => {
+const Rankings = () => {
 
+  const { slug } = useParams();
+  const user = getUserBySlug(slug);
     const [rankings, setRankings] = useState();
 
     const fetchRankings = async () => {
@@ -45,7 +48,7 @@ const Rankings = ({ slug }) => {
             <h3>{item.title}</h3>
           </div>
         </div>
-      )) : `No rankings found for ${slug}`
+      )) : `Fetching rankings for ${slug}...`
      }
     </div>
   )

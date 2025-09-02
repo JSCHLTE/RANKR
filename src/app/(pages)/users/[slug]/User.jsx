@@ -4,12 +4,33 @@ import React, { useEffect, useState } from 'react'
 import Loading from '@/app/components/loading/Loading'
 import { ref, get } from 'firebase/database'
 import { db } from '@/app/firebase'
+import { useParams } from 'next/navigation'
+import { getUserBySlug } from '@/app/providers/getUser/getUser'
 
-const User = ({ slug, user }) => {
+const User = () => {
 
-    const [userData, setUserData] = useState(user);
+    const { slug } = useParams();
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    if(!userData) return <Loading />
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const user = await getUserBySlug(slug);
+                setUserData(user);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (slug) {
+            fetchUser();
+        }
+    }, [slug]);
+
+    if (loading) return <Loading />
 
   return (
     <>
@@ -20,7 +41,7 @@ const User = ({ slug, user }) => {
         </div>
         <div className='user-data-right'>
             <div className='user-data-name flex'>
-                <span className='user-data-displayname flex'>{userData.displayName} {userData.icons.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
+                <span className='user-data-displayname flex'>{userData.displayName} {userData.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
                 <span className='user-data-username'>@{userData.username}</span>
             </div>
             <div className='user-data-right-wrapper flex'>

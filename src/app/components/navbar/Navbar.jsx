@@ -7,7 +7,7 @@ import './navbar.css'
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/app/providers/AuthProvider"
-import { getUser } from "@/app/providers/getUser/getUser"
+import { getUserById } from "@/app/providers/getUser/getUser"
 
 const Navbar = () => {
 
@@ -26,7 +26,7 @@ const Navbar = () => {
     const userId = user?.uid;
 
     const fetchUser = async() => {
-      const data = await getUser(userId);
+      const data = await getUserById(userId);
       if(data) {
         setUsername(data.username)
       } else {
