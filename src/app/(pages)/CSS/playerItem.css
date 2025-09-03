@@ -76,31 +76,31 @@
 }
 
 .player-pos.QB {
-    background-color: #1E90FF;
-    border-color: #1E90FF;
+    background-color: var(--qb);
+    border-color: var(--qb);
 }
 
 .player-pos.WR {
-    background-color: #9932CC;
-    border-color: #9932CC;
+    background-color: var(--wr);
+    border-color: var(--wr);
 }
 
 .player-pos.RB {
-    background-color: #32CD32;
-    border-color: #32CD32;
+    background-color: var(--rb);
+    border-color: var(--rb);
 }
 
 .player-pos.TE {
-    background-color: #FFA500;
-    border-color: #FFA500;
+    background-color: var(--te);
+    border-color: var(--te);
 }
 
 .player-pos.DEF {
-    background-color: #DC143C;
-    border-color: #DC143C;
+    background-color: var(--def);
+    border-color: var(--def);
 }
 
 .player-pos.K {
-    background-color: #7988A1;
-    border-color: #7988A1;
+    background-color: var(--k);
+    border-color: var(--k);
 }

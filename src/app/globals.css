@@ -24,6 +24,13 @@
   --red-bg: hsla(359, 67%, 48%, 0.2);
   --grey-bg: rgba(128, 128, 128, 0.2);
 
+  --qb: #1E90FF;
+  --rb: #32CD32;
+  --wr: #9932CC;
+  --te: #FFA500;
+  --def: #DC143C;
+  --k: #7988A1;
+
   /*NFL Team Colors*/
 --ari: #97233F;   /* Arizona Cardinals (Cardinal Red) */
 --atl: #000;   /* Atlanta Falcons (Falcons Red) */

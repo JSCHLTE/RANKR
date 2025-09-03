@@ -51,3 +51,61 @@
 .user-data-joined {
     font-style: italic;
 }
+
+/*Ranking styles*/
+.user-rankings {
+    flex-direction: row;
+    display: flex;
+    gap: 1rem;
+    margin-top: 4rem;
+}
+
+.ranking-item {
+    background-color: var(--background-light);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.format-item.qb {
+    background-color: var(--qb);
+}
+
+.format-item.rb {
+    background-color: var(--rb);
+}
+
+.format-item.wr {
+    background-color: var(--wr);
+}
+
+.format-item.te {
+    background-color: var(--te);
+}
+
+.format-item.flx {
+    background: linear-gradient(120deg, var(--rb), var(--wr), var(--te));
+}
+
+.format-item.sflx {
+    background: linear-gradient(120deg, var(--qb), var(--rb), var(--wr), var(--te));
+}
+
+.format-wrapper {
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.format-item {
+    flex-direction: column;
+    padding: 0.15rem;
+    border-radius: 10px;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.format-number {
+    padding: 0.15rem;
+    border-radius: 10px;
+    background-color: var(--background);
+}

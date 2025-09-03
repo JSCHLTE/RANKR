@@ -10,7 +10,7 @@ const page = () => {
       <div className='user-data flex-center'>
         <User />
       </div>
-      <div className='user-rankings'>
+      <div className='user-rankings flex-center'>
         <Rankings />
       </div>
     </div>

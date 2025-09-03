@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { ref, get, push, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { db } from "../../firebase"; // Adjust path to your Firebase config
-import { getUser } from "@/app/providers/getUser/getUser";
+import { db } from "../../firebase";
+import { getUserById } from "@/app/providers/getUser/getUser";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
@@ -44,7 +44,7 @@ const CreateRankings = () => {
     const user = auth.currentUser;
 
     const fetchUser = async() => {
-      const data = await getUser(user.uid);
+      const data = await getUserById(user.uid);
       if(data) {
         setAuthor(data.username)
       } else {
@@ -118,6 +118,7 @@ const CreateRankings = () => {
       // Create the new ranking object
       const newRanking = {
         title: formValues.title || "New PPR Ranking",
+        type: formValues.format ? formValues.format : "redraft",
         format, // Store position counts as format object
         playerIds: templatePlayerIds,
         createdAt: new Date().toISOString(),
