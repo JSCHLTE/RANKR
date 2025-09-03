@@ -15,6 +15,13 @@ const Rankings = () => {
     const [rankings, setRankings] = useState();
     const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+      const testFunc = async () => {
+        console.log(await user.email);
+      };
+      testFunc();
+    }, [user]);
+
     const fetchRankings = async () => {
       try {
         const rankingsRef = query(
@@ -53,6 +60,7 @@ const Rankings = () => {
         <div key={index} className='ranking-item'>
           <div className='ranking-title-wrapper'>
             <h3>{item.title}</h3>
+            <img src={user?.pfp} alt='PFP' />
             <div className='format-wrapper flex'>
               <div className='format-item qb flex'>
                 <span className='format-number'>{item.format.QB}</span>
