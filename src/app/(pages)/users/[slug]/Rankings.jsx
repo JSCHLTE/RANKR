@@ -10,17 +10,19 @@ import Loading from '@/app/components/loading/Loading';
 
 const Rankings = () => {
 
-  const { slug } = useParams();
-  const user = getUserBySlug(slug);
+    const { slug } = useParams();
     const [rankings, setRankings] = useState();
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState();
 
     useEffect(() => {
-      const testFunc = async () => {
-        console.log(await user.email);
-      };
-      testFunc();
-    }, [user]);
+      const fetchUser = async () => {
+        const fetched = await getUserBySlug(slug)
+        setUser(fetched)
+      }
+
+      fetchUser();
+    }, [])
 
     const fetchRankings = async () => {
       try {
@@ -57,11 +59,11 @@ const Rankings = () => {
     <>
     {rankings ? 
       rankings.map((item, index) => (
-        <div key={index} className='ranking-item'>
+        <div key={index} className='ranking-item flex'>
           <div className='ranking-title-wrapper'>
             <h3>{item.title}</h3>
-            <img src={user?.pfp} alt='PFP' />
-            <div className='format-wrapper flex'>
+          </div>
+          <div className='format-wrapper flex'>
               <div className='format-item qb flex'>
                 <span className='format-number'>{item.format.QB}</span>
                 <span className='format-label'>QB</span>
@@ -83,6 +85,9 @@ const Rankings = () => {
                 <span className='format-label'>{item.superFlex ? 'SFLX' : "FLEX"}</span>
               </div>
             </div>
+          <div className='user-info flex'>
+            <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
+            <p>{user?.displayName}</p>
           </div>
         </div>
       )) : `No rankings found for ${slug}.`

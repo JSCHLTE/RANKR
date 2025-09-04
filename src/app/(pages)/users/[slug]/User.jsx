@@ -36,7 +36,7 @@ const User = () => {
     <>
         <div className='user-data-left'>
             <div className='user-data-img-wrapper'>
-                <img src={userData.pfp ? userData.pfp : '/images/lion-blue.png'} alt='User profile picture'/>
+                <img src={userData.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture'/>
             </div>
         </div>
         <div className='user-data-right'>
