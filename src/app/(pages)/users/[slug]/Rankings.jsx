@@ -58,10 +58,18 @@ const Rankings = () => {
   return (
     <>
     {rankings ? 
-      rankings.map((item, index) => (
+      rankings.map((item, index) => {
+        return (
         <div key={index} className='ranking-item flex'>
           <div className='ranking-title-wrapper'>
             <h3>{item.title}</h3>
+          </div>
+          <div className='player-list'>
+            <ol>
+              {item.playerIds.map((item, index) => (
+                index < 10 ? <li>{item}</li> : ""
+              ))}
+            </ol>
           </div>
           <div className='format-wrapper flex'>
               <div className='format-item qb flex'>
@@ -90,7 +98,7 @@ const Rankings = () => {
             <p>{user?.displayName}</p>
           </div>
         </div>
-      )) : `No rankings found for ${slug}.`
+      )}) : `No rankings found for ${slug}.`
      }
      </>
   )

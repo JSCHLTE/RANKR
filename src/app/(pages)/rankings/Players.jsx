@@ -50,6 +50,7 @@ const Players = () => {
 
       setPlayerList(orderedPlayers.filter(player => player.status === "Active"));
       setUnsaved(orderedPlayers);
+
     }, [players, rankings]);
 
   const saveRankings = () => {

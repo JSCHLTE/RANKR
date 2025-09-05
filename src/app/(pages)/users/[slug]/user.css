@@ -108,7 +108,7 @@
 .format-number {
     padding: 0.15rem;
     border-radius: 10px;
-    background-color: var(--background);
+    background-color: var(--background-light);
 }
 
 .user-info {
@@ -124,5 +124,4 @@
 .user-info p {
     margin-left: 0.5rem;
     color: var(--white);
-    font-style: italic;
 }
