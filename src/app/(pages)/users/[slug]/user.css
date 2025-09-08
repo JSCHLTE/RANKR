@@ -134,10 +134,12 @@
 .player-item {
     border-radius: 10px;
     align-items: center;
+    background-color: var(--background);
 }
 
 .player-item img {
     width: 40px;
     height: 40px;
     object-fit: cover;
+    margin-right: 1rem;
 }

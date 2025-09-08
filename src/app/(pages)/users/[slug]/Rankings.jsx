@@ -94,7 +94,6 @@ const Rankings = () => {
                       <li 
                         key={player.playerId || playerIndex}
                         className='flex player-item' 
-                        style={{ backgroundColor: `var(--${player?.currentTeam?.toLowerCase()})` }}
                       >
                         <img src={player?.playerImg} width={150} height={150} alt={player?.full_name} /> 
                         {player?.full_name}
