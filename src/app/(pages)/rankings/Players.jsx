@@ -7,6 +7,7 @@ import { getDatabase, ref, set, get } from "firebase/database";
 import { db } from '@/app/firebase';
 import Loading from '@/app/components/loading/Loading';
 import { usePlayerContext } from '@/app/providers/players/PlayersList';
+import ButtonLink from '@/app/components/buttons/ButtonLink';
 
 const Players = () => {
 
@@ -76,8 +77,8 @@ const Players = () => {
   return (
     <>
     <div className='edit-buttons flex-center'>
-      {editMode ? <button className='btn main' onClick={saveRankings}>Save Rankings</button> : <button className='btn main' onClick={() => setEditMode(prev => !prev)}>Edit Rankings</button>}
-      {editMode ? <button className='btn alt' onClick={() => cancelEdit()}>Cancel</button> : ''}
+      {editMode ? <ButtonLink variant="main" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
+      {editMode ? <ButtonLink variant="alt" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
     </div>
       {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
     </>

@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import '@/app/home.css'
 import PlayerSlider from "@/app/components/home/PlayerSlider";
+import ButtonLink from "./components/buttons/ButtonLink";
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
         <h1 className="knewave">The <span className="blue">Fantasy</span> App for Draft <span className="blue">Fanatics</span></h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
-          <Link href="/create" className="btn main">Get Started</Link>
-          <Link href="#" className="btn alt">How It Works?</Link>
+          <ButtonLink href="/create" variant='main'>Get started</ButtonLink>
+          <ButtonLink href="#" variant='alt'>How it works?</ButtonLink>
         </div>
         </div>
       </header>

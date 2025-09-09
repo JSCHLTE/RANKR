@@ -1,28 +1,17 @@
 "use client"
 
-import React, { useEffect, useMemo, useState } from 'react'
-import { getAuth } from 'firebase/auth'
+import React, { useEffect, useState } from 'react'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
 import { useParams } from 'next/navigation';
 import { getUserBySlug } from '@/app/providers/getUser/getUser';
-import Loading from '@/app/components/loading/Loading';
-import { usePlayerContext } from '@/app/providers/players/PlayersList';
+import Link from 'next/link';
 
 const Rankings = () => {
   const { slug } = useParams();
-  const { players } = usePlayerContext(); // Assume this can be undefined initially
   const [rankings, setRankings] = useState();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const fetched = await getUserBySlug(slug);
-      setUser(fetched);
-    };
-    fetchUser();
-  }, [slug]);
 
   const fetchRankings = async () => {
     try {
@@ -49,29 +38,13 @@ const Rankings = () => {
   };
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const fetched = await getUserBySlug(slug);
+      setUser(fetched);
+    };
+    fetchUser();
     fetchRankings();
   }, [slug]);
-
-  // Memoize a player lookup Map for fast access (O(1) lookups)
-  const playerMap = useMemo(() => {
-    if (!players) return new Map();
-    return new Map(players.map((player) => [player.playerId, player]));
-  }, [players]);
-
-  // Function to get top 10 valid players for a given ranking's playerIds
-  const getTopValidPlayers = (playerIds) => {
-    if (!playerIds || playerIds.length === 0 || playerMap.size === 0) return [];
-
-    const matched = [];
-    for (const id of playerIds) {
-      const player = playerMap.get(id);
-      if (player) {
-        matched.push(player);
-        if (matched.length === 10) break; // Stop once we have 10 valid
-      }
-    }
-    return matched;
-  };
 
   if (loading) return <p>Fetching {slug}'s rankings...</p>;
 
@@ -79,30 +52,11 @@ const Rankings = () => {
     <>
       {rankings ? 
         rankings.map((ranking, index) => {
-          // Compute top players per ranking here
-          const topPlayersForThisRanking = getTopValidPlayers(ranking.playerIds);
-
           return (
+            <Link href="#">
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
-              </div>
-              <div className='player-list'>
-                <ol className='flex'>
-                  {topPlayersForThisRanking.length > 0 ? (
-                    topPlayersForThisRanking.map((player, playerIndex) => (
-                      <li 
-                        key={player.playerId || playerIndex}
-                        className='flex player-item' 
-                      >
-                        <img src={player?.playerImg} width={150} height={150} alt={player?.full_name} /> 
-                        {player?.full_name}
-                      </li>
-                    ))
-                  ) : (
-                    <li>No top players available yet.</li>
-                  )}
-                </ol>
               </div>
               <div className='format-wrapper flex'>
                 <div className='format-item qb flex'>
@@ -131,6 +85,7 @@ const Rankings = () => {
                 <p>{user?.displayName}</p>
               </div>
             </div>
+            </Link>
           );
         }) : `No rankings found for ${slug}.`
       }
