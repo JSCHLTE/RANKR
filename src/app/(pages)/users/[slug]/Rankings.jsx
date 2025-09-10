@@ -5,6 +5,7 @@ import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
 import { useParams } from 'next/navigation';
 import { getUserBySlug } from '@/app/providers/getUser/getUser';
+import { formatDate } from '@/app/providers/getDate/getDate';
 import Link from 'next/link';
 
 const Rankings = () => {
@@ -53,10 +54,11 @@ const Rankings = () => {
       {rankings ? 
         rankings.map((ranking, index) => {
           return (
-            <Link href="#">
+            <Link href="#" key={index}>
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
+                <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span> | <span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
               </div>
               <div className='format-wrapper flex'>
                 <div className='format-item qb flex'>

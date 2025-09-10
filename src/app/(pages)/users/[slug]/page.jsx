@@ -7,7 +7,7 @@ import { PlayersList } from "@/app/providers/players/PlayersList"
 const page = () => {
 
   return (
-    <div>
+    <section id='content-wrapper'>
       <div className='user-data flex-center'>
         <User />
       </div>
@@ -16,7 +16,7 @@ const page = () => {
           <Rankings />
         </PlayersList>
       </div>
-    </div>
+    </section>
   )
 }
 

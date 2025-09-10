@@ -119,11 +119,11 @@ const CreateRankings = () => {
       const newRanking = {
         title: formValues.title || "New PPR Ranking",
         type: formValues.format ? formValues.format : "redraft",
-        format, // Store position counts as format object
+        format,
         playerIds: templatePlayerIds,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        isPrivate: false, // Adjust based on your needs
+        isPrivate: false, 
         uid: user.uid,
         superFlex: formValues.teamSuperflex,
         author: author ? author : "none"
