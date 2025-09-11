@@ -69,6 +69,7 @@
 
 body {
   background: linear-gradient(180deg, var(--background), var(--background-light));
+  min-height: 100vh;
   color: var(--white);
   font-family: "Geist", sans-serif;
   font-optical-sizing: auto;

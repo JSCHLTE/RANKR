@@ -58,7 +58,7 @@ const Rankings = () => {
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
-                <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span> | <span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
+                <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span><br /><span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
               </div>
               <div className='format-wrapper flex'>
                 <div className='format-item qb flex'>
