@@ -58,9 +58,12 @@ const Players = () => {
     }, [players, rankings]);
 
   const saveRankings = () => {
-    const playersRef = ref(db, "rankr-ppr-template");
+    const playersRef = ref(db, `rankings/${slug}/playerIds`);
+    const dateRef = ref(db, `rankings/${slug}/updatedAt`)
     const newOrder = playerList.map(item => item.playerId)
+    const newDate = new Date().toISOString();
 
+    set(dateRef, newDate)
     set(playersRef, newOrder)
       .then(() => {
         setEditMode(null);

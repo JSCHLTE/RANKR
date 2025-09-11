@@ -54,7 +54,7 @@ const Rankings = () => {
       {rankings ? 
         rankings.map((ranking, index) => {
           return (
-            <Link href="#" key={index}>
+            <Link href={`/rankings/${ranking.id}`} key={index}>
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
