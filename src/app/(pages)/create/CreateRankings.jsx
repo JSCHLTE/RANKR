@@ -11,12 +11,14 @@ const CreateRankings = () => {
   const [author, setAuthor] = useState();
   const [formValues, setFormValues] = useState({
     title: "",
+    teams: "",
     format: "",
     rankTeamLayout: "",
     qb: 0,
     rb: 0,
     wr: 0,
     te: 0,
+    scoring: "",
     teamSuperflex: false,
   });
   const [error, setError] = useState(null);
@@ -118,11 +120,13 @@ const CreateRankings = () => {
       // Create the new ranking object
       const newRanking = {
         title: formValues.title || "New PPR Ranking",
+        teams: formValues.teams || "12",
         type: formValues.format ? formValues.format : "redraft",
         format,
+        scoring: formValues.scoring,
         playerIds: templatePlayerIds,
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        updatedAt: "",
         isPrivate: false, 
         uid: user.uid,
         superFlex: formValues.teamSuperflex,
@@ -157,7 +161,7 @@ const CreateRankings = () => {
       {success && <p className="success">{success}</p>}
       <form id="rankFormat" className="flex" onSubmit={handleSubmit}>
         <label htmlFor="title">
-          Rankings Title:
+          Title:
           <input
             placeholder="Jordan's 2025 10-Man Full PPR Rankings"
             type="text"
@@ -168,8 +172,33 @@ const CreateRankings = () => {
             required
           />
         </label>
+        <label htmlFor="teams">
+          Number of teams:
+          <select
+            name="teams"
+            id="teams"
+            value={formValues.teams}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Choose number of teams</option>
+            <option value="8">8 teams</option>
+            <option value="10">10 teams</option>
+            <option value="12">12 teams</option>
+            <option value="14">14 teams</option>
+            <option value="16">16 teams</option>
+            <option value="18">18 teams</option>
+            <option value="20">20 teams</option>
+            <option value="22">22 teams</option>
+            <option value="24">24 teams</option>
+            <option value="26">26 teams</option>
+            <option value="28">28 teams</option>
+            <option value="30">30 teams</option>
+            <option value="32">32 teams</option>
+          </select>
+        </label>
         <label htmlFor="format">
-          Rankings Format:
+          League format:
           <select
             name="format"
             id="format"
@@ -177,14 +206,15 @@ const CreateRankings = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Choose Format</option>
-            <option value="redraft">Redraft (Most Popular)</option>
-            <option value="bestball">Best Ball</option>
+            <option value="">Choose format</option>
+            <option value="redraft">Redraft (Most popular)</option>
+            <option value="bestball">Best ball</option>
             <option value="dynasty">Dynasty</option>
+            <option value="rookies">Rookies</option>
           </select>
         </label>
         <label htmlFor="rankTeamLayout">
-          Rankings Team Layout:
+          Team layout:
           <select
             name="rankTeamLayout"
             id="rankTeamLayout"
@@ -192,9 +222,10 @@ const CreateRankings = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Choose Team Layout</option>
+            <option value="">Choose team layout</option>
             <option value="standard">Standard (1 QB, 2 RB, 2 WR, 1 TE, 1 FLEX)</option>
             <option value="3wr">3 WR (1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX)</option>
+            <option value="superflex">Superflex (1 QB, 2 RB, 3 WR, 1 TE, 1 FLEX, 1 Superflex)</option>
             <option value="custom">Custom</option>
           </select>
         </label>
@@ -210,7 +241,8 @@ const CreateRankings = () => {
                 required
               >
                 <option value="">Number of QBs</option>
-                <option value="1">1</option>
+                <option value="0">0</option>
+                <option value="1">1 (Recommended)</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
               </select>
@@ -225,7 +257,9 @@ const CreateRankings = () => {
                 required
               >
                 <option value="">Number of RBs</option>
-                <option value="2">2</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2 (Recommended)</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
@@ -240,8 +274,10 @@ const CreateRankings = () => {
                 required
               >
                 <option value="">Number of WRs</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2 (Recommended)</option>
+                <option value="3">3 (Recommended)</option>
                 <option value="4">4</option>
               </select>
             </label>
@@ -256,21 +292,58 @@ const CreateRankings = () => {
               >
                 <option value="">Number of TEs</option>
                 <option value="0">0</option>
-                <option value="1">1</option>
+                <option value="1">1 (Recommended)</option>
                 <option value="2">2</option>
+              </select>
+            </label>
+            <label htmlFor="flex">
+              Number of flex spots:
+              <select
+                name="te"
+                id="te"
+                value={formValues.te}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Number of flex spots</option>
+                <option value="0">0</option>
+                <option value="1">1 (Recommended)</option>
+                <option value="2">2</option>
+                <option value="2">3</option>
+              </select>
+            </label>
+            <label htmlFor="flex">
+              Number of superflex spots:
+              <select
+                name="te"
+                id="te"
+                value={formValues.te}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Number of superflex spots</option>
+                <option value="0">0 (Recommended)</option>
+                <option value="1">1 (Recommended)</option>
+                <option value="2">2</option>
+                <option value="2">3</option>
               </select>
             </label>
           </>
         )}
-        <label htmlFor="teamSuperflex" className="formCheckbox">
-          <input
-            type="checkbox"
-            id="teamSuperflex"
-            name="teamSuperflex"
-            checked={formValues.teamSuperflex}
+        <label htmlFor="scoring">
+          Rankings Scoring:
+          <select
+            name="scoring"
+            id="scoring"
+            value={formValues.scoring}
             onChange={handleChange}
-          />
-          Allow QB in FLEX (Superflex)
+            required
+          >
+            <option value="">Choose Scoring</option>
+            <option value="ppr">PPR (Recommended)</option>
+            <option value="halfppr">1/2 PPR</option>
+            <option value="nonppr">Non PPR</option>
+          </select>
         </label>
         <button type="submit" className="btn main generate">
           Generate
