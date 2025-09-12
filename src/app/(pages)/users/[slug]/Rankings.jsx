@@ -58,7 +58,7 @@ const Rankings = () => {
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
-                <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span><br /><span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
+                <span className='ranking-type'>{ranking.type}</span>
               </div>
               <div className='format-wrapper flex'>
                 <div className='format-item qb flex'>
@@ -82,6 +82,7 @@ const Rankings = () => {
                   <span className='format-label'>{ranking.superFlex ? 'SFLX' : "FLEX"}</span>
                 </div>
               </div>
+              <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span><br /><span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
               <div className='user-info flex'>
                 <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
                 <p>{user?.displayName}</p>
