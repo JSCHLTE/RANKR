@@ -58,7 +58,11 @@ const Rankings = () => {
             <div key={index} className='ranking-item flex'>
               <div className='ranking-title-wrapper'>
                 <h3>{ranking.title}</h3>
+              </div>
+              <div className='ranking-categories flex'>
+                <span className='ranking-type'>{ranking.teams} Team</span>
                 <span className='ranking-type'>{ranking.type}</span>
+                <span className='ranking-type'>{ranking.scoring}</span>
               </div>
               <div className='format-wrapper flex'>
                 <div className='format-item qb flex'>
@@ -77,12 +81,16 @@ const Rankings = () => {
                   <span className='format-number'>{ranking.format.TE}</span>
                   <span className='format-label'>TE</span>
                 </div>
-                <div className={`format-item ${ranking.superFlex ? 'sflx' : 'flx'} flex`}>
+                <div className='format-item flx flex'>
                   <span className='format-number'>{ranking.format.FLEX}</span>
-                  <span className='format-label'>{ranking.superFlex ? 'SFLX' : "FLEX"}</span>
+                  <span className='format-label'>FLEX</span>
                 </div>
+                { ranking.format.SUPERFLEX ?                 <div className='format-item sflx flex'>
+                  <span className='format-number'>{ranking.format.SUPERFLEX}</span>
+                  <span className='format-label'>SFLX</span>
+                </div> : "" }
               </div>
-              <p><span className='updated'>Updated {formatDate(ranking.updatedAt)}</span><br /><span className='created'>Created {formatDate(ranking.createdAt)}</span></p>
+              <p>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span><br /></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></p>
               <div className='user-info flex'>
                 <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
                 <p>{user?.displayName}</p>

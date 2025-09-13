@@ -18,6 +18,8 @@ const CreateRankings = () => {
     rb: 0,
     wr: 0,
     te: 0,
+    flex: 0,
+    superflex: 0,
     scoring: "",
     teamSuperflex: false,
   });
@@ -31,6 +33,7 @@ const CreateRankings = () => {
       wr: 2,
       te: 1,
       flex: 1,
+      superflex: 0,
     },
     "3wr": {
       qb: 1,
@@ -38,6 +41,15 @@ const CreateRankings = () => {
       wr: 3,
       te: 1,
       flex: 1,
+      superflex: 0,
+    },
+    superflex: {
+      qb: 1,
+      rb: 2,
+      wr: 3,
+      te: 1,
+      flex: 1,
+      superflex: 1,
     },
   };
 
@@ -114,7 +126,8 @@ const CreateRankings = () => {
         RB: parseInt(formValues.rb) || 0,
         WR: parseInt(formValues.wr) || 0,
         TE: parseInt(formValues.te) || 0,
-        FLEX: defaultTeamLayouts[formValues.rankTeamLayout]?.flex || 1, // Default FLEX to 1 for custom
+        FLEX: parseInt(formValues.flex || 0), // Default FLEX to 1 for custom
+        SUPERFLEX: parseInt(formValues.superflex) || 0,
       };
 
       // Create the new ranking object
@@ -276,7 +289,7 @@ const CreateRankings = () => {
                 <option value="">Number of WRs</option>
                 <option value="0">0</option>
                 <option value="1">1</option>
-                <option value="2">2 (Recommended)</option>
+                <option value="2" selected>2 (Recommended)</option>
                 <option value="3">3 (Recommended)</option>
                 <option value="4">4</option>
               </select>
@@ -299,9 +312,9 @@ const CreateRankings = () => {
             <label htmlFor="flex">
               Number of flex spots:
               <select
-                name="te"
-                id="te"
-                value={formValues.te}
+                name="flex"
+                id="flex"
+                value={formValues.flex}
                 onChange={handleChange}
                 required
               >
@@ -312,12 +325,12 @@ const CreateRankings = () => {
                 <option value="2">3</option>
               </select>
             </label>
-            <label htmlFor="flex">
+            <label htmlFor="superflex">
               Number of superflex spots:
               <select
-                name="te"
-                id="te"
-                value={formValues.te}
+                name="superflex"
+                id="superflex"
+                value={formValues.superflex}
                 onChange={handleChange}
                 required
               >
@@ -331,7 +344,7 @@ const CreateRankings = () => {
           </>
         )}
         <label htmlFor="scoring">
-          Rankings Scoring:
+          Scoring:
           <select
             name="scoring"
             id="scoring"
@@ -339,10 +352,10 @@ const CreateRankings = () => {
             onChange={handleChange}
             required
           >
-            <option value="">Choose Scoring</option>
-            <option value="ppr">PPR (Recommended)</option>
-            <option value="halfppr">1/2 PPR</option>
-            <option value="nonppr">Non PPR</option>
+            <option value="">Choose scoring</option>
+            <option value="PPR">PPR (Recommended)</option>
+            <option value="1/2 PPR">1/2 PPR</option>
+            <option value="Non PPR">Non PPR</option>
           </select>
         </label>
         <button type="submit" className="btn main generate">
