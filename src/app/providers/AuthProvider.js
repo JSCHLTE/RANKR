@@ -15,14 +15,12 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
-      if(user) console.log(`Signed in as: ${user.email}`)
     });
     return () => unsubscribe();
   }, []);
 
   async function logout() {
     await signOut(auth);
-    console.log('Signout successful!')
   }
 
   return (

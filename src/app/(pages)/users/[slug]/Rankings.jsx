@@ -98,7 +98,7 @@ const Rankings = () => {
             </div>
             </Link>
           );
-        }) : `No rankings found for ${slug}.`
+        }).reverse() : `No rankings found for ${slug}.`
       }
     </>
   );

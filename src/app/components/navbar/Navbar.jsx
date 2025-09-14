@@ -45,9 +45,7 @@ const Navbar = () => {
         </div>
         <ul className={`nav-links ${nav ? "active" : ""}`}>
           <li><Link href="/" className={pathname === "/" ? "active" : ""}>Home</Link></li>
-          <li><Link href="/rankings" className={pathname === "/rankings" ? "active" : ""}>Rankings</Link></li>
           <li><Link href="/create" className={pathname === "/create" ? "active" : ""}>Create</Link></li>
-          <li><Link href="/players" className={pathname === "/players" ? "active" : ""}>Players</Link></li>
           {user ?
           <>
             <li><Link href={`/users/${username}`} className={pathname === `/users/${username}` ? "active" : ""}>My Profile</Link></li>

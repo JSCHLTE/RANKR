@@ -5,7 +5,7 @@ import { getStat, getStatLow } from '@/app/providers/statColor/statColor'
 
 import { gameTotals } from '@/app/providers/statColor/statValues'
 
-import "../CSS/playerTable.css"
+import "../../CSS/playerTable.css"
 
 const PlayerLogs = ({ playerLogs, pos }) => {
 

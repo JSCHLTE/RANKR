@@ -1,5 +1,5 @@
 import React from 'react'
-import "../CSS/playerTableToggle.css"
+import "../../CSS/playerTableToggle.css"
 
 const PlayerTableToggle = ({ player, playerCard, setPlayerCard }) => {
 

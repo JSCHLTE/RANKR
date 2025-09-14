@@ -1,6 +1,6 @@
 import { check } from "@/app/providers/posRanking/posRanking";
-import "../CSS/playerItem.css"
-import "../CSS/playerTable.css"
+import "../../CSS/playerItem.css"
+import "../../CSS/playerTable.css"
 import PlayerTable from "./PlayerTable";
 
 const PlayerItem = ({ 

@@ -5,6 +5,7 @@ import { ref, get, push, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
 import { getUserById } from "@/app/providers/getUser/getUser";
+import { useRouter } from "next/navigation";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
@@ -25,6 +26,7 @@ const CreateRankings = () => {
   });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const router = useRouter();
 
   const defaultTeamLayouts = {
     standard: {
@@ -163,6 +165,7 @@ const CreateRankings = () => {
         te: 0,
         teamSuperflex: false,
       });
+      router.push(`/rankings/${newRankingRef.key}`);
     } catch (err) {
       setError(`Failed to create ranking: ${err.message}`);
     }

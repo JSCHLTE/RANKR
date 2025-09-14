@@ -10,8 +10,7 @@ import { usePlayerContext } from '@/app/providers/players/PlayersList';
 import ButtonLink from '@/app/components/buttons/ButtonLink';
 import { useParams } from 'next/navigation';
 import { getUserById } from '@/app/providers/getUser/getUser';
-import UserLayout from '../../users/[slug]/UserLayout';
-import "../../users/[slug]/user.css"
+import Link from 'next/link';
 
 const Players = () => {
 
@@ -80,6 +79,8 @@ const Players = () => {
       .catch((error) => {
         console.error("Error saving players: ", error);
       })
+
+      setRankings(newOrder)
   }
 
   const cancelEdit = () => {
@@ -87,6 +88,7 @@ const Players = () => {
     setPlayerList(unsaved);
   }
 
+  //Fetches user data for authors username
   useEffect(() => {
     const getUser = async () => {
       setUserData(await getUserById(rankData.uid))
@@ -101,9 +103,14 @@ const Players = () => {
     <>
     <header className="rankings-header flex">
       <h1>{rankData ? rankData.title : "Title of Ranking"}</h1>
-      <div className='user-data flex-center'>
-        <UserLayout userData={userData}/>
-      </div>
+      <Link href={`/users/${userData?.username}`}>
+        <div className='author-wrapper flex-center'>
+          <div className='author-img'>
+            <img src={userData?.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture' width={75} height={75}/>
+        </div>
+          <p>{userData ? userData.displayName : "User"}</p>
+        </div>
+      </Link>
     </header>
       <main className="player-rankings-wrapper flex">
         <div className='edit-buttons flex-center'>

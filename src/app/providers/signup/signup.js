@@ -38,6 +38,4 @@ export async function signUp(email, password, displayName) {
 
   // Save username mapping
   await set(usernameRef, uid);
-
-  console.log("User signed up successfully:", uid);
 }

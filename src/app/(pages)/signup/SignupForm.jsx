@@ -68,7 +68,6 @@ const SignupForm = () => {
       
         try {
           await signUp(userInfo.email, userInfo.password, userInfo.username);
-          console.log("Signup successful!");
         } catch (err) {
           console.error(err);
           alert(err.message);
