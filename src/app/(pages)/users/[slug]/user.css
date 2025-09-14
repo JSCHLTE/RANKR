@@ -1,5 +1,5 @@
 .user-data {
-    margin-top: 5rem;
+    
     gap: 1rem;
 }
 
@@ -72,6 +72,9 @@
     overflow: hidden;
     z-index: 1;
     transition: all 0.3s ease;
+    height: 250px;
+    width: 450px;
+    justify-content: space-between;
 }
 
 .ranking-item::after {
@@ -83,7 +86,7 @@
     height: 100%;
     background: linear-gradient(-270deg, var(--background-light), var(--background));
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
     z-index: -1;
   }
   
@@ -93,7 +96,7 @@
 
   .ranking-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 15px 0 var(--theme);
+    box-shadow: 0 0 10px 0 var(--theme);
   }
 
 .format-item.qb {
@@ -167,6 +170,10 @@
     border-radius: 5px;
     padding: 0.25rem 0.5rem;
     font-size: 0.85rem;
+}
+
+.date-wrapper {
+    flex-direction: column;
 }
 
 .created.faded {

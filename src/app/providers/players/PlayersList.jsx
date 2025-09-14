@@ -9,6 +9,7 @@ const PlayerContext = createContext();
 export function PlayersList({ children } = {}) {
   const [players, setPlayers] = useState(null);
 
+  //Grabs player data
   useEffect(() => {
     const fetchPlayers = async () => {
       const playersRef = ref(db, "fantasy-players");

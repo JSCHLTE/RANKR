@@ -90,7 +90,7 @@ const Rankings = () => {
                   <span className='format-label'>SFLX</span>
                 </div> : "" }
               </div>
-              <p>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span><br /></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></p>
+              <div className='date-wrapper flex'>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></div>
               <div className='user-info flex'>
                 <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
                 <p>{user?.displayName}</p>

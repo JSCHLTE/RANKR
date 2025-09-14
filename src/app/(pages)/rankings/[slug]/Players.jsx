@@ -3,23 +3,29 @@
 import React, { useState, useEffect } from 'react';
 import PlayersEdit from './PlayersEdit';
 import PlayersRankings from './PlayersRankings';
-import { getDatabase, ref, set, get } from "firebase/database";
+import { ref, set, get } from "firebase/database";
 import { db } from '@/app/firebase';
 import Loading from '@/app/components/loading/Loading';
 import { usePlayerContext } from '@/app/providers/players/PlayersList';
 import ButtonLink from '@/app/components/buttons/ButtonLink';
 import { useParams } from 'next/navigation';
+import { getUserById } from '@/app/providers/getUser/getUser';
+import UserLayout from '../../users/[slug]/UserLayout';
+import "../../users/[slug]/user.css"
 
 const Players = () => {
 
   const { slug } = useParams();
   const { players } = usePlayerContext();
   const [rankings, setRankings] = useState();
+  const [rankData, setRankData] = useState();
+  const [userData, setUserData] = useState();
   const [playerList, setPlayerList] = useState();
   const [unsaved, setUnsaved] = useState();
   const [editMode, setEditMode] = useState(null);
   const [loading, setLoading] = useState(null);
 
+  //Pulls ranking id from url slug
   useEffect(() => {
     const fetchRankings = async () => {
       const rankingRef = ref(db, `rankings/${slug}`);
@@ -33,6 +39,7 @@ const Players = () => {
             : Object.values(data.playerIds);
 
             setRankings(rankingsArray);
+            setRankData(data);
         } else {
           console.log("No player data available");
           setPlayerList();
@@ -45,6 +52,7 @@ const Players = () => {
     fetchRankings();
   }, []);
 
+  //Gets player information from the player id we got from rankings.playerIds
     useEffect(() => {
       if (!players || !rankings) return;
 
@@ -57,6 +65,7 @@ const Players = () => {
 
     }, [players, rankings]);
 
+  //Saves rankings
   const saveRankings = () => {
     const playersRef = ref(db, `rankings/${slug}/playerIds`);
     const dateRef = ref(db, `rankings/${slug}/updatedAt`)
@@ -78,16 +87,32 @@ const Players = () => {
     setPlayerList(unsaved);
   }
 
+  useEffect(() => {
+    const getUser = async () => {
+      setUserData(await getUserById(rankData.uid))
+    }
+
+    if(rankData) getUser();
+  }, [rankData])
+
   if(!playerList) return <Loading />
 
   return (
     <>
-    <div className='edit-buttons flex-center'>
-      {editMode ? <ButtonLink variant="main" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
-      {editMode ? <ButtonLink variant="alt" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
-    </div>
-      {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
-    </>
+    <header className="rankings-header flex">
+      <h1>{rankData ? rankData.title : "Title of Ranking"}</h1>
+      <div className='user-data flex-center'>
+        <UserLayout userData={userData}/>
+      </div>
+    </header>
+      <main className="player-rankings-wrapper flex">
+        <div className='edit-buttons flex-center'>
+          {editMode ? <ButtonLink variant="main" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
+          {editMode ? <ButtonLink variant="alt" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
+        </div>
+          {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
+      </main>
+      </>
   )
 }
 
