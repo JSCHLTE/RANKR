@@ -6,7 +6,7 @@ import { PlayersList } from "@/app/providers/players/PlayersList"
 import { getUserBySlug } from '@/app/providers/getUser/getUser'
 
 const page = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const user = await getUserBySlug(slug);
 
   return (

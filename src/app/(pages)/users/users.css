@@ -1,0 +1,25 @@
+.users-wrapper {
+    gap: 1rem;
+}
+
+.users-item {
+   align-items: center; 
+   width: 200px;
+   height: 90px;
+   padding: 0.5rem;
+}
+
+.users-item {
+    background: var(--background-light);
+    border-radius: 10px;
+}
+
+.users-item img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--theme);
+}
+
+.users-item p {
+    margin-left: 1rem;
+}
