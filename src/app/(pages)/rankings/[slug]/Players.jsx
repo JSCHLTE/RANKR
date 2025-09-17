@@ -114,8 +114,8 @@ const Players = () => {
     </header>
       <main className="player-rankings-wrapper flex">
         <div className='edit-buttons flex-center'>
-          {editMode ? <ButtonLink variant="main" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
-          {editMode ? <ButtonLink variant="alt" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
+          {editMode ? <ButtonLink variant="main create" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main create" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
+          {editMode ? <ButtonLink variant="alt cancel" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
         </div>
           {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
       </main>

@@ -10,6 +10,7 @@ const User = () => {
     const { slug } = useParams();
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
+	const [hover, setHover] = useState(null);
 
     useEffect(() => {
     	const getUser = async () => {
@@ -34,8 +35,12 @@ const User = () => {
 		</div>
 		<div className='user-data-right'>
 			<div className='user-data-name flex'>
-				<span className='user-data-displayname flex'>{userData?.displayName} {userData?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
-				<span className='user-data-username'>@{userData?.username}</span>
+				<div className='user-data-name-group'>
+					<span className='user-data-displayname flex'>{userData?.displayName} {userData?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
+					<span className='user-data-username'>@{userData?.username}</span>
+				</div>
+				{/* <button className='btn main follow'>Follow <i class="fa-solid fa-user-plus"></i></button> */}
+				{ !hover ? <button className='following' onMouseOver={() => setHover(true)}>Following</button> : <button className='following' onMouseOut={() => setHover(null)}>Unfollow</button> }
 			</div>
 		<div className='user-data-right-wrapper flex'>
 				<div className='user-data-following'>{userData?.following ? userData.following : 0} <span className='follow-text'>Following</span></div>

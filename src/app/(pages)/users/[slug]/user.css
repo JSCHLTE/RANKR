@@ -7,8 +7,7 @@
     height: 125px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid var(--theme);
-    box-shadow: 0 0 10px 0 var(--theme);
+    border: 1px solid var(--theme);
 }
 
 .user-data-img-wrapper img {
@@ -18,7 +17,27 @@
 }
 
 .user-data-name {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn.follow, .following {
+    width: 125px;
+    height: 40px;
+    font-size: 1rem;
+    margin-left: 1rem;
+    border: 1px solid var(--theme);
+}
+
+.btn.follow i, .following i {
+    margin-left: 0.5rem;
+}
+
+.following {
+    background: transparent;
+    border-radius: 10px;
+    color: var(--white);
+    cursor: pointer;
 }
 
 .user-data-username, .follow-text, .user-data-joined {
@@ -159,7 +178,7 @@
 
 .user-info img {
     border-radius: 50%;
-    border: 2px solid var(--theme);
+    border: 1px solid var(--theme);
 }
 
 .user-info p {
