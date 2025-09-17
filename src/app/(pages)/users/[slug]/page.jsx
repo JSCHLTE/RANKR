@@ -3,17 +3,20 @@ import User from './User'
 import Rankings from './Rankings'
 import "./user.css"
 import { PlayersList } from "@/app/providers/players/PlayersList"
+import { getUserBySlug } from '@/app/providers/getUser/getUser'
 
-const page = () => {
+const page = async ({ params }) => {
+  const { slug } = params;
+  const user = await getUserBySlug(slug);
 
   return (
     <section id='content-wrapper'>
       <div className='user-data flex-center'>
-        <User />
+        <User user={user}/>
       </div>
       <div className='user-rankings flex-center'>
         <PlayersList>
-          <Rankings />
+          <Rankings user={user}/>
         </PlayersList>
       </div>
     </section>

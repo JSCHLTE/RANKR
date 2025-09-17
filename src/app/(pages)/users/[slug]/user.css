@@ -23,14 +23,14 @@
 
 .btn.follow, .following {
     width: 125px;
-    height: 40px;
+    height: 35px;
     font-size: 1rem;
     margin-left: 1rem;
     border: 1px solid var(--theme);
 }
 
-.btn.follow i, .following i {
-    margin-left: 0.5rem;
+.btn.follow i, .following i, .btn.edit i {
+    margin-left: 0.35rem;
 }
 
 .following {
@@ -38,6 +38,13 @@
     border-radius: 10px;
     color: var(--white);
     cursor: pointer;
+}
+
+.btn.edit {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: 1px solid var(--white);
+    color: var(--black);
 }
 
 .user-data-username, .follow-text, .user-data-joined {
@@ -179,11 +186,7 @@
 .user-info img {
     border-radius: 50%;
     border: 1px solid var(--theme);
-}
-
-.user-info p {
-    margin-left: 0.5rem;
-    color: var(--white);
+    object-fit: cover;
 }
 
 .ranking-categories {
@@ -206,4 +209,13 @@
 
 .created.faded {
     opacity: 0.5;
+}
+
+.user-name-wrapper {
+    gap: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+.user-name-wrapper .username {
+    color: var(--sub-text);
 }

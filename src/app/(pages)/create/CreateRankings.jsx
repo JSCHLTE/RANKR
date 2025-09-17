@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { ref, get, push, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
-import { getUserById } from "@/app/providers/getUser/getUser";
 import { useRouter } from "next/navigation";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
-  const [author, setAuthor] = useState();
   const [formValues, setFormValues] = useState({
     title: "",
     teams: "",
@@ -55,22 +53,6 @@ const CreateRankings = () => {
     },
   };
 
-  useEffect(() => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    const fetchUser = async() => {
-      const data = await getUserById(user.uid);
-      if(data) {
-        setAuthor(data.username)
-      } else {
-        setAuthor(null)
-      }
-    }
-
-    fetchUser();
-  }, [])
-
   // Handle form input changes
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -108,6 +90,8 @@ const CreateRankings = () => {
     const auth = getAuth();
     const user = auth.currentUser;
 
+    console.log(user)
+
     if (!user) {
       setError("You must be logged in to create a ranking.");
       return;
@@ -143,9 +127,8 @@ const CreateRankings = () => {
         createdAt: new Date().toISOString(),
         updatedAt: "",
         isPrivate: false, 
-        uid: user.uid,
         superFlex: formValues.teamSuperflex,
-        author: author ? author : "none"
+        author: user ? user.username : "none"
       };
 
       // Save to /rankings

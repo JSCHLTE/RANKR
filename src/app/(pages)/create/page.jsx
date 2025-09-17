@@ -4,6 +4,7 @@ import CreateRankings from './CreateRankings'
 import "./create.css"
 
 const Create = () => {
+
   return (
     <>
     <header className="rankings-header flex">

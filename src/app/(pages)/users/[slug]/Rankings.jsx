@@ -4,15 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
 import { useParams } from 'next/navigation';
-import { getUserBySlug } from '@/app/providers/getUser/getUser';
 import { formatDate } from '@/app/providers/getDate/getDate';
 import Link from 'next/link';
 
-const Rankings = () => {
+const Rankings = ({ user }) => {
   const { slug } = useParams();
   const [rankings, setRankings] = useState();
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState();
 
   const fetchRankings = async () => {
     try {
@@ -39,11 +37,6 @@ const Rankings = () => {
   };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const fetched = await getUserBySlug(slug);
-      setUser(fetched);
-    };
-    fetchUser();
     fetchRankings();
   }, [slug]);
 
@@ -93,7 +86,10 @@ const Rankings = () => {
               <div className='date-wrapper flex'>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></div>
               <div className='user-info flex'>
                 <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
-                <p>{user?.displayName}</p>
+                <div className='user-name-wrapper flex'>
+                  <p className='displayName'>{user?.displayName}</p>
+                  <p className='username'>@{user?.username}</p>
+                </div>
               </div>
             </div>
             </Link>
