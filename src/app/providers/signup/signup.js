@@ -24,7 +24,6 @@ export async function signUp(email, password, displayName) {
   const userData = {
     username,
     displayName,
-    email: cred.user.email,
     pfp: "",
     accountCreated: time,
     icons: ["user"],

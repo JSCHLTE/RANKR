@@ -5,6 +5,7 @@ import { ref, get, push, set } from "firebase/database";
 import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
 import { useRouter } from "next/navigation";
+import { getUserById } from "@/app/providers/getUser/getUser";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
@@ -81,16 +82,14 @@ const CreateRankings = () => {
     }
   }, [formValues.rankTeamLayout]);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
 
     const auth = getAuth();
-    const user = auth.currentUser;
-
-    console.log(user)
+    const uid = auth.currentUser?.uid;
+    const user = await getUserById(uid);
 
     if (!user) {
       setError("You must be logged in to create a ranking.");
@@ -128,7 +127,8 @@ const CreateRankings = () => {
         updatedAt: "",
         isPrivate: false, 
         superFlex: formValues.teamSuperflex,
-        author: user ? user.username : "none"
+        author: user ? user.username : "none",
+        uid: uid
       };
 
       // Save to /rankings
