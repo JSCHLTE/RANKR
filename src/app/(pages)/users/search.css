@@ -1,0 +1,10 @@
+.user-search {
+    padding: 0.5rem;
+    background-color: var(--background-light);
+    border: 1px solid var(--background);
+    border-radius: 10px;
+    color: var(--white);
+    min-width: 250px;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
