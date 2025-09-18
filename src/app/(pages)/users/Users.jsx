@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 import React, { useEffect, useState } from 'react'
 
 import "./users.css"
+import Link from 'next/link';
 
 const Users = () => {
 
@@ -45,10 +46,16 @@ const Users = () => {
   return (
     <div className='users-wrapper flex'>
         { users?.map((item, index) => (
+          <Link href={`/users/${item.username}`}>
             <div className='users-item flex' key={index}>
                 <img src={item.pfp} width={75} height={75}/>
-                <p>{item.username}</p>
+                <div className='user-name'>
+                  <p className='displayname'>{item.displayName}</p>
+                  <p className='username'>@{item.username}</p>
+                  <p className='joined'>Joined {item.accountCreated}</p>
+                </div> 
             </div>
+          </Link>
         )) }
     </div>
   )

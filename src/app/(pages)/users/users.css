@@ -3,15 +3,20 @@
 }
 
 .users-item {
-   align-items: center; 
-   width: 200px;
+   align-items: center;
+   width: 250px;
    height: 90px;
    padding: 0.5rem;
 }
 
 .users-item {
     background: var(--background-light);
+    border: 1px solid var(--background);
     border-radius: 10px;
+}
+
+.users-item:hover {
+    border-color: var(--theme);
 }
 
 .users-item img {
@@ -20,6 +25,21 @@
     border: 1px solid var(--theme);
 }
 
-.users-item p {
+.user-name {
     margin-left: 1rem;
+}
+
+.displayname {
+    font-size: 1.125rem;
+}
+
+.username {
+    font-size: 0.95rem;
+    color: var(--sub-text);
+}
+
+.joined {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    font-style: italic;
 }
