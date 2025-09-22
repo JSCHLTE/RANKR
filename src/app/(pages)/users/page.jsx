@@ -5,7 +5,7 @@ import { db } from "../../firebase";
 
 import "./page.css"
 
-const fetchRankings = async () => {
+const fetchUsers = async () => {
   try {
     const usersRef = ref(db, `users`);
     const snapshot = await get(usersRef);
@@ -25,7 +25,7 @@ const fetchRankings = async () => {
 };
 
 const page = async () => {
-  const users = await fetchRankings();
+  const users = await fetchUsers();
   return (
     <main id='usersWrapper'>
       <h1 className='knewave'>RANKR Users</h1>
