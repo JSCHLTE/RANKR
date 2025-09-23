@@ -4,7 +4,7 @@ import { formatDate } from '@/app/providers/getDate/getDate'
 
 import "./rankCard.css"
 
-const RankCard = ({ id, title, teams, type, scoring, format, updatedAt, createdAt }) => {
+const RankCard = ({ id, title, teams, type, scoring, format, updatedAt, createdAt, user }) => {
   return (
     <Link href={`/rankings/${id}`}>
     <div className='ranking-item flex'>
@@ -43,13 +43,13 @@ const RankCard = ({ id, title, teams, type, scoring, format, updatedAt, createdA
         </div> : "" }
       </div>
       <div className='date-wrapper flex'>{ updatedAt ? <><span className='updated'>Updated: {formatDate(updatedAt)}</span></> : ""}<span className={`created ${ updatedAt ? "faded" : "" }`}>Created: {formatDate(createdAt)}</span></div>
-      {/* <div className='user-info flex'>
+      { user ?       <div className='user-info flex'>
         <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
         <div className='user-name-wrapper flex'>
           <p className='displayName'>{user?.displayName}</p>
           <p className='username'>@{user?.username}</p>
         </div>
-      </div> */}
+      </div> : <p>Fetching user...</p> }
     </div>
     </Link>
   )
