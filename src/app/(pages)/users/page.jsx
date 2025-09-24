@@ -3,7 +3,7 @@ import UserListWrapper from './UserListWrapper';
 import { ref, get } from 'firebase/database';
 import { db } from "../../firebase";
 
-import "./page.css"
+import "../CSS/template.css"
 
 const fetchUsers = async () => {
   try {
@@ -27,7 +27,7 @@ const fetchUsers = async () => {
 const page = async () => {
   const users = await fetchUsers();
   return (
-    <main id='usersWrapper'>
+    <main id='templateWrapper'>
       <h1 className='knewave'>RANKR Users</h1>
       <UserListWrapper users={users}/>
     </main>

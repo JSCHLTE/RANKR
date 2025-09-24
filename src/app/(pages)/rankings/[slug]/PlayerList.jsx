@@ -10,6 +10,7 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
   if (!playerList) return <Loading />;
 
   const [loading, setLoading] = useState(null);
+  const [statsCache, setStatsCache] = useState({});
 
   const handlePlayerClick = async (player) => {
     setLoading(true);
@@ -17,9 +18,21 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
     
     if (existingPlayerIndex !== -1) {
       setPlayerCard(prev => prev.filter((_, index) => index !== existingPlayerIndex));
+      setLoading(false);
       return;
     }
     
+    // Check if stats are already cached
+    if (statsCache[player.playerId]) {
+      setPlayerCard(prev => ([
+        ...prev,
+        { playerId: player.playerId, stats: statsCache[player.playerId], mode: 'logs' }
+      ]));
+      setLoading(false);
+      return;
+    }
+    
+    // Fetch stats only if not cached
     const rawStats = await getStats(player.playerId);
     const cleanStats = rawStats.flatMap(seasonObj => {
       return Object.entries(seasonObj).map(([year, seasonData]) => ({
@@ -28,10 +41,17 @@ const PlayerList = ({ players, playerList, playerCard, setPlayerCard }) => {
       }));
     });
     
+    // Cache the stats
+    setStatsCache(prev => ({
+      ...prev,
+      [player.playerId]: cleanStats
+    }));
+    
     setPlayerCard(prev => ([
       ...prev,
       { playerId: player.playerId, stats: cleanStats, mode: 'logs' }
     ]));
+    setLoading(false);
   };
   
   return (

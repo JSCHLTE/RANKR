@@ -3,6 +3,8 @@ import RankingsListWrapper from './RankingsListWrapper';
 import { ref, get } from 'firebase/database';
 import { db } from "../../firebase";
 
+import "../CSS/template.css"
+
 const fetchRankings = async () => {
     try {
       const rankingsRef = ref(db, `rankings`);
@@ -25,7 +27,7 @@ const fetchRankings = async () => {
 const page = async () => {
     const rankings = await fetchRankings();
   return (
-    <main id='rankingsWrapper'>
+    <main id='templateWrapper'>
         <h1 className='knewave'>RANKR Rankings</h1>
         <RankingsListWrapper rankings={rankings} />
     </main>

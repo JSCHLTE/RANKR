@@ -2,130 +2,111 @@
 import React, { useState } from 'react'
 import { POSITION_STAT_FIELDS } from '@/app/providers/statLabels/statLabels'
 import { getStat, getStatLow } from '@/app/providers/statColor/statColor'
-
+import YearSelect from './YearSelect'
 import { gameTotals } from '@/app/providers/statColor/statValues'
 
 import "../../CSS/playerTable.css"
 
-const PlayerLogs = ({ playerLogs, pos }) => {
-
-    const [years, setYears] = useState(playerLogs.map(item => item.year));
-    const [yearIndex, setYearIndex] = useState(years.length - 2);
+const PlayerLogs = ({ years, yearIndex, playerLogs, pos }) => {
 
     const labels = POSITION_STAT_FIELDS
 
-    const decrease = () => {
-        if(yearIndex <= 0) return
-        setYearIndex(prev => --prev);
-    }
-
-    const increase = () => {
-        if(yearIndex >= years.length - 2) return
-        setYearIndex(prev => ++prev);
-    }
-
   return (
-    <div className='player-logs-wrapper'>
-        <div className='playerYearWrapper'>
-        <div className='playerYearGroup flex-center'>
-            <button onClick={decrease} className={yearIndex <= 0 ? "inactive" : ""} disabled={yearIndex <= 0 ? true : false}><i className="fa-solid fa-chevron-left"></i></button>
-            <span>{years[yearIndex]}</span>
-            <button onClick={increase} className={yearIndex >= years.length - 2 ? "inactive" : ""} disabled={yearIndex >= years.length - 1 ? true : false}><i className="fa-solid fa-chevron-right"></i></button>
-        </div>
-    </div>
-    <table border="1" className='stats-table'>
-        <tr>
-            <th colSpan="4" className='table-section border-right'>DETAILS</th>
-            { pos == "WR" ? 
-            <>
-                <th colSpan="5" className='table-section border-right'>Receiving</th>
-                <th colSpan="4" className='table-section'>Rushing</th>
-            </> 
-            : "" }
-            { pos == "RB" ? 
-            <>
-                <th colSpan="5" className='table-section border-right'>Rushing</th>
-                <th colSpan="5" className='table-section'>Receiving</th>
-            </>
-            : "" }
-            { pos == "QB" ? 
-            <>
-                <th colSpan="5" className='table-section border-right'>Passing</th>
-                <th colSpan="4" className='table-section'>Rushing</th>
-            </>
-            : "" }
-            { pos == "TE" ? 
-            <>
-                <th colSpan="4" className='table-section'>Receiving</th>
-            </>
-            : "" }
-        </tr>
-        <tr>
-            <th>WEEK</th>
-            <th>OPP</th>
-            <th>PPR</th>
-            <th className='border-right'>RANK</th>
-            { pos == "WR" ? 
-            <>
-                <th className='spacing-left'>{labels.targets.label}</th>
-                <th>{labels.receptions.label}</th>
-                <th>{labels.recYards.label}</th>
-                <th>{labels.recTds.label}</th>
-                <th className='border-right'>YPT</th>
-                <th className='spacing-left'>{labels.carries.label}</th>
-                <th>{labels.rushYds.label}</th>
-                <th>{labels.rushTds.label}</th>
-                <th>{labels.fumbles.label}</th>
-            </>
-            : "" }
+    <>
+        <>
+            <tr>
+                <th colSpan="4" className='table-section border-right'>DETAILS</th>
+                { pos == "WR" ? 
+                <>
+                    <th colSpan="5" className='table-section border-right'>Receiving</th>
+                    <th colSpan="4" className='table-section'>Rushing</th>
+                </> 
+                : "" }
+                { pos == "RB" ? 
+                <>
+                    <th colSpan="5" className='table-section border-right'>Rushing</th>
+                    <th colSpan="5" className='table-section'>Receiving</th>
+                </>
+                : "" }
+                { pos == "QB" ? 
+                <>
+                    <th colSpan="5" className='table-section border-right'>Passing</th>
+                    <th colSpan="4" className='table-section'>Rushing</th>
+                </>
+                : "" }
+                { pos == "TE" ? 
+                <>
+                    <th colSpan="4" className='table-section'>Receiving</th>
+                </>
+                : "" }
+            </tr>
+            <tr>
+                <th>WEEK</th>
+                <th>OPP</th>
+                <th>PPR</th>
+                <th className='border-right'>RANK</th>
+                { pos == "WR" ? 
+                <>
+                    <th className='spacing-left'>{labels.targets.label}</th>
+                    <th>{labels.receptions.label}</th>
+                    <th>{labels.recYards.label}</th>
+                    <th>{labels.recTds.label}</th>
+                    <th className='border-right'>YPT</th>
+                    <th className='spacing-left'>{labels.carries.label}</th>
+                    <th>{labels.rushYds.label}</th>
+                    <th>{labels.rushTds.label}</th>
+                    <th>{labels.fumbles.label}</th>
+                </>
+                : "" }
 
-            { pos == "RB" ? 
-            <>
-                <th>{labels.carries.label}</th>
-                <th>{labels.rushYds.label}</th>
-                <th>YDS/A</th>
-                <th>{labels.rushTds.label}</th>
-                <th className='border-right'>{labels.fumbles.label}</th>
-                <th className='spacing-left'>{labels.targets.label}</th>
-                <th>{labels.receptions.label}</th>
-                <th>{labels.recYards.label}</th>
-                <th>YPT</th>
-                <th>{labels.recTds.label}</th>
-            </>
-            : "" }
+                { pos == "RB" ? 
+                <>
+                    <th>{labels.carries.label}</th>
+                    <th>{labels.rushYds.label}</th>
+                    <th>YDS/A</th>
+                    <th>{labels.rushTds.label}</th>
+                    <th className='border-right'>{labels.fumbles.label}</th>
+                    <th className='spacing-left'>{labels.targets.label}</th>
+                    <th>{labels.receptions.label}</th>
+                    <th>{labels.recYards.label}</th>
+                    <th>YPT</th>
+                    <th>{labels.recTds.label}</th>
+                </>
+                : "" }
 
-            { pos == "QB" ? 
-            <>
-                <th>{labels.attempts.label}</th>
-                <th>{labels.completionP.label}</th>
-                <th>{labels.passingYards.label}</th>
-                <th>{labels.passingTds.label}</th>
-                <th className='border-right'>{labels.interceptions.label}</th>
-                <th className='spacing-left'>{labels.carries.label}</th>
-                <th>{labels.rushYds.label}</th>
-                <th>{labels.rushTds.label}</th>
-                <th>{labels.fumbles.label}</th>
-            </>
-            : "" }
+                { pos == "QB" ? 
+                <>
+                    <th>{labels.attempts.label}</th>
+                    <th>{labels.completionP.label}</th>
+                    <th>{labels.passingYards.label}</th>
+                    <th>{labels.passingTds.label}</th>
+                    <th className='border-right'>{labels.interceptions.label}</th>
+                    <th className='spacing-left'>{labels.carries.label}</th>
+                    <th>{labels.rushYds.label}</th>
+                    <th>{labels.rushTds.label}</th>
+                    <th>{labels.fumbles.label}</th>
+                </>
+                : "" }
 
-            { pos == "TE" ? 
-            <>
-                <th className='spacing-left'>{labels.targets.label}</th>
-                <th>{labels.receptions.label}</th>
-                <th>{labels.recYards.label}</th>
-                <th>{labels.recTds.label}</th>
+                { pos == "TE" ? 
+                <>
+                    <th className='spacing-left'>{labels.targets.label}</th>
+                    <th>{labels.receptions.label}</th>
+                    <th>{labels.recYards.label}</th>
+                    <th>{labels.recTds.label}</th>
+                </>
+                : "" }
+            </tr>
             </>
-            : "" }
-        </tr>
-        {playerLogs.map((item, index) => {
-            if(item.year == years[yearIndex]) {
-                const gamesArray = Array.isArray(item.games) 
-                    ? item.games 
-                    : Object.values(item.games || {});
-                
-                return (
-                    <>
-                        {gamesArray.map((game, index) => (
+            {playerLogs.map((item, index) => {
+                if(item.year == years[yearIndex]) {
+                    const gamesArray = Array.isArray(item.games) 
+                        ? item.games 
+                        : Object.values(item.games || {});
+                    
+                    return (
+                        <>
+                            {gamesArray.map((game, index) => (
                             <tr key={index}>
                                 <td><div className='table-stat'>{index}</div></td>
                                 <td><div className='table-stat'>{game.opponent}</div></td>
@@ -192,15 +173,14 @@ const PlayerLogs = ({ playerLogs, pos }) => {
                                 : "" }
 
                             </tr>
-                        ))}
-                    </>
-                );
-            } else {
-                return null;
-            }
-        })}
-        </table>
-        </div>
+                            ))}
+                            </>
+                    );
+                } else {
+                    return null;
+                }
+            })}
+</>
   )
 }
 

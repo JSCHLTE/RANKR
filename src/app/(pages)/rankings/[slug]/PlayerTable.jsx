@@ -1,16 +1,21 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { PlayerStatsLabel } from "./PlayerStats";
 import { PlayerStatsValue } from "./PlayerStats";
-import { teams } from "@/app/providers/teams/TeamProvider";
-import { getHeight } from "@/app/providers/players/getHeight";
-import PlayerYear from './PlayerYear';
 import PlayerTableToggle from './PlayerTableToggle';
 import PlayerLogs from './PlayerLogs';
+import YearSelect from './YearSelect';
+
 
 const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
 
   // Check if career mode is active for this specific player
   const isCareerMode = playerCard.find(({ mode, playerId }) => mode === "career" && playerId === player.playerId);
+
+  //This is the year switcher for the player
+  const [years, setYears] = useState(playerSeasons.stats.map(item => item.year));
+  const [yearIndex, setYearIndex] = useState(years.length - 2);
 
   return (
     <>
@@ -86,13 +91,12 @@ const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
     <>
     <div className='player-stats-wrapper'>
     <PlayerTableToggle player={player} playerCard={playerCard} setPlayerCard={setPlayerCard} />
-    <div className="player-stat-season-wrapper">
-{ isCareerMode ? 
+    <YearSelect years={years} yearIndex={yearIndex} setYearIndex={setYearIndex} />
 <table border="1" className='stats-table'>
-  <thead>
+<tbody>
+{ isCareerMode ?
+<>
     <PlayerStatsLabel pos={player.position} />
-  </thead>
-  <tbody>
 
 {playerSeasons?.stats?.map((item, index) => {
   if(item.year === 2025) return;
@@ -107,15 +111,12 @@ return (
 </tr>
 )
 }).reverse()}
-
-
-</tbody>
-</table> : 
+</> : 
 <>
-  <PlayerLogs playerLogs={playerSeasons.stats} pos={player.position} />
+  <PlayerLogs playerLogs={playerSeasons.stats} pos={player.position} years={years} yearIndex={yearIndex} />
 </>}
-  
-</div>
+</tbody>
+</table>
 </div></> : <p className='stats-error'>Stats for {player.full_name} are not available.</p> }
 </>
   )

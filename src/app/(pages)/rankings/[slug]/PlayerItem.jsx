@@ -71,7 +71,7 @@ const PlayerItem = ({
       </div>
       </div>
 </div>
-      { playerCard?.some(obj => obj.playerId === player.playerId) ? <PlayerTable player={player} playerSeasons={playerSeasons} playerCard={playerCard} setPlayerCard={setPlayerCard} loading={loading} /> : ""}
+      { playerCard?.some(obj => obj.playerId === player.playerId) ? <PlayerTable key={player} player={player} playerSeasons={playerSeasons} playerCard={playerCard} setPlayerCard={setPlayerCard} loading={loading} /> : ""}
     </div>
   );
 };

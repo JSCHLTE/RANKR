@@ -1,4 +1,6 @@
 .rankings-wrapper {
+    margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(4, 300px);
+    grid-template-columns: repeat(4, 325px);
+    gap: 1rem;
 }
