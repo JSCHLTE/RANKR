@@ -93,29 +93,23 @@ const PlayerTable = ({ player, playerSeasons, playerCard, setPlayerCard }) => {
     <PlayerTableToggle player={player} playerCard={playerCard} setPlayerCard={setPlayerCard} />
     <YearSelect years={years} yearIndex={yearIndex} setYearIndex={setYearIndex} />
 <table border="1" className='stats-table'>
-<tbody>
-{ isCareerMode ?
-<>
-    <PlayerStatsLabel pos={player.position} />
+  <tbody className={ isCareerMode ? "" : "hide" }>
+  <PlayerStatsLabel pos={player.position} />
 
 {playerSeasons?.stats?.map((item, index) => {
   if(item.year === 2025) return;
 return (
-<tr key={index}>
-  <td><div className='table-stat team'><div className='logo-team'><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</div></div></td>
-  <td><div className='table-stat'>{item.year}</div></td>
-
-  <PlayerStatsValue playerCard={playerCard} item={item} player={player}/>
-
-
-</tr>
+    <tr key={index}>
+      <td><div className='table-stat team'><div className='logo-team'><img src={`https://sleepercdn.com/images/team_logos/nfl/${item.team.toLowerCase()}.png`} alt="${item.team} Logo" width={25} height={25}/>{item.team}</div></div></td>
+      <td><div className='table-stat'>{item.year}</div></td>
+      <PlayerStatsValue playerCard={playerCard} item={item} player={player}/>
+    </tr>
 )
 }).reverse()}
-</> : 
-<>
-  <PlayerLogs playerLogs={playerSeasons.stats} pos={player.position} years={years} yearIndex={yearIndex} />
-</>}
 </tbody>
+  <tbody className={ isCareerMode ? "hide" : "" }>
+    <PlayerLogs playerLogs={playerSeasons.stats} pos={player.position} years={years} yearIndex={yearIndex}/>
+  </tbody>
 </table>
 </div></> : <p className='stats-error'>Stats for {player.full_name} are not available.</p> }
 </>

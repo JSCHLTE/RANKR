@@ -7,7 +7,7 @@ import { gameTotals } from '@/app/providers/statColor/statValues'
 
 import "../../CSS/playerTable.css"
 
-const PlayerLogs = ({ years, yearIndex, playerLogs, pos }) => {
+const PlayerLogs = ({ years, yearIndex, playerLogs, pos, isCareerMode }) => {
 
     const labels = POSITION_STAT_FIELDS
 

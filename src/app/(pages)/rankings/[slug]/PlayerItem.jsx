@@ -38,13 +38,13 @@ const PlayerItem = ({
         </div>
       )}
       <div className="player-item-img-wrapper">
-          {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
+          {/* {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
             <img
               src={`https://sleepercdn.com/images/team_logos/nfl/${player.currentTeam.toLowerCase()}.png`}
               alt={`${player.currentTeam} logo`}
               className="player-team-logo"
             />
-          )}
+          )} */}
           <img 
             src={player.playerImg ?? "/images/player-default.webp"} 
             alt={player.full_name}
@@ -65,6 +65,9 @@ const PlayerItem = ({
             </span>
             {player.years_exp === 0 && player.position !== "DEF" ? (
               <span className="player-rookie">Rookie</span>
+            ) : null}
+            {player.currentTeam ? (
+              <span style={{backgroundColor: `var(--${player.currentTeam.toLowerCase()})`, borderColor: `var(--${player.currentTeam.toLowerCase()})`}}>{player.currentTeam}</span>
             ) : null}
           </div>
         </div>

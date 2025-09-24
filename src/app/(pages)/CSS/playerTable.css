@@ -56,6 +56,10 @@
     align-items: center;
 }
 
+.stats-table .hide {
+    display: none;
+}
+
 .player-stat-season-wrapper {
     background-color: var(--background);
     border-radius: 10px;

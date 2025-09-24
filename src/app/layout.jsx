@@ -22,9 +22,7 @@ export default function RootLayout({ children }) {
       <body>
       <div className="content-wrapper">
         <AuthProvider>
-          <nav>
             <Navbar />
-          </nav>
             {children}
         </AuthProvider>
         </div>
