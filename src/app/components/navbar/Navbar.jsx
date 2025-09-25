@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 import './navbar.css'
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/app/providers/AuthProvider"
 import { getUserById } from "@/app/providers/getUser/getUser"
@@ -13,7 +13,8 @@ const Navbar = () => {
 
   const pathname = usePathname();
   const [nav, setNav] = useState(false);
-  const [scrolled, setScrolled] = useState({scroll: null, hide: null});
+  const [scrolled, setScrolled] = useState({ active: false, hide: false });
+  const prevScrollYRef = useRef(0);
   const [username, setUsername] = useState(null);
   const { user, logout } = useAuth();
 
@@ -27,13 +28,14 @@ const Navbar = () => {
   useEffect(() => {
 
     const handleScroll = () => {
-      const pos = window.scrollY;
+      const currentY = window.scrollY || window.pageYOffset || 0;
+      const previousY = prevScrollYRef.current;
+      const pastThreshold = currentY > 300;
+      const isScrollingDown = currentY > previousY;
 
-      if(pos >= 50 ) {
-        setScrolled({scroll: true, hide: null});
-      } else if(pos >= 50 && window.scrollY < pos) {
-        setScrolled(null) //will do later
-      }
+      setScrolled({ active: pastThreshold, hide: pastThreshold && isScrollingDown });
+
+      prevScrollYRef.current = currentY;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -60,7 +62,7 @@ const Navbar = () => {
   }, [user])
 
   return (
-    <nav className={ scrolled.scroll ? `active` : `` }>
+    <nav className={`${window.scrollY > 50 ? 'active' : ''} ${scrolled.hide ? 'scrolled' : ''}`}>
       <div className="nav-inner flex">
         <div className="nav-left flex">
           <div className="nav-logo">
