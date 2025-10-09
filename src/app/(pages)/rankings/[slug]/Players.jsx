@@ -117,7 +117,7 @@ const Players = () => {
         </div>
       </Link>
       { author ? <div className='edit-buttons flex'>
-          {editMode ? <ButtonLink variant="main create" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main create" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
+          {editMode ? <ButtonLink variant="main create" onClick={saveRankings}>Save Order</ButtonLink> : <ButtonLink variant="main create" onClick={() => setEditMode(prev => !prev)}>Edit Order</ButtonLink>}
           {editMode ? <ButtonLink variant="alt cancel" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
         </div> : "" }
     </header>
