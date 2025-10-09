@@ -1,9 +1,6 @@
 .rankings-header {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin: 5rem 0 2rem 0;
-    height: unset;
 }
 
 .player-rankings-wrapper, .players-custom-wrapper {
@@ -99,7 +96,7 @@
 
 .edit-buttons {
     gap: 0.5rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .btn.create, .btn.cancel {
@@ -155,23 +152,23 @@
 }
 
 .author-wrapper {
+    align-items: center;
     background-color: var(--background);
-    padding: 0.25rem 1rem;
     border-radius: 10px;
     gap: 0.5rem;
+    width: fit-content;
     margin-top: 1rem;
     transition: background 0.3s ease;
 }
 
-.author-wrapper:hover {
-    background-color: var(--background-light);
+.author-wrapper:hover .username {
+    text-decoration: underline;
 }
 
 .author-img {
     border-radius: 50%;
-    border: 1px solid var(--theme);
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
 }
 

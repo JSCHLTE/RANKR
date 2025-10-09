@@ -11,11 +11,14 @@ import ButtonLink from '@/app/components/buttons/ButtonLink';
 import { useParams } from 'next/navigation';
 import { getUserById } from '@/app/providers/getUser/getUser';
 import Link from 'next/link';
+import { useAuth } from '@/app/providers/AuthProvider';
 
 const Players = () => {
 
   const { slug } = useParams();
   const { players } = usePlayerContext();
+  const { user } = useAuth();
+ 
   const [rankings, setRankings] = useState();
   const [rankData, setRankData] = useState();
   const [userData, setUserData] = useState();
@@ -23,6 +26,7 @@ const Players = () => {
   const [unsaved, setUnsaved] = useState();
   const [editMode, setEditMode] = useState(null);
   const [loading, setLoading] = useState(null);
+  const [author, setAuthor] = useState(null)
 
   //Pulls ranking id from url slug
   useEffect(() => {
@@ -95,6 +99,7 @@ const Players = () => {
     }
 
     if(rankData) getUser();
+    if(rankData?.uid === user?.uid) setAuthor(true);
   }, [rankData])
 
   if(!playerList) return <Loading />
@@ -104,19 +109,19 @@ const Players = () => {
     <header className="rankings-header flex">
       <h1>{rankData ? rankData.title : "Title of Ranking"}</h1>
       <Link href={`/users/${userData?.username}`}>
-        <div className='author-wrapper flex-center'>
+        <div className='author-wrapper flex'>
           <div className='author-img'>
-            <img src={userData?.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture' width={75} height={75}/>
+            <img src={userData?.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture' width={50} height={50}/>
         </div>
-          <p>{userData ? userData.displayName : "User"}</p>
+          <p className='username'>{userData ? userData.displayName : "User"}</p>
         </div>
       </Link>
-    </header>
-      <main className="player-rankings-wrapper flex">
-        <div className='edit-buttons flex-center'>
+      { author ? <div className='edit-buttons flex'>
           {editMode ? <ButtonLink variant="main create" onClick={saveRankings}>Save Rankings</ButtonLink> : <ButtonLink variant="main create" onClick={() => setEditMode(prev => !prev)}>Edit Rankings</ButtonLink>}
           {editMode ? <ButtonLink variant="alt cancel" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
-        </div>
+        </div> : "" }
+    </header>
+      <main className="player-rankings-wrapper flex">
           {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
       </main>
       </>
