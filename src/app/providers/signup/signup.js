@@ -28,7 +28,8 @@ export async function signUp(email, password, displayName) {
     accountCreated: time,
     icons: ["user"],
     followers: [],
-    following: []
+    following: [],
+    uid
   };
 
   // Save user record

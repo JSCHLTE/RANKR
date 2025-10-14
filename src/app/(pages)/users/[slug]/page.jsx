@@ -7,16 +7,16 @@ import { getUserBySlug } from '@/app/providers/getUser/getUser'
 
 const page = async ({ params }) => {
   const { slug } = await params;
-  const user = await getUserBySlug(slug);
+  const profile = await getUserBySlug(slug);
 
   return (
     <section id='content-wrapper'>
       <div className='user-data flex-center'>
-        <User user={user}/>
+        <User profile={profile}/>
       </div>
       <div className='user-rankings flex-center'>
         <PlayersList>
-          <Rankings user={user}/>
+          <Rankings profile={profile} slug={slug}/>
         </PlayersList>
       </div>
     </section>

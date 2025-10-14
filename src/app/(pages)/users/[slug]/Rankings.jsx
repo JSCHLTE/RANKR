@@ -3,12 +3,10 @@
 import React, { useEffect, useState } from 'react'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
-import { useParams } from 'next/navigation';
 import { formatDate } from '@/app/providers/getDate/getDate';
 import Link from 'next/link';
 
-const Rankings = ({ user }) => {
-  const { slug } = useParams();
+const Rankings = ({ profile, slug }) => {
   const [rankings, setRankings] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -85,10 +83,10 @@ const Rankings = ({ user }) => {
               </div>
               <div className='date-wrapper flex'>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></div>
               <div className='user-info flex'>
-                <img src={user?.pfp ? user.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
+                <img src={profile?.pfp ? profile.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
                 <div className='user-name-wrapper flex'>
-                  <p className='displayName'>{user?.displayName}</p>
-                  <p className='username'>@{user?.username}</p>
+                  <p className='displayName'>{profile?.displayName}</p>
+                  <p className='username'>@{profile?.username}</p>
                 </div>
               </div>
             </div>
