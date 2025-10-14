@@ -1,8 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
-import Loading from '@/app/components/loading/Loading'
-import { useParams } from 'next/navigation'
+import React, { useState } from 'react'
 import { useAuth } from "@/app/providers/AuthProvider"
 
 const User = ({ profile }) => {
