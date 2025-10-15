@@ -29,12 +29,16 @@
     border: 1px solid var(--theme);
 }
 
+.btn.follow {
+    background: transparent;
+}
+
 .btn.follow i, .following i, .btn.edit i {
     margin-left: 0.35rem;
 }
 
 .following {
-    background: transparent;
+    background: var(--theme);
     border-radius: 10px;
     color: var(--white);
     cursor: pointer;

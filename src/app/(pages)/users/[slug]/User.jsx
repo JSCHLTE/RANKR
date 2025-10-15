@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from "@/app/providers/AuthProvider"
 import { ref, get, set, remove, runTransaction } from 'firebase/database';
 import { db } from '@/app/firebase';
@@ -9,7 +9,29 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
 
   const [profile, setProfile] = useState(initialProfile || {});  // Local state for optimistic updates
   const [hover, setHover] = useState(null);
+  const [isFollowing, setIsFollowing] = useState(false);
   const { user } = useAuth();
+
+  useEffect(() => {
+    async function checkFollowingStatus() {
+      if (!user?.uid || !profile?.uid || user.uid === profile.uid) {
+        setIsFollowing(false);
+        return;
+      }
+
+      try {
+        const followingRef = ref(db, `users/${user.uid}/following/${profile.uid}`);
+        const snapshot = await get(followingRef);
+        const following = snapshot.exists();
+        setIsFollowing(following);
+      } catch (error) {
+        console.error('Error checking follow status:', error);
+        setIsFollowing(false);
+      }
+    }
+
+    checkFollowingStatus();
+  }, [user?.uid, profile?.uid]);  // Re-check if auth or profile changes
 
   const handleFollow = async () => {
     if (!user?.uid || profile.uid === user.uid) return;
@@ -40,12 +62,14 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
         await remove(followingRef);
         await runTransaction(profileFollowersCountRef, (current) => Math.max((current || 0) - 1, 0));
         await runTransaction(userFollowingCountRef, (current) => Math.max((current || 0) - 1, 0));
+		setIsFollowing(false);
       } else {
         // Follow: Add and increment
         await set(followerRef, true);
         await set(followingRef, true);
         await runTransaction(profileFollowersCountRef, (current) => (current || 0) + 1);
         await runTransaction(userFollowingCountRef, (current) => (current || 0) + 1);
+		setIsFollowing(true);
       }
       
     } catch (error) {
@@ -81,7 +105,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
             <span className='user-data-displayname flex'>{profile?.displayName} {profile?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
             <span className='user-data-username'>@{profile?.username}</span>
           </div>
-          { profile?.uid === user?.uid ?  <button className='btn edit'>Edit Profile <i className="fa-solid fa-gear"></i></button> : <button className='btn main follow' onClick={handleFollow}>Follow <i className="fa-solid fa-user-plus"></i></button>}
+          { profile?.uid === user?.uid ?  <button className='btn edit'>Edit Profile <i className="fa-solid fa-gear"></i></button> : ( isFollowing ? <button className='btn main following' onClick={handleFollow}>Following <i class="fa-solid fa-user-check"></i></button> : <button className='btn main follow' onClick={handleFollow}>Follow <i className="fa-solid fa-user-plus"></i></button> )}
         </div>
         <div className='user-data-right-wrapper flex'>
           <div className='user-data-following'>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>
