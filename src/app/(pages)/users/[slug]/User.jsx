@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from "@/app/providers/AuthProvider"
 import { ref, get, set, remove, runTransaction } from 'firebase/database';
 import { db } from '@/app/firebase';
+import FollowList from './FollowList';
 
 const User = ({ profile: initialProfile }) => {  // Use initialProfile to distinguish
 
   const [profile, setProfile] = useState(initialProfile || {});  // Local state for optimistic updates
   const [hover, setHover] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [followers, setFollowers] = useState();
+  const [following, setFollowing] = useState();
   const { user } = useAuth();
 
   useEffect(() => {
@@ -62,7 +65,9 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
         await remove(followingRef);
         await runTransaction(profileFollowersCountRef, (current) => Math.max((current || 0) - 1, 0));
         await runTransaction(userFollowingCountRef, (current) => Math.max((current || 0) - 1, 0));
-		setIsFollowing(false);
+		  setIsFollowing(false);
+      setFollowers(followerRef);
+      setFollowers(followingRef);
       } else {
         // Follow: Add and increment
         await set(followerRef, true);
@@ -70,6 +75,8 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
         await runTransaction(profileFollowersCountRef, (current) => (current || 0) + 1);
         await runTransaction(userFollowingCountRef, (current) => (current || 0) + 1);
 		setIsFollowing(true);
+    setFollowers(followerRef);
+    setFollowers(followingRef);
       }
       
     } catch (error) {
@@ -115,6 +122,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
           <span>Joined {profile?.accountCreated}</span>
         </div>
       </div>
+      <FollowList username={profile?.displayName} />
     </>
   )
 }
