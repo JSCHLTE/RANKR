@@ -122,7 +122,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
           <span>Joined {profile?.accountCreated}</span>
         </div>
       </div>
-      <FollowList username={profile?.displayName} />
+      <FollowList username={profile?.displayName} followers={followers ? followers : null} following={following ? following : null}/>
     </>
   )
 }
