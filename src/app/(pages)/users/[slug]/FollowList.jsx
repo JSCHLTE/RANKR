@@ -1,10 +1,11 @@
+import { useEffect } from "react"
 import "./followList.css"
 
-const FollowList = ({ username, followers, following }) => {
+const FollowList = ({ username }) => {
 
   useEffect(() => {
     console.log(followers)
-  }, [])
+  }, [followers])
 
   return (
     <div className='follow-list-wrapper'>
