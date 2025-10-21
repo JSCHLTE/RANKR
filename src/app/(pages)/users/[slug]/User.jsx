@@ -11,7 +11,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
   const [profile, setProfile] = useState(initialProfile || {});  // Local state for optimistic updates
   const [hover, setHover] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
-  const [followList, setFollowList] = useState(true);
+  const [followList, setFollowList] = useState(null);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -35,6 +35,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
     checkFollowingStatus();
   }, [user?.uid, profile?.uid]);  // Re-check if auth or profile changes
 
+  //handle follow click
   const handleFollow = async () => {
     if (!user?.uid || profile.uid === user.uid) return;
   
@@ -94,6 +95,12 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
     }
   };
 
+  const handleList = (type) => {
+    if(!type) return;
+    if(type == "followers") setFollowList("followers");
+    if(type == "following") setFollowList("following");
+  }
+
   return (
     <>
       <div className='user-data-left'>
@@ -110,14 +117,14 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
           { profile?.uid === user?.uid ?  <button className='btn edit'>Edit Profile <i className="fa-solid fa-gear"></i></button> : ( isFollowing ? <button className='btn main following' onClick={handleFollow}>Following <i class="fa-solid fa-user-check"></i></button> : <button className='btn main follow' onClick={handleFollow}>Follow <i className="fa-solid fa-user-plus"></i></button> )}
         </div>
         <div className='user-data-right-wrapper flex'>
-          <div className='user-data-following'>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>
-          <div className='user-data-followers'>{profile?.followersCount ?? 0} <span className='follow-text'>Followers</span></div>
+          <div className='user-data-following' onClick={() => handleList("following")}>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>
+          <div className='user-data-followers' onClick={() => handleList("followers")}>{profile?.followersCount ?? 0} <span className='follow-text'>Followers</span></div>
         </div>
         <div className='user-data-joined'>
           <span>Joined {profile?.accountCreated}</span>
         </div>
       </div>
-      { followList && <FollowList username={profile?.displayName} /> }
+      { followList && <FollowList username={profile?.displayName} followList={followList} setFollowList={setFollowList} /> }
     </>
   )
 }

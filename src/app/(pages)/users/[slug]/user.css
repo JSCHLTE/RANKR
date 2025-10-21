@@ -63,6 +63,11 @@
     margin: 0.5rem 0;
 }
 
+.user-data-following:hover, .user-data-following:focus, .user-data-followers:hover, .user-data-followers:focus {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .user-data-displayname {
     font-weight: 800;
     font-size: 1.5rem;
