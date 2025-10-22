@@ -5,6 +5,7 @@ import { ref, get } from 'firebase/database';
 import { db } from "@/app/firebase";
 import "./followList.css";
 import { getUserById } from "@/app/providers/getUser/getUser";
+import Close from "@/app/components/close/Close";
 
 const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
   const [userList, setUserList] = useState([]);
@@ -85,9 +86,7 @@ const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
   return (
     <div className="follow-list-wrapper">
       <div className="follow-list-inner-wrapper">
-        <div className="follow-list-x" onClick={() => setFollowList(null)}>
-          <i className="fa-solid fa-x"></i>
-        </div>
+        <Close />
         <div className="follow-list-title flex">
           <div className="user-pfp">
             <img
