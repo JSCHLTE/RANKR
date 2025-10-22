@@ -114,7 +114,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
             <span className='user-data-displayname flex'>{profile?.displayName} {profile?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR'/> : ""}</span>
             <span className='user-data-username'>@{profile?.username}</span>
           </div>
-          { profile?.uid === user?.uid ?  <button className='btn edit'>Edit Profile <i className="fa-solid fa-gear"></i></button> : ( isFollowing ? <button className='btn main following' onClick={handleFollow}>Following <i class="fa-solid fa-user-check"></i></button> : <button className='btn main follow' onClick={handleFollow}>Follow <i className="fa-solid fa-user-plus"></i></button> )}
+          { profile?.uid === user?.uid ?  <button className='btn edit'>Edit Profile <i className="fa-solid fa-gear"></i></button> : ( isFollowing ? <button className='btn main following' onClick={handleFollow}>Following <i className="fa-solid fa-user-check"></i></button> : <button className='btn main follow' onClick={handleFollow}>Follow <i className="fa-solid fa-user-plus"></i></button> )}
         </div>
         <div className='user-data-right-wrapper flex'>
           <div className='user-data-following' onClick={() => handleList("following")}>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>
@@ -124,7 +124,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
           <span>Joined {profile?.accountCreated}</span>
         </div>
       </div>
-      { followList && <FollowList username={profile?.displayName} followList={followList} setFollowList={setFollowList} /> }
+      { followList && <FollowList uid={profile?.uid} pfp={profile?.pfp} username={profile?.displayName} followList={followList} setFollowList={setFollowList} /> }
     </>
   )
 }
