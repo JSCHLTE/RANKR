@@ -5,6 +5,7 @@ import { ref, get } from 'firebase/database';
 import { db } from "@/app/firebase";
 import "./followList.css";
 import { getUserById } from "@/app/providers/getUser/getUser";
+import Link from "next/link";
 
 const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
   const [userList, setUserList] = useState([]);
@@ -108,17 +109,19 @@ const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
             <p className="error">{error}</p>
           ) : people.length > 0 ? (
             people.map((item) => (
-              <div key={item.id} className="flex">
-                <div className="user-pfp">
-                  <img
-                    src={item.pfp || '/images/lion-blue.svg'}
-                    alt="User profile picture"
-                    width={50}
-                    height={50}
-                  />
+              <Link href={`/users/${item.username}`} key={item.id} className="user-item">
+                <div className="flex">
+                  <div className="user-pfp">
+                    <img
+                      src={item.pfp || '/images/lion-blue.svg'}
+                      alt="User profile picture"
+                      width={50}
+                      height={50}
+                    />
+                  </div>
+                  <p>{item.username || "Unknown"}</p>
                 </div>
-                <p>{item.username || "Unknown"}</p>
-              </div>
+              </Link>
             ))
           ) : (
             <p>No {followList || "users"} found</p>
