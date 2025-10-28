@@ -102,7 +102,7 @@ const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
             {username ? `${username}'s ${followList}` : `User's ${followList || "list"}`}
           </p>
         </div>
-        <div className="follow-list-list">
+        <div className="follow-list-list flex">
           {isLoading ? (
             <p>Loading...</p>
           ) : error ? (

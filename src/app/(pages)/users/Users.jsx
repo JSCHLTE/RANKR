@@ -7,10 +7,10 @@ import Link from 'next/link';
 const Users = ({ users }) => {
 
   return (
-    <div className='users-wrapper flex'>
+    <div className='users-wrapper'>
         { users.length > 0 ? (users?.map((item, index) => (
-          <Link href={`/users/${item.username}`}>
-            <div className='users-item flex' key={index}>
+          <Link href={`/users/${item.username}`} className='users-item'>
+            <div className='flex' key={index}>
                 <img src={item.pfp ? item.pfp : "images/lion-blue.svg"} width={75} height={75}/>
                 <div className='user-name'>
                   <p className='displayname'>{item.displayName}</p>

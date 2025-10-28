@@ -1,6 +1,12 @@
 .rankings-wrapper {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(4, 375px);
+    grid-template-columns: repeat(auto-fill, 100%);
     gap: 1rem;
+}
+
+@media (min-width: 758px) {
+    .rankings-wrapper {
+        grid-template-columns: repeat(auto-fill, 45%);
+    }
 }
