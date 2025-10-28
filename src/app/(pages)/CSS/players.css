@@ -3,10 +3,24 @@
     margin: 5rem 0 2rem 0;
 }
 
+.rankings-header h1 {
+    font-size: 2rem;
+}
+
 .player-rankings-wrapper, .players-custom-wrapper {
     gap: 0.5rem;
     flex-direction: column;
     min-height: 700px;
+}
+
+.edit-buttons {
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.edit-buttons button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .player-item-header {
@@ -92,11 +106,6 @@
 .player-item-info-details  {
     gap: 0.5rem;
     margin-top: 0.5rem;
-}
-
-.edit-buttons {
-    gap: 0.5rem;
-    margin-top: 2rem;
 }
 
 .btn.create, .btn.cancel {

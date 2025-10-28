@@ -7,7 +7,6 @@ import { ref, set, get } from "firebase/database";
 import { db } from '@/app/firebase';
 import Loading from '@/app/components/loading/Loading';
 import { usePlayerContext } from '@/app/providers/players/PlayersList';
-import ButtonLink from '@/app/components/buttons/ButtonLink';
 import { useParams } from 'next/navigation';
 import { getUserById } from '@/app/providers/getUser/getUser';
 import Link from 'next/link';
@@ -99,7 +98,11 @@ const Players = () => {
     }
 
     if(rankData) getUser();
-    if(rankData?.uid === user?.uid) setAuthor(true);
+    if(rankData?.uid === user?.uid) {
+      setAuthor(true); 
+    } else {
+      setAuthor(1);
+    }
   }, [rankData])
 
   if(!playerList) return <Loading />
@@ -117,8 +120,8 @@ const Players = () => {
         </div>
       </Link>
       { author ? <div className='edit-buttons flex'>
-          {editMode ? <ButtonLink variant="main create" onClick={saveRankings}>Save Order</ButtonLink> : <ButtonLink variant="main create" onClick={() => setEditMode(prev => !prev)}>Edit Order</ButtonLink>}
-          {editMode ? <ButtonLink variant="alt cancel" onClick={() => cancelEdit()}>Cancel</ButtonLink> : ''}
+          {editMode ? <button className="btn main" onClick={saveRankings}>Save Order</button> : <button className="btn main" onClick={() => setEditMode(prev => !prev)}>Edit Order</button>}
+          {editMode ? <button className="btn alt" onClick={() => cancelEdit()}>Cancel</button> : ''}
         </div> : "" }
     </header>
       <main className="player-rankings-wrapper flex">

@@ -117,13 +117,13 @@ a {
 }
 
 .btn.main {
-  background-color: var(--theme);
+  background-color: var(--background-light);
   color: var(--permWhite);
   border-color: var(--theme);
 }
 
 .btn.main:hover {
-  box-shadow: 0 0 15px 1px rgba(0, 192, 250, 0.5);
+  background-color: var(--background);
 }
 
 .btn.alt {
