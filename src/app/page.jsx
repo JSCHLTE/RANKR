@@ -15,8 +15,8 @@ export default function Home() {
         <h1 className="knewave">The <span className="blue">Fantasy</span> App for Draft <span className="blue">Fanatics</span></h1>
         <p>The ultimate tool for fantasy football fanatics obsessed with rankings and draft domination.</p>
         <div className="header-btn flex-center">
-          <Link href="/create" className='btn main'>Get started</Link>
-          <Link href="#" className='btn alt'>How it works?</Link>
+          <Link href="/create" className='home btn main'>Get started</Link>
+          <Link href="#" className='home btn alt'>How it works?</Link>
         </div>
         </div>
       </header>

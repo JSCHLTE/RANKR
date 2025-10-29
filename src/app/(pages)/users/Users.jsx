@@ -12,7 +12,7 @@ const Users = ({ users }) => {
           <Link href={`/users/${item.username}`} className='users-item'>
             <div className='flex' key={index}>
                 <img src={item.pfp ? item.pfp : "images/lion-blue.svg"} width={75} height={75}/>
-                <div className='user-name'>
+                <div className='user-name flex'>
                   <p className='displayname'>{item.displayName}</p>
                   <p className='username'>@{item.username}</p>
                   <p className='joined'>Joined {item.accountCreated}</p>

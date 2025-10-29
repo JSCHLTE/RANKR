@@ -37,9 +37,9 @@ const RankCard = ({ id, title, teams, type, scoring, format, updatedAt, createdA
           <span className='format-number'>{format.FLEX}</span>
           <span className='format-label'>FLEX</span>
         </div>
-        { format.SUPERFLEX ?                 <div className='format-item sflx flex'>
+        { format.SUPERFLEX ?                 <div className='format-item sf flex'>
           <span className='format-number'>{format.SUPERFLEX}</span>
-          <span className='format-label'>SFLX</span>
+          <span className='format-label'>SF</span>
         </div> : "" }
       </div>
       <div className='date-wrapper flex'>{ updatedAt ? <><span className='updated'>Updated: {formatDate(updatedAt)}</span></> : ""}<span className={`created ${ updatedAt ? "faded" : "" }`}>Created: {formatDate(createdAt)}</span></div>

@@ -59,7 +59,7 @@
     background: linear-gradient(120deg, var(--rb), var(--wr), var(--te));
 }
 
-.format-item.sflx {
+.format-item.sf {
     background: linear-gradient(120deg, var(--qb), var(--rb), var(--wr), var(--te));
 }
 
@@ -72,9 +72,10 @@
     flex-direction: column;
     padding: 0.15rem;
     border-radius: 10px;
-    min-width: 50px;
+    width: 40px;
     text-align: center;
     font-weight: bold;
+    font-size: 0.75rem;
 }
 
 .format-number {
@@ -110,6 +111,7 @@
 
 .date-wrapper {
     flex-direction: column;
+    font-size: 0.85rem;
 }
 
 .created.faded {
@@ -119,6 +121,7 @@
 .user-name-wrapper {
     gap: 0.25rem;
     margin-left: 0.25rem;
+    font-size: 0.9rem;
 }
 
 .user-name-wrapper .username {

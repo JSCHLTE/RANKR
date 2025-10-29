@@ -46,7 +46,7 @@ header p {
     max-width: 750px;
 }
 
-.btn.main, .btn.alt {
+.home.btn.main, .home.btn.alt {
     width: 150px;
     height: 45px;
 }
