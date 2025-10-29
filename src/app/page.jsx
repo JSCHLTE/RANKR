@@ -40,7 +40,7 @@ export default function Home() {
             <p className="section-desc">Turn your rankings into your ultimate draft weapon. Enter the war room knowing who’s your best pick at every turn. Hit Draft Mode in your rankings to check off drafted players and always keep your board one step ahead of the competition.</p>
           </div>
           <div className="section-bottom draft-img">
-            <Image src="/images/draft.webp" width={800} height={400}/>
+            <Image src="/images/draft.webp" width={800} height={400} alt="Image of nfl players in a ranking order"/>
           </div>
         </div>
       </section>

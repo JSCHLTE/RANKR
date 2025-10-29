@@ -9,8 +9,8 @@ const Users = ({ users }) => {
   return (
     <div className='users-wrapper'>
         { users.length > 0 ? (users?.map((item, index) => (
-          <Link href={`/users/${item.username}`} className='users-item'>
-            <div className='flex' key={index}>
+          <Link href={`/users/${item.username}`} className='users-item' key={index}>
+            <div className='flex'>
                 <img src={item.pfp ? item.pfp : "images/lion-blue.svg"} width={75} height={75}/>
                 <div className='user-name flex'>
                   <p className='displayname'>{item.displayName}</p>

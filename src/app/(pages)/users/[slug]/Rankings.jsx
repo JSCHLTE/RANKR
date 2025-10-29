@@ -1,98 +1,27 @@
-"use client"
+import React from 'react'
+import RankCard from '@/app/components/rankCard/RankCard';
+import { getUserById } from '@/app/providers/getUser/getUser';
 
-import React, { useEffect, useState } from 'react'
-import { ref, get, equalTo, query, orderByChild } from "firebase/database";
-import { db } from "../../../firebase";
-import { formatDate } from '@/app/providers/getDate/getDate';
-import Link from 'next/link';
-
-const Rankings = ({ profile, slug }) => {
-  const [rankings, setRankings] = useState();
-  const [loading, setLoading] = useState(true);
-
-  const fetchRankings = async () => {
-    try {
-      const rankingsRef = query(
-        ref(db, `rankings`),
-        orderByChild("author"),
-        equalTo(slug)
-      );
-      const snapshot = await get(rankingsRef);
-
-      if (snapshot.exists()) {
-        const rankingsData = snapshot.val();
-        const rankingsArray = Object.entries(rankingsData).map(([id, data]) => ({
-          id,
-          ...data,
-        }));
-        setRankings(rankingsArray);
-      }
-    } catch (err) {
-      console.error(`${err} an error has occurred.`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchRankings();
-  }, [slug]);
-
-  if (loading) return <p>Fetching {slug}'s rankings...</p>;
-
+const Rankings = ({ rankings }) => {
   return (
     <>
       {rankings ? 
-        rankings.map((ranking, index) => {
+        rankings.map(async (ranking, index) => {
           return (
-            <Link href={`/rankings/${ranking.id}`} key={index}>
-            <div key={index} className='ranking-item flex'>
-              <div className='ranking-title-wrapper'>
-                <h3>{ranking.title}</h3>
-              </div>
-              <div className='ranking-categories flex'>
-                <span className='ranking-type'>{ranking.teams} Team</span>
-                <span className='ranking-type'>{ranking.type}</span>
-                <span className='ranking-type'>{ranking.scoring}</span>
-              </div>
-              <div className='format-wrapper flex'>
-                <div className='format-item qb flex'>
-                  <span className='format-number'>{ranking.format.QB}</span>
-                  <span className='format-label'>QB</span>
-                </div>
-                <div className='format-item rb flex'>
-                  <span className='format-number'>{ranking.format.RB}</span>
-                  <span className='format-label'>RB</span>
-                </div>
-                <div className='format-item wr flex'>
-                  <span className='format-number'>{ranking.format.WR}</span>
-                  <span className='format-label'>WR</span>
-                </div>
-                <div className='format-item te flex'>
-                  <span className='format-number'>{ranking.format.TE}</span>
-                  <span className='format-label'>TE</span>
-                </div>
-                <div className='format-item flx flex'>
-                  <span className='format-number'>{ranking.format.FLEX}</span>
-                  <span className='format-label'>FLEX</span>
-                </div>
-                { ranking.format.SUPERFLEX ?                 <div className='format-item sflx flex'>
-                  <span className='format-number'>{ranking.format.SUPERFLEX}</span>
-                  <span className='format-label'>SFLX</span>
-                </div> : "" }
-              </div>
-              <div className='date-wrapper flex'>{ ranking.updatedAt ? <><span className='updated'>Updated: {formatDate(ranking.updatedAt)}</span></> : ""}<span className={`created ${ ranking.updatedAt ? "faded" : "" }`}>Created: {formatDate(ranking.createdAt)}</span></div>
-              <div className='user-info flex'>
-                <img src={profile?.pfp ? profile.pfp : '/images/lion-blue.svg'} alt='PFP' width={40} height={40}/>
-                <div className='user-name-wrapper flex'>
-                  <p className='displayName'>{profile?.displayName}</p>
-                  <p className='username'>@{profile?.username}</p>
-                </div>
-              </div>
-            </div>
-            </Link>
+        <RankCard 
+        key={index}
+        id={ranking.id}
+        title={ranking.title}
+        teams={ranking.teams}
+        type={ranking.type}
+        scoring={ranking.scoring}
+        format={ranking.format}
+        updatedAt={ranking.updatedAt}
+        createdAt={ranking.createdAt}
+        user={await getUserById(ranking.uid)}
+      />
           );
-        }).reverse() : `No rankings found for ${slug}.`
+        }).reverse() : `No rankings found.`
       }
     </>
   );
