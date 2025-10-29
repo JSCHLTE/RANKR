@@ -1,27 +1,40 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-
-import "./users.css"
+'use client';
+import React from 'react';
 import Link from 'next/link';
+import "./users.css";
 
 const Users = ({ users }) => {
-
   return (
-    <div className='users-wrapper'>
-        { users.length > 0 ? (users?.map((item, index) => (
-          <Link href={`/users/${item.username}`} className='users-item' key={index}>
-            <div className='flex'>
-                <img src={item.pfp ? item.pfp : "images/lion-blue.svg"} width={75} height={75}/>
-                <div className='user-name flex'>
-                  <p className='displayname'>{item.displayName}</p>
-                  <p className='username'>@{item.username}</p>
-                  <p className='joined'>Joined {item.accountCreated}</p>
-                </div> 
+    <div className="users-wrapper">
+      {users.length > 0 ? (
+        users.map((item) => (
+          <Link
+            href={`/users/${item.username}`}
+            className="users-item flex"
+            key={item.username}    
+          >
+            {/* User Avatar */}
+            <div className="user-pfp flex">
+              <img
+                src={item.pfp || "/images/lion-blue.svg"}
+                alt={`${item.displayName}'s avatar`}
+                className="avatar-img"
+              />
+            </div>
+
+            {/* User Info */}
+            <div className="user-name flex">
+              <p className="displayname">{item.displayName}</p>
+              <p className="username">@{item.username}</p>
+              <p className="joined">Joined {item.accountCreated}</p>
             </div>
           </Link>
-        ))) : <p>No users found...</p> }
+        ))
+      ) : (
+        <p className="empty-msg">No users found...</p>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Users
+export default Users;

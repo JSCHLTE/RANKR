@@ -1,8 +1,8 @@
 .users-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 100%);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .users-item {
@@ -19,13 +19,21 @@
     border-color: var(--theme);
 }
 
-.users-item img {
+.user-pfp {
     border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.users-item img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 .user-name {
-    margin-left: 1rem;
+    margin-left: 0.75rem;
     text-align: left;
     flex-direction: column;
     align-items: left;

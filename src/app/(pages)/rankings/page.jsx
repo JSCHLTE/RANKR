@@ -28,7 +28,7 @@ const page = async () => {
     const rankings = await fetchRankings();
   return (
     <main id='templateWrapper'>
-        <h1 className='knewave'>RANKR Rankings</h1>
+        <h1 className='knewave'>Public Rankings</h1>
         <RankingsListWrapper rankings={rankings} />
     </main>
   )
