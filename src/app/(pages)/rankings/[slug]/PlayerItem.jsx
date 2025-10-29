@@ -56,18 +56,17 @@ const PlayerItem = ({
         </div>
         <div className="player-item-info-wrapper">
           <div className="player-item-info-name">
-            <p className="player-name">{player.full_name ? player.full_name : "N/A"}</p>
+            <div className="player-name-wrapper"><p className="player-name">{player.full_name ? player.full_name : "N/A"}</p> {player.years_exp === 0 && player.position !== "DEF" ? (
+              <div className="player-rookie"><img src="/images/rookie.svg" draggable="false"/></div>
+            ) : null}</div>
           </div>
           <div className="player-item-info-details flex">
-            <span>Overall: {overallRank ? overallRank : "N/A"}</span>
+            <span>OVR: {overallRank ? overallRank : "N/A"}</span>
             <span className={`player-pos ${player.position ? player.position : "N/A"}`}>
               {player.position ? player.position : "N/A"} {check(playerList, player)}
             </span>
-            {player.years_exp === 0 && player.position !== "DEF" ? (
-              <span className="player-rookie">Rookie</span>
-            ) : null}
             {player.currentTeam ? (
-              <span style={{backgroundColor: `var(--${player.currentTeam.toLowerCase()})`, borderColor: `var(--${player.currentTeam.toLowerCase()})`}}>{player.currentTeam}</span>
+            <span style={{backgroundColor: `var(--${player.currentTeam.toLowerCase()})`, borderColor: `var(--${player.currentTeam.toLowerCase()})`}}>{player.currentTeam}</span>
             ) : null}
           </div>
         </div>

@@ -7,7 +7,7 @@
 .player-item-header {
     align-items: center;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.4rem;
 }
 
 .player-item {
@@ -23,8 +23,8 @@
 }
 
 .player-item .player-item-img-wrapper {
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
     background-color: var(--background);
     border-radius: 10px;
     overflow: hidden;
@@ -56,23 +56,40 @@
 
 .player-name {
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1rem;
 }
 
 .player-item-info-details  {
-    gap: 0.5rem;
+    gap: 0.3rem;
     margin-top: 0.5rem;
 }
 
 .player-item-info-details span {
-    padding: 0.25rem 0.5rem;
-    border-radius: 10px;
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
     border: 1px solid var(--theme);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+}
+
+.player-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 .player-rookie {
-    background-color: var(--theme);
+    border-radius: 5px;
+    background-color: var(--background);
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--theme);
+}
+
+.player-rookie img {
+    width: 100%;
+    height: 100%;
+    padding: 0.1rem;
+    object-fit: cover;
 }
 
 .player-pos.QB {
