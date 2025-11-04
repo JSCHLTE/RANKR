@@ -1,0 +1,125 @@
+:root {
+    --btn-padding-x: 1.5rem;
+    --btn-padding-y: 0.75rem;
+    --btn-color: #000;
+    --btn-color-hover: #000000;
+    --btn-bgcolor: #fff;
+    --btn-bgcolor-hover: #FFDD00;
+    --btn-border-radius: 10px;
+    --btn-blur: 0px;
+    --font-size: 1rem;
+    --easing: 0.3s ease;
+    --bg: #282832;
+    
+    /* New vars for the ring/gap */
+    --ring-width: 2px;
+    --outer-offset: 4px; /* gap (2px) + ring (2px) */
+  }
+
+  
+  button {
+    margin-top: 50px;
+    /* New: default radius var */
+    --btn-r: 0;
+    
+    color: var(--btn-color);
+    background-color: var(--btn-bgcolor);
+    padding: calc(var(--btn-padding-y)) calc(var(--btn-padding-x));
+    font-size: var(--font-size);
+    font-weight: bold;
+    border: 0 none;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    transition: color var(--easing), background-color var(--easing);
+    
+    &.small {
+      padding: calc(var(--btn-padding-y) / 1.4) calc(var(--btn-padding-x) / 1.4);
+      font-size: calc(var(--font-size) / 1.4);
+    }
+    
+    &.rounded {
+      --btn-r: var(--btn-border-radius);
+      border-radius: var(--btn-r);
+    }
+    
+    &.pill {
+      --btn-r: 500px;
+      border-radius: var(--btn-r);
+    }
+    
+    &:hover {
+      &:before {  /* Updated: only fade in :before now (no :after) */
+        filter: blur(var(--btn-blur));
+        opacity: 1;
+      }
+    }
+    
+    /* Blurred gradient background - now masked to ring only */
+    &:before {
+      content: '';
+      position: absolute;
+      inset: calc(-1 * var(--outer-offset));  /* Updated: use var for expand */
+      z-index: -2;
+      
+      /* New: calculate outer radius for parallel curves */
+      --border-radius: calc(var(--btn-r) + var(--outer-offset));
+      border-radius: var(--border-radius);
+      
+      background: linear-gradient(160deg,
+      hsl(217, 68%, 6%) 0%,                    /* deep navy */
+      hsl(194, 100%, 49%) 15%,                 /* main blue */
+      hsl(194, 90%, 70%) 20%,                  /* sky tint */
+      hsl(170, 100%, 55%) 25%,                 /* electric teal */
+      hsl(217, 68%, 6%) 35%,                   /* navy gap */
+    
+      hsl(217, 68%, 6%) 40%,
+      hsl(194, 100%, 49%) 55%,
+      hsl(185, 100%, 62%) 60%,                 /* aqua pulse */
+      hsl(170, 100%, 55%) 65%,                 /* teal accent */
+      hsl(217, 68%, 6%) 75%,
+    
+      hsl(217, 68%, 6%) 80%,
+      hsl(194, 100%, 49%) 95%,
+      hsl(194, 90%, 70%) 100%                  /* ends on light blue */
+    );
+      background-size: 300% 300%;
+      filter: blur(0px);
+      opacity: 0;
+      transition: opacity var(--easing), filter var(--easing), background-position var(--easing);
+      animation: gradientMove 3s linear infinite;
+      
+      /* New: mask to create transparent center (gap + button area) */
+      mask-image:
+        /* Horizontal sides */
+        linear-gradient(to right, #fff 0 var(--ring-width), transparent var(--ring-width) calc(100% - var(--ring-width)), #fff calc(100% - var(--ring-width))),
+        /* Vertical sides */
+        linear-gradient(to bottom, #fff 0 var(--ring-width), transparent var(--ring-width) calc(100% - var(--ring-width)), #fff calc(100% - var(--ring-width))),
+        /* Top/bottom rounded areas */
+        linear-gradient(to bottom, #fff 0 var(--border-radius), transparent var(--border-radius) calc(100% - var(--border-radius)), #fff calc(100% - var(--border-radius))),
+        /* Left/right rounded areas */
+        linear-gradient(to right, transparent 0 var(--border-radius), #fff var(--border-radius) calc(100% - var(--border-radius)), transparent calc(100% - var(--border-radius))),
+        /* Bottom-left corner */
+        radial-gradient(var(--border-radius) circle at calc(var(--border-radius)) calc(100% - var(--border-radius)), #fff calc(100% - var(--ring-width)), transparent calc(100% - var(--ring-width))),
+        /* Bottom-right corner */
+        radial-gradient(var(--border-radius) circle at calc(100% - var(--border-radius)) calc(100% - var(--border-radius)), #fff calc(100% - var(--ring-width)), transparent calc(100% - var(--ring-width))),
+        /* Top-right corner */
+        radial-gradient(var(--border-radius) circle at calc(100% - var(--border-radius)) calc(var(--border-radius)), #fff calc(100% - var(--ring-width)), transparent calc(100% - var(--ring-width))),
+        /* Top-left corner */
+        radial-gradient(var(--border-radius) circle at calc(var(--border-radius)) calc(var(--border-radius)), #fff calc(100% - var(--ring-width)), transparent calc(100% - var(--ring-width)));
+      
+      mask-composite: add, add, subtract, add, add, add, add, add;
+    }
+    
+    /* Removed: no more :after (gap is now truly transparent via mask) */
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 15% 15%;
+    }
+  
+    100% {
+      background-position: 75% 75%;
+    }
+  }

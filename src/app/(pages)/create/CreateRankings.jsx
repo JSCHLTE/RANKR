@@ -181,6 +181,8 @@ const CreateRankings = () => {
             required
           >
             <option value="">Choose number of teams</option>
+            <option value="4">4 teams</option>
+            <option value="6">6 teams</option>
             <option value="8">8 teams</option>
             <option value="10">10 teams</option>
             <option value="12">12 teams</option>
@@ -190,9 +192,6 @@ const CreateRankings = () => {
             <option value="20">20 teams</option>
             <option value="22">22 teams</option>
             <option value="24">24 teams</option>
-            <option value="26">26 teams</option>
-            <option value="28">28 teams</option>
-            <option value="30">30 teams</option>
             <option value="32">32 teams</option>
           </select>
         </label>
