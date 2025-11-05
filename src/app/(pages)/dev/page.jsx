@@ -1,5 +1,5 @@
 import React from 'react'
-import "./dev.css"
+import Button from '@/app/components/arcButton/button'
 
 const Dev = () => {
   return (
@@ -7,7 +7,7 @@ const Dev = () => {
         <h1>RANKR Dev Page</h1>
         <p>This is just for testing, nothing to see here.</p>
         
-        <button class="rounded">Hover Me</button>
+        <Button link={"/users/jordan"} style={"white full"} text="This a test"></Button>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { getAuth } from "firebase/auth";
 import { db } from "../../firebase";
 import { useRouter } from "next/navigation";
 import { getUserById } from "@/app/providers/getUser/getUser";
+import Button from "@/app/components/arcButton/button";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
@@ -160,7 +161,7 @@ const CreateRankings = () => {
       {success && <p className="success">{success}</p>}
       <form id="rankFormat" className="flex" onSubmit={handleSubmit}>
         <label htmlFor="title">
-          Title:
+          Title
           <input
             placeholder="Jordan's 2025 10-Man Full PPR Rankings"
             type="text"
@@ -172,7 +173,7 @@ const CreateRankings = () => {
           />
         </label>
         <label htmlFor="teams">
-          Number of teams:
+          Number of teams
           <select
             name="teams"
             id="teams"
@@ -196,7 +197,7 @@ const CreateRankings = () => {
           </select>
         </label>
         <label htmlFor="format">
-          League format:
+          League format
           <select
             name="format"
             id="format"
@@ -212,7 +213,7 @@ const CreateRankings = () => {
           </select>
         </label>
         <label htmlFor="rankTeamLayout">
-          Team layout:
+          Team layout
           <select
             name="rankTeamLayout"
             id="rankTeamLayout"
@@ -230,7 +231,7 @@ const CreateRankings = () => {
         {showConditional && (
           <>
             <label htmlFor="qb">
-              Number of QBs:
+              Number of QBs
               <select
                 name="qb"
                 id="qb"
@@ -246,7 +247,7 @@ const CreateRankings = () => {
               </select>
             </label>
             <label htmlFor="rb">
-              Number of RBs:
+              Number of RBs
               <select
                 name="rb"
                 id="rb"
@@ -263,7 +264,7 @@ const CreateRankings = () => {
               </select>
             </label>
             <label htmlFor="wr">
-              Number of WRs:
+              Number of WRs
               <select
                 name="wr"
                 id="wr"
@@ -280,7 +281,7 @@ const CreateRankings = () => {
               </select>
             </label>
             <label htmlFor="te">
-              Number of TEs:
+              Number of TEs
               <select
                 name="te"
                 id="te"
@@ -295,7 +296,7 @@ const CreateRankings = () => {
               </select>
             </label>
             <label htmlFor="flex">
-              Number of flex spots:
+              Number of flex spots
               <select
                 name="flex"
                 id="flex"
@@ -311,7 +312,7 @@ const CreateRankings = () => {
               </select>
             </label>
             <label htmlFor="superflex">
-              Number of superflex spots:
+              Number of superflex spots
               <select
                 name="superflex"
                 id="superflex"
@@ -329,7 +330,7 @@ const CreateRankings = () => {
           </>
         )}
         <label htmlFor="scoring">
-          Scoring:
+          Scoring
           <select
             name="scoring"
             id="scoring"
@@ -343,9 +344,7 @@ const CreateRankings = () => {
             <option value="Non PPR">Non PPR</option>
           </select>
         </label>
-        <button type="submit" className="btn main generate">
-          Generate
-        </button>
+        <Button style={"white full"} text={"Create Ranking"} type={"submit"}></Button>
       </form>
     </div>
   );

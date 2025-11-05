@@ -10,7 +10,7 @@
 .video-wrapper {
     position: absolute;
     inset: 0;
-    z-index: -2;
+    z-index: -4;
 }
 
 .video video {
@@ -26,7 +26,7 @@
     content: "";
     inset: 0;
     background-color: rgba(0, 0, 0, 0.65);
-    z-index: -1;
+    z-index: -3;
 }
 
 .header-info {

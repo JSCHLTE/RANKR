@@ -24,14 +24,18 @@
 }
 
 #rankFormat input, #rankFormat select {
-    padding: 0.5rem;
+    padding: 0.75rem;
     font-size: 1rem;
     margin-top: 0.5rem;
     border-radius: 10px;
     background-color: var(--background);
-    border: 2px solid var(--theme);
+    border: 2px solid var(--background-light);
     color: var(--permWhite);
     font-family: inherit;
+}
+
+#rankFormat input:hover, #rankFormat input:focus, #rankFormat select:hover, #rankFormat select:focus {
+    border-color: var(--theme);
 }
 
 #rankFormat select {
