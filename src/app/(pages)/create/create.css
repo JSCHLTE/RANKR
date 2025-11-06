@@ -36,6 +36,7 @@
 
 #rankFormat input:hover, #rankFormat input:focus, #rankFormat select:hover, #rankFormat select:focus {
     border-color: var(--theme);
+    outline: none;
 }
 
 #rankFormat select {

@@ -1,0 +1,28 @@
+.format-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.format-item {
+    border: 1px solid var(--background-light);
+    background-color: var(--background-light);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.format-item:hover {
+    border-color: var(--theme);
+    cursor: pointer;
+}
+
+.format-item h3 {
+    font-size: 1.25rem;
+}
+
+.format-item p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: var(--sub-text);
+}

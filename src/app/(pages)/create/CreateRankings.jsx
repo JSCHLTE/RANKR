@@ -7,6 +7,7 @@ import { db } from "../../firebase";
 import { useRouter } from "next/navigation";
 import { getUserById } from "@/app/providers/getUser/getUser";
 import Button from "@/app/components/arcButton/button";
+import LeagueFormat from "./LeagueFormat";
 
 const CreateRankings = () => {
   const [showConditional, setShowConditional] = useState(false);
@@ -198,7 +199,8 @@ const CreateRankings = () => {
         </label>
         <label htmlFor="format">
           League format
-          <select
+          <LeagueFormat />
+          {/* <select
             name="format"
             id="format"
             value={formValues.format}
@@ -210,7 +212,7 @@ const CreateRankings = () => {
             <option value="bestball">Best ball</option>
             <option value="dynasty">Dynasty</option>
             <option value="rookies">Rookies</option>
-          </select>
+          </select> */}
         </label>
         <label htmlFor="rankTeamLayout">
           Team layout
