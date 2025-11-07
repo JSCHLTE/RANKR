@@ -15,10 +15,8 @@
     --ring-width: 2px;
     --outer-offset: 4px; /* gap (2px) + ring (2px) */
   }
-
   
   .arc {
-    margin-top: 50px;
     /* New: default radius var */
     --btn-r: 0;
     padding: calc(var(--btn-padding-y)) calc(var(--btn-padding-x));
@@ -40,12 +38,7 @@
       border-radius: var(--btn-r);
     }
     
-    &.pill {
-      --btn-r: 500px;
-      border-radius: var(--btn-r);
-    }
-    
-    &:hover {
+    &:hover, &.active {
       &:before {  /* Updated: only fade in :before now (no :after) */
         filter: blur(var(--btn-blur));
         opacity: 1;
@@ -145,4 +138,10 @@
     width: 150px;
     height: 45px;
     line-height: 45px;
+  }
+
+  .arc.custom {
+    white-space: wrap;
+    font-weight: normal;
+    padding: unset;
   }

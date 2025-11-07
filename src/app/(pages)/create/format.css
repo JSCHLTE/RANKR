@@ -6,10 +6,11 @@
 }
 
 .format-item {
-    border: 1px solid var(--background-light);
+    border: 0 none;
     background-color: var(--background-light);
-    border-radius: 10px;
-    padding: 1rem;
+    padding: 1rem !important;
+    transition: transform 0.1s ease;
+    position: relative;
 }
 
 .format-item:hover {
@@ -17,12 +18,26 @@
     cursor: pointer;
 }
 
+.format-item:active {
+    transform: scale(0.95);
+}
+
 .format-item h3 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 }
 
 .format-item p {
     font-size: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     color: var(--sub-text);
+}
+
+.format-selected {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    background-color: var(--background);
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
 }

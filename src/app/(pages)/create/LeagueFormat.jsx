@@ -1,23 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import "./format.css"
+import "../../components/arcButton/button.css"
 
-const LeagueFormat = () => {
+const LeagueFormat = ({ title, desc, value, setFormValues, formValues, name }) => {
+
+  const isActive = formValues && formValues?.[name] == value
+
   return (
-    <div className='format-wrapper'>
-        <div className='format-item'>
-            <h3>Redraft</h3>
-            <p>Rosters reset after the fantasy season</p>
+        <div className={`format-item arc custom rounded ${isActive ? "active" : ""}`} onClick={() => setFormValues((prev) => ({
+          ...prev,
+          [name]: value
+        }))}>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+            { isActive ? <span className='format-selected'>Selected</span> : "" }
         </div>
-        <div className='format-item'>
-            <h3>Keeper</h3>
-            <p>Each owner can keep designated players for next season</p>
-        </div>
-        <div className='format-item'>
-            <h3>Dynasty</h3>
-            <p>All rosters stay with their team owners</p>
-        </div>
-    </div>
   )
 }
 
