@@ -9,7 +9,7 @@
     border: 0 none;
     background-color: var(--background-light);
     padding: 1rem !important;
-    transition: transform 0.1s ease;
+    transition: transform 0.2s linear;
     position: relative;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .format-item:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
 }
 
 .format-item h3 {

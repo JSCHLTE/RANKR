@@ -202,6 +202,59 @@ const CreateRankings = () => {
           </select>
         </label>
         <label htmlFor="format">
+          Ranking Positions
+          <div className='format-wrapper'>
+            <LeagueFormat
+              title="All"
+              desc="Your ranking will include QB, RB, WR, TE"
+              value={"all"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"} 
+            />
+            <LeagueFormat
+              title="QB's"
+              desc="Your ranking will only include quarterbacks"
+              value={"qb"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
+            <LeagueFormat
+              title="RB's"
+              desc="Your ranking will only include running backs"
+              value={"rb"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
+            <LeagueFormat
+              title="WR's"
+              desc="Your ranking will only include wide receivers"
+              value={"wr"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
+            <LeagueFormat
+              title="TE's"
+              desc="Your ranking will only include tight ends"
+              value={"te"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
+            <LeagueFormat
+              title="Rookies"
+              desc="Your ranking will only include rookies"
+              value={"rookie"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
+          </div>
+        </label>
+        <label htmlFor="format">
           League format
           <div className='format-wrapper'>
             <LeagueFormat
@@ -228,20 +281,15 @@ const CreateRankings = () => {
               formValues={formValues}
               name={"format"}
             />
+            <LeagueFormat
+              title="Don't Specify"
+              desc="Your ranking will not display a league format"
+              value={""}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"format"}
+            />
           </div>
-          {/* <select
-            name="format"
-            id="format"
-            value={formValues.format}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Choose format</option>
-            <option value="redraft">Redraft (Most popular)</option>
-            <option value="bestball">Best ball</option>
-            <option value="dynasty">Dynasty</option>
-            <option value="rookies">Rookies</option>
-          </select> */}
         </label>
         <label htmlFor="rankTeamLayout">
           Team layout
@@ -274,6 +322,14 @@ const CreateRankings = () => {
               title="Custom"
               desc="Build your own team composition"
               value={"custom"}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"rankTeamLayout"}
+            />
+            <LeagueFormat
+              title="Don't Specify"
+              desc="Your ranking will not display a team layout"
+              value={""}
               setFormValues={setFormValues}
               formValues={formValues}
               name={"rankTeamLayout"}
@@ -421,21 +477,19 @@ const CreateRankings = () => {
               formValues={formValues}
               name={"scoring"}  
             />
+            <LeagueFormat
+              title="Don't Specify"
+              desc="Your ranking will not display a scoring type"
+              value={""}
+              setFormValues={setFormValues}
+              formValues={formValues}
+              name={"scoring"}
+            />
           </div>
-          {/* <select
-            name="scoring"
-            id="scoring"
-            value={formValues.scoring}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Choose scoring</option>
-            <option value="PPR">PPR (Recommended)</option>
-            <option value="1/2 PPR">1/2 PPR</option>
-            <option value="Non PPR">Non PPR</option>
-          </select> */}
         </label>
-        <Button style={"white full"} text={"Create Ranking"} type={"submit"}></Button>
+        <div className="ranking-btn-wrapper">
+          <Button style={"white full"} text={"Create Ranking"} type={"submit"}></Button>
+        </div>
       </form>
     </div>
   );
