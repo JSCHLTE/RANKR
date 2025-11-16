@@ -6,6 +6,7 @@ import { PlayersList } from "@/app/providers/players/PlayersList"
 import { getUserBySlug } from '@/app/providers/getUser/getUser'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
+import EditProfile from './edit/EditProfile'
 
 const fetchRankings = async (slug) => {
   try {
@@ -37,6 +38,7 @@ const page = async ({ params }) => {
 
   return (
     <section id='content-wrapper'>
+    <EditProfile />
       <div className='user-data flex-center'>
         <User profile={profile}/>
       </div>

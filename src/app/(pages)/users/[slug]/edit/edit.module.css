@@ -1,0 +1,23 @@
+.editWrapper {
+    background-color: rgba(48, 48, 48, 0.75);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    width: 90%;
+    min-height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 5;
+    padding: 1rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 20px;
+}
+
+.editWrapper button {
+    padding: 0.5rem 0.75rem;
+}
