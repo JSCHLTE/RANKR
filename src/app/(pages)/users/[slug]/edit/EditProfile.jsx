@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 import styles from "./edit.module.css"
 import Button from '@/app/components/arcButton/Button';
 
-const EditProfile = () => {
-  const [profilePicture, setProfilePicture] = React.useState('');
-  const [displayName, setDisplayName] = React.useState('');
-  const [username, setUsername] = React.useState('');
+const EditProfile = ({ profile }) => {
+  const [profilePicture, setProfilePicture] = React.useState(profile.pfp);
+  const [displayName, setDisplayName] = React.useState("");
+  const [username, setUsername] = React.useState("");
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const EditProfile = () => {
             type="text"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
-            placeholder="Enter display name"
+            placeholder={profile.displayName}
           />
         </div>
 
@@ -46,12 +46,14 @@ const EditProfile = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter username"
+            placeholder={profile.username}
           />
         </div>
-
-        <Button type="submit" text="Update Profile" style="full"></Button>
       </form>
+      <div className={`${styles.btnWrapper} flex`}>
+          <Button type="submit" text="Save Changes" style={styles.save}></Button>
+          <Button type="submit" text="Cancel" style={styles.cancel}></Button>
+        </div>
     </div>
     </>
   );
