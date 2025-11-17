@@ -15,10 +15,13 @@ const EditProfile = () => {
   };
 
   return (
+  <>
+  <div className={styles.overlay}></div>
     <div className={styles.editWrapper}>
+      <h2 className={`knewave ${styles.editTitle}`}>Edit Profile</h2>
       <form onSubmit={handleUpdate}>
         <div className={styles.field}>
-          <label>Profile Picture:</label>
+          <label>Profile Picture</label>
           <input
             type="text"
             value={profilePicture}
@@ -28,7 +31,7 @@ const EditProfile = () => {
         </div>
 
         <div className={styles.field}>
-          <label>Display Name:</label>
+          <label>Display Name</label>
           <input
             type="text"
             value={displayName}
@@ -38,7 +41,7 @@ const EditProfile = () => {
         </div>
 
         <div className={styles.field}>
-          <label>Username:</label>
+          <label>Username</label>
           <input
             type="text"
             value={username}
@@ -47,9 +50,10 @@ const EditProfile = () => {
           />
         </div>
 
-        <Button type="submit" text="Update Profile"></Button>
+        <Button type="submit" text="Update Profile" style="full"></Button>
       </form>
     </div>
+    </>
   );
 };
 

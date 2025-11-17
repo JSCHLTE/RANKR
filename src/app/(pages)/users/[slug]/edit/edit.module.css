@@ -1,8 +1,13 @@
+.editTitle {
+    font-size: 2.5rem;
+}
+
 .editWrapper {
-    background-color: rgba(48, 48, 48, 0.75);
-    backdrop-filter: blur(5px);
+    background-color: hsla(218, 68%, 17%, 0.75);
+    border-radius: 5px;
     position: absolute;
     width: 90%;
+    max-width: 650px;
     min-height: 500px;
     top: 50%;
     left: 50%;
@@ -18,6 +23,30 @@
     margin-bottom: 20px;
 }
 
+.editWrapper form {
+    margin-top: 1.5rem;
+}
+
 .editWrapper button {
     padding: 0.5rem 0.75rem;
+    background-color: var(--white);
+    color: var(--background);
+    margin-top: 1.5rem;
+}
+
+.editWrapper form input {
+    padding: 0.75rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--background);
+    font-size: 1rem;
+    background-color: var(--background-light);
+    color: var(--white);
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 5;
+    backdrop-filter: blur(5px);
 }
