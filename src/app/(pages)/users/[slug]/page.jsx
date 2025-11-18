@@ -38,7 +38,7 @@ const page = async ({ params }) => {
 
   return (
     <section id='content-wrapper'>
-    <EditProfile profile={profile}/>
+        <EditProfile profile={profile}/>
       <div className='user-data flex-center'>
         <User profile={profile}/>
       </div>

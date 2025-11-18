@@ -4,7 +4,6 @@ nav {
     left: 0;
     z-index: 999;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0);
     transition: all 0.3s ease-in-out;
 }
 
@@ -13,7 +12,7 @@ nav.scrolled {
 }
 
 nav.active {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: hsla(217, 68%, 6%, 0.75);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(5px);
 }
@@ -50,7 +49,8 @@ nav.active {
     bottom: 0;
     left: 0;
     transform: translateY(100%);
-    background-color: var(--background);
+    background-color: hsla(217, 68%, 6%, 0.75);
+    backdrop-filter: blur(5px);
     width: 100%;
     height: 100vh;
     flex-direction: column;

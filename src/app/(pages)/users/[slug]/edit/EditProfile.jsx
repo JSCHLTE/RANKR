@@ -21,8 +21,7 @@ const EditProfile = ({ profile }) => {
       <h2 className={`knewave ${styles.editTitle}`}>Edit Profile</h2>
       <form onSubmit={handleUpdate}>
         <div className={styles.field}>
-          <label>Profile Picture</label>
-          <div className={`${styles.previewWrapper} flex`}>
+        <div className={`${styles.previewWrapper} flex`}>
             <div className={styles.item}>
               <div className={styles.current}>
                 <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture' />
@@ -36,6 +35,7 @@ const EditProfile = ({ profile }) => {
               <p>Preview</p>
             </div>
       </div>
+          <label>Profile picture</label>
           <input
             type="text"
             value={profilePicture}
@@ -45,7 +45,7 @@ const EditProfile = ({ profile }) => {
         </div>
 
         <div className={styles.field}>
-          <label>Display Name</label>
+          <label>Display name</label>
           <input
             type="text"
             value={displayName}
@@ -62,6 +62,7 @@ const EditProfile = ({ profile }) => {
             onChange={(e) => setUsername(e.target.value)}
             placeholder={profile.username}
           />
+          <p>Usernames can only be changed every 30 days</p>
         </div>
       </form>
       <div className={`${styles.btnWrapper} flex`}>
