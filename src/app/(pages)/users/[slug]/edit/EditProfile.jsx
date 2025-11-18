@@ -22,6 +22,20 @@ const EditProfile = ({ profile }) => {
       <form onSubmit={handleUpdate}>
         <div className={styles.field}>
           <label>Profile Picture</label>
+          <div className={`${styles.previewWrapper} flex`}>
+            <div className={styles.item}>
+              <div className={styles.current}>
+                <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture' />
+              </div>
+              <p>Current</p>
+            </div>
+            <div className={styles.item}>
+            <div className={styles.preview}>
+              <img src={profilePicture != profile.pfp ? profilePicture : '/images/lion-blue.svg'} alt='User profile picture'/>
+            </div>
+              <p>Preview</p>
+            </div>
+      </div>
           <input
             type="text"
             value={profilePicture}

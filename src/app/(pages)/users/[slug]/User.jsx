@@ -105,7 +105,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
     <>
       <div className='user-data-left'>
         <div className='user-data-img-wrapper'>
-          <img src={profile?.pfp ? profile.pfp : '/images/lion-blue.svg'} alt='User profile picture'/>
+          <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture'/>
         </div>
       </div>
       <div className='user-data-right'>
