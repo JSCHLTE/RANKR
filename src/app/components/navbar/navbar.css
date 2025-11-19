@@ -19,7 +19,7 @@ nav.active {
 
 nav.open {
     box-shadow: none;
-    backdrop-filter: none; 
+    backdrop-filter: none;
     background-color: var(--background);
 }
 
@@ -55,8 +55,6 @@ nav.open {
     bottom: 0;
     left: 0;
     transform: translateY(100%);
-    background-color: var(--background);
-    backdrop-filter: blur(5px);
     width: 100%;
     height: 100vh;
     flex-direction: column;
@@ -68,6 +66,7 @@ nav.open {
 
 .nav-links.active {
     display: flex;
+    background-color: var(--background);
 }
 
 .nav-links li a {
