@@ -19,7 +19,13 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
+}
+
+.field label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .editWrapper form {
@@ -81,4 +87,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.editWrapper .desc {
+    color: #ffffffad;
+    font-size: 0.85rem;
 }

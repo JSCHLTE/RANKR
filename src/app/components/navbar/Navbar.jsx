@@ -110,10 +110,10 @@ const Navbar = () => {
   }
 
   // After mount: full dynamic version
-  const navClass = `${scrollY > 50 ? 'active' : ''} ${hide ? 'scrolled' : ''}`;
+  const navClass = `${scrollY > 50 ? 'active' : ''} ${hide && !nav ? 'scrolled' : ''}`;
 
   return (
-    <nav className={navClass}>
+    <nav className={`${navClass} ${nav ? 'open' : ''}`}>
       <div className="nav-inner flex">
         <div className="nav-left flex">
           <div className="nav-logo">

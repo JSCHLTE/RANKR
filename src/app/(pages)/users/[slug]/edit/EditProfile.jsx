@@ -35,34 +35,37 @@ const EditProfile = ({ profile }) => {
               <p>Preview</p>
             </div>
       </div>
-          <label>Profile picture</label>
+          <label>Profile picture
           <input
             type="text"
             value={profilePicture}
             onChange={(e) => setProfilePicture(e.target.value)}
             placeholder="Enter profile picture URL"
           />
+          </label>
         </div>
 
         <div className={styles.field}>
-          <label>Display name</label>
+          <label>Display name
           <input
             type="text"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
             placeholder={profile.displayName}
           />
+          </label>
         </div>
 
         <div className={styles.field}>
-          <label>Username</label>
+          <label>Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder={profile.username}
           />
-          <p>Usernames can only be changed every 30 days</p>
+          </label>
+          <p className={styles.desc}>Usernames can only be changed every 30 days</p>
         </div>
       </form>
       <div className={`${styles.btnWrapper} flex`}>
