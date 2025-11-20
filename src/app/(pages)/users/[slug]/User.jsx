@@ -115,7 +115,7 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
             <span className='user-data-displayname flex'>{profile?.displayName} {profile?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR' /> : ""}</span>
             <span className='user-data-username'>@{profile?.username}</span>
           </div>
-          {profile?.uid === user?.uid ? <Button text="Edit Profile" link={`/users/${profile?.username}/edit`}></Button> : (isFollowing ? <button className='btn main following' onClick={handleFollow}>Following</button> : <button className='btn main follow' onClick={handleFollow}>Follow</button>)}
+          {profile?.uid === user?.uid ? <Button text="Edit profile" link={`/users/${profile?.username}/edit`}></Button> : (isFollowing ? <button className='btn main following' onClick={handleFollow}>Following</button> : <button className='btn main follow' onClick={handleFollow}>Follow</button>)}
         </div>
         <div className='user-data-right-wrapper flex'>
           <div className='user-data-following' onClick={() => handleList("following")}>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>

@@ -53,9 +53,11 @@
     gap: 0.5rem;
 }
 
-.btnWrapper button {
+.btnWrapper button,
+.btnWrapper a {
     color: var(--white);
     flex: 1;
+    text-align: center;
 }
 
 .btnWrapper .save {
@@ -75,7 +77,8 @@
     text-align: center;
 }
 
-.previewWrapper .preview, .previewWrapper .current {
+.previewWrapper .preview,
+.previewWrapper .current {
     border-radius: 50%;
     width: 100px;
     height: 100px;

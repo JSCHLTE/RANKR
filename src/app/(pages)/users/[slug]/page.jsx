@@ -1,12 +1,12 @@
 import React from 'react'
 import User from './User'
 import Rankings from './Rankings'
-import "./user.css"
 import { PlayersList } from "@/app/providers/players/PlayersList"
 import { getUserBySlug } from '@/app/providers/getUser/getUser'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
-import EditProfile from './edit/EditProfile'
+
+import "./user.module.css"
 
 const fetchRankings = async (slug) => {
   try {

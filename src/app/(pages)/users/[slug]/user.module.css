@@ -1,0 +1,108 @@
+.userData {
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+.userDataImgWrapper {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--theme);
+}
+
+.userDataImgWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userDataName {
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn.follow,
+.following {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    margin-left: 1rem;
+    border: 1px solid var(--theme);
+}
+
+.btn.follow {
+    background: transparent;
+}
+
+.following {
+    background: var(--theme);
+    border-radius: 10px;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.btn.edit {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: 1px solid var(--white);
+    color: var(--black);
+}
+
+.userDataUsername,
+.follow-text,
+.userDataJoined {
+    color: var(--sub-text);
+}
+
+.userDataRightWrapper {
+    gap: 0.75rem;
+}
+
+.userDataRightWrapper {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.userDataFollowing:hover,
+.userDataFollowing:focus,
+.userDataFollowers:hover,
+.userDataFollowers:focus {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.userDataDisplayName {
+    font-weight: 800;
+    font-size: 1.25rem;
+    align-items: center;
+}
+
+.userDataDisplayName img {
+    margin-left: 0.25rem;
+    width: 30px;
+}
+
+.userDataUsername {
+    font-size: 1rem;
+}
+
+.userDataJoined {
+    font-style: italic;
+    font-size: 0.75rem;
+}
+
+.userRankings {
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    gap: 0.75rem;
+    margin-top: 4rem;
+}
+
+@media (min-width: 758px) {
+
+    /*Ranking styles*/
+    .userRankings {
+        grid-template-columns: repeat(auto-fill, 45%);
+    }
+}
