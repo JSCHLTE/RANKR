@@ -4,7 +4,7 @@ nav {
     left: 0;
     z-index: 999;
     width: 100%;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 nav.scrolled {
