@@ -95,8 +95,8 @@ const EditProfile = ({ profile }) => {
           </div>
 
           <div className={`${styles.btnWrapper} flex`}>
-            <Button type="submit" text={loading ? "Saving..." : "Save changes"} style={styles.save} disabled={loading}></Button>
-            <Button type="button" link={`/users/${profile?.username}`} text="Back to profile" style={styles.cancel}></Button>
+            <Button type="submit" text={loading ? "Saving..." : "Save changes"} style={`${styles.save} default`} disabled={loading}></Button>
+            <Button type="button" link={`/users/${profile?.username}`} text="Back to profile" style={`${styles.cancel} default`}></Button>
           </div>
         </form>
       </div>
