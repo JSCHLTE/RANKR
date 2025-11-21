@@ -7,7 +7,7 @@ import { db } from '@/app/firebase';
 import FollowList from './FollowList';
 import Button from '@/app/components/arcButton/Button';
 
-const User = ({ profile: initialProfile }) => {  // Use initialProfile to distinguish
+const User = ({ profile: initialProfile, styles }) => {  // Use initialProfile to distinguish
 
   const [profile, setProfile] = useState(initialProfile || {});  // Local state for optimistic updates
   const [hover, setHover] = useState(null);
@@ -104,24 +104,24 @@ const User = ({ profile: initialProfile }) => {  // Use initialProfile to distin
 
   return (
     <>
-      <div className='user-data-left'>
-        <div className='user-data-img-wrapper'>
+      <div className={`${styles.userDataLeft}`}>
+        <div className={`${styles.userDataImgWrapper}`}>
           <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture' />
         </div>
       </div>
-      <div className='user-data-right'>
-        <div className='user-data-name flex'>
-          <div className='user-data-name-group'>
-            <span className='user-data-displayname flex'>{profile?.displayName} {profile?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR' /> : ""}</span>
-            <span className='user-data-username'>@{profile?.username}</span>
+      <div className={`${styles.userDataRight}`}>
+        <div className={`${styles.userDataName} flex`}>
+          <div className={`${styles.userDataNameGroup}`}>
+            <span className={`${styles.userDataDisplayName} flex`}>{profile?.displayName} {profile?.icons?.includes("affiliate") ? <img src='/images/lion-blue.svg' alt='Blue lion logo' title='This account is affiliated with RANKR' /> : ""}</span>
+            <span className={`${styles.userDataUsername}`}>@{profile?.username}</span>
           </div>
-          {profile?.uid === user?.uid ? <Button text="Edit profile" link={`/users/${profile?.username}/edit`}></Button> : (isFollowing ? <button className='btn main following' onClick={handleFollow}>Following</button> : <button className='btn main follow' onClick={handleFollow}>Follow</button>)}
+          {profile?.uid === user?.uid ? <Button text="Edit profile" link={`/users/${profile?.username}/edit`} style={styles.editProfile}></Button> : (isFollowing ? <button className='btn main following' onClick={handleFollow}>Following</button> : <button className='btn main follow' onClick={handleFollow}>Follow</button>)}
         </div>
-        <div className='user-data-right-wrapper flex'>
-          <div className='user-data-following' onClick={() => handleList("following")}>{profile?.followingCount ?? 0} <span className='follow-text'>Following</span></div>
-          <div className='user-data-followers' onClick={() => handleList("followers")}>{profile?.followersCount ?? 0} <span className='follow-text'>Followers</span></div>
+        <div className={`${styles.userDataRightWrapper} flex`}>
+          <div className={`${styles.userDataFollowing}`} onClick={() => handleList("following")}>{profile?.followingCount ?? 0} <span className={`${styles.followText}`}>Following</span></div>
+          <div className={`${styles.userDataFollowers}`} onClick={() => handleList("followers")}>{profile?.followersCount ?? 0} <span className={`${styles.followText}`}>Followers</span></div>
         </div>
-        <div className='user-data-joined'>
+        <div className={`${styles.userDataJoined}`}>
           <span>Joined {profile?.accountCreated}</span>
         </div>
       </div>

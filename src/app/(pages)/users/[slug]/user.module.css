@@ -99,6 +99,14 @@
     margin-top: 4rem;
 }
 
+.editProfile {
+    background-color: var(--white);
+    color: var(--background);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+
 @media (min-width: 758px) {
 
     /*Ranking styles*/

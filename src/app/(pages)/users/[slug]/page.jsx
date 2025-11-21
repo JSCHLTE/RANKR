@@ -5,8 +5,7 @@ import { PlayersList } from "@/app/providers/players/PlayersList"
 import { getUserBySlug } from '@/app/providers/getUser/getUser'
 import { ref, get, equalTo, query, orderByChild } from "firebase/database";
 import { db } from "../../../firebase";
-
-import "./user.module.css"
+import styles from "./user.module.css"
 
 const fetchRankings = async (slug) => {
   try {
@@ -38,10 +37,10 @@ const page = async ({ params }) => {
 
   return (
     <section id='content-wrapper'>
-      <div className='user-data flex-center'>
-        <User profile={profile} />
+      <div className={`${styles.userData} flex-center`}>
+        <User profile={profile} styles={styles} />
       </div>
-      <div className='user-rankings flex-center'>
+      <div className={`${styles.userRankings} flex-center`}>
         <PlayersList>
           <Rankings rankings={rankings} />
         </PlayersList>
