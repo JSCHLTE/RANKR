@@ -1,4 +1,4 @@
-.ranking-item {
+.rankingItem {
     background: linear-gradient(135deg, var(--background), var(--background-light));
     border: 1px solid var(--theme);
     border-radius: 10px;
@@ -13,7 +13,7 @@
     justify-content: space-between;
 }
 
-.ranking-item::after {
+.rankingItem::after {
     content: '';
     position: absolute;
     top: 0;
@@ -26,49 +26,49 @@
     z-index: -1;
 }
 
-.ranking-item:hover::after {
+.rankingItem:hover::after {
     opacity: 1;
 }
 
-.ranking-item:hover {
+.rankingItem:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 10px 0 var(--theme);
 }
 
-.ranking-title-wrapper h3 {
+.rankingTitleWrapper h3 {
     text-wrap: nowrap;
 }
 
-.format-item.qb {
+.formatItem.qb {
     background-color: var(--qb);
 }
 
-.format-item.rb {
+.formatItem.rb {
     background-color: var(--rb);
 }
 
-.format-item.wr {
+.formatItem.wr {
     background-color: var(--wr);
 }
 
-.format-item.te {
+.formatItem.te {
     background-color: var(--te);
 }
 
-.format-item.flx {
+.formatItem.flx {
     background: linear-gradient(120deg, var(--rb), var(--wr), var(--te));
 }
 
-.format-item.sf {
+.formatItem.sf {
     background: linear-gradient(120deg, var(--qb), var(--rb), var(--wr), var(--te));
 }
 
-.format-wrapper {
+.formatWrapper {
     gap: 0.25rem;
     margin: 0.75rem 0;
 }
 
-.format-item {
+.formatItem {
     flex-direction: column;
     padding: 0.15rem;
     border-radius: 10px;
@@ -78,29 +78,29 @@
     font-size: 0.75rem;
 }
 
-.format-number {
+.formatNumber {
     padding: 0.15rem;
     border-radius: 10px;
     background-color: var(--background-light);
 }
 
-.user-info {
+.userInfo {
     align-items: center;
     margin-top: 0.5rem;
 }
 
-.user-info img {
+.userInfo img {
     border-radius: 50%;
     border: 1px solid var(--theme);
     object-fit: cover;
 }
 
-.ranking-categories {
+.rankingCategories {
     gap: 0.3rem;
     margin-top: 0.5rem;
 }
 
-.ranking-type {
+.rankingType {
     text-transform: capitalize;
     background-color: var(--background-light);
     border: 1px solid var(--theme);
@@ -109,7 +109,7 @@
     font-size: 0.85rem;
 }
 
-.date-wrapper {
+.dateWrapper {
     flex-direction: column;
     font-size: 0.85rem;
 }
@@ -118,12 +118,12 @@
     opacity: 0.5;
 }
 
-.user-name-wrapper {
+.userNameWrapper {
     gap: 0.25rem;
     margin-left: 0.25rem;
     font-size: 0.9rem;
 }
 
-.user-name-wrapper .username {
+.userNameWrapper .username {
     color: var(--sub-text);
 }
