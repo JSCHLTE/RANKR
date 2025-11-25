@@ -39,68 +39,65 @@ const EditProfile = ({ profile }) => {
   };
 
   return (
-    <>
-      <div className={styles.overlay}></div>
-      <div className={styles.editWrapper}>
-        <h2 className={`knewave ${styles.editTitle}`}>Edit Profile</h2>
-        {error && <p className={styles.error} style={{ color: 'red', marginBottom: '1rem' }}>{error}</p>}
-        {success && <p className={styles.success} style={{ color: 'green', marginBottom: '1rem' }}>{success}</p>}
-        <form onSubmit={handleUpdate}>
-          <div className={styles.field}>
-            <div className={`${styles.previewWrapper} flex`}>
-              <div className={styles.item}>
-                <div className={styles.current}>
-                  <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture' />
-                </div>
-                <p>Current</p>
+    <div className={styles.editWrapper}>
+      <h2 className={`knewave ${styles.editTitle}`}>Edit Profile</h2>
+      {error && <p className={styles.error} style={{ color: 'red', marginBottom: '1rem' }}>{error}</p>}
+      {success && <p className={styles.success} style={{ color: 'green', marginBottom: '1rem' }}>{success}</p>}
+      <form onSubmit={handleUpdate}>
+        <div className={styles.field}>
+          <div className={`${styles.previewWrapper} flex`}>
+            <div className={styles.item}>
+              <div className={styles.current}>
+                <img src={profile.pfp || '/images/lion-blue.svg'} alt='User profile picture' />
               </div>
-              <div className={styles.item}>
-                <div className={styles.preview}>
-                  <img src={profilePicture != profile.pfp ? profilePicture : '/images/lion-blue.svg'} alt='User profile picture' />
-                </div>
-                <p>Preview</p>
-              </div>
+              <p>Current</p>
             </div>
-            <label>Profile picture
-              <input
-                type="text"
-                value={profilePicture}
-                onChange={(e) => setProfilePicture(e.target.value)}
-                placeholder="Enter profile picture URL"
-              />
-            </label>
+            <div className={styles.item}>
+              <div className={styles.preview}>
+                <img src={profilePicture != profile.pfp ? profilePicture : '/images/lion-blue.svg'} alt='User profile picture' />
+              </div>
+              <p>Preview</p>
+            </div>
           </div>
+          <label>Profile picture
+            <input
+              type="text"
+              value={profilePicture}
+              onChange={(e) => setProfilePicture(e.target.value)}
+              placeholder="Enter profile picture URL"
+            />
+          </label>
+        </div>
 
-          <div className={styles.field}>
-            <label>Display name
-              <input
-                type="text"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                placeholder={profile.displayName}
-              />
-            </label>
-          </div>
+        <div className={styles.field}>
+          <label>Display name
+            <input
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              placeholder={profile.displayName}
+            />
+          </label>
+        </div>
 
-          <div className={styles.field}>
-            <label>Username
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder={profile.username}
-              />
-            </label>
-            <p className={styles.desc}>Usernames can only be changed every 30 days</p>
-          </div>
+        <div className={styles.field}>
+          <label>Username
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder={profile.username}
+            />
+          </label>
+          <p className={styles.desc}>Usernames can only be changed every 30 days</p>
+        </div>
 
-          <div className={`${styles.btnWrapper} flex`}>
-            <Button type="submit" text={loading ? "Saving..." : "Save changes"} style={`${styles.save} default`} disabled={loading}></Button>
-            <Button type="button" link={`/users/${profile?.username}`} text="Back to profile" style={`${styles.cancel} default`}></Button>
-          </div>
-        </form>
-      </div>
-    </>
+        <div className={`${styles.btnWrapper} flex`}>
+          <Button type="submit" text={loading ? "Saving..." : "Save changes"} style={`${styles.save} default`} disabled={loading}></Button>
+          <Button type="button" link={`/users/${profile?.username}`} text="Back to profile" style={`${styles.cancel} default`}></Button>
+        </div>
+      </form>
+    </div>
   );
 };
 

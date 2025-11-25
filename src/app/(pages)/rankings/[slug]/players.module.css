@@ -1,0 +1,56 @@
+.rankingsHeader {
+    flex-direction: column;
+    margin: 5rem 0 2rem 0;
+}
+
+.rankingsHeader h1 {
+    font-size: 2rem;
+}
+
+.playerRankingsWrapper,
+.playersCustomWrapper {
+    gap: 0.5rem;
+    flex-direction: column;
+    min-height: 700px;
+}
+
+.editButtons {
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.editButtons button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.authorWrapper {
+    align-items: center;
+    background-color: var(--background);
+    border-radius: 10px;
+    gap: 0.5rem;
+    width: fit-content;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.authorWrapper:hover .username {
+    text-decoration: underline;
+}
+
+.authorImg {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.authorImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.authorWrapper p {
+    font-size: 1.25rem;
+}

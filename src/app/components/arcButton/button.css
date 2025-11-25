@@ -20,11 +20,10 @@
 .arc {
   /* New: default radius var */
   --btn-r: 0;
-  font-weight: bold;
   border: 0 none;
   cursor: pointer;
   position: relative;
-  transition: color var(--easing), background-color var(--easing);
+  transition: color var(--easing), background-color var(--easing), transform 0.2s linear;
 
   &.small {
     padding: calc(var(--btn-padding-y) / 1.4) calc(var(--btn-padding-x) / 1.4);
@@ -153,4 +152,8 @@
   padding: calc(var(--btn-padding-y)) calc(var(--btn-padding-x));
   font-size: var(--font-size);
   white-space: nowrap;
+}
+
+.arc:active {
+  transform: scale(0.9);
 }

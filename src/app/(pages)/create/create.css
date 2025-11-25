@@ -23,7 +23,8 @@
     font-size: 1.125rem;
 }
 
-#rankFormat input, #rankFormat select {
+#rankFormat input,
+#rankFormat select {
     padding: 0.75rem;
     font-size: 1rem;
     margin-top: 0.5rem;
@@ -34,7 +35,10 @@
     font-family: inherit;
 }
 
-#rankFormat input:hover, #rankFormat input:focus, #rankFormat select:hover, #rankFormat select:focus {
+#rankFormat input:hover,
+#rankFormat input:focus,
+#rankFormat select:hover,
+#rankFormat select:focus {
     border-color: var(--theme);
     outline: none;
 }
@@ -58,3 +62,9 @@ input[type="checkbox"] {
     margin-top: 50px;
 }
 
+.format-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}

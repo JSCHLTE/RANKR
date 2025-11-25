@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import "./users.css";
+import "../../components/arcButton/button.css"
 
 const Users = ({ users }) => {
   return (
@@ -10,8 +11,8 @@ const Users = ({ users }) => {
         users.map((item) => (
           <Link
             href={`/users/${item.username}`}
-            className="users-item flex"
-            key={item.username}    
+            className="users-item flex arc custom rounded"
+            key={item.username}
           >
             {/* User Avatar */}
             <div className="user-pfp flex">

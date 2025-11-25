@@ -1,38 +1,26 @@
-.format-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
-    margin-top: 0.5rem;
-}
-
-.format-item {
+.formatItem {
     border: 0 none;
     background-color: var(--background-light);
     padding: 1rem !important;
-    transition: transform 0.2s linear;
     position: relative;
 }
 
-.format-item:hover {
+.formatItem:hover {
     border-color: var(--theme);
     cursor: pointer;
 }
 
-.format-item:active {
-    transform: scale(0.9);
-}
-
-.format-item h3 {
+.formatItem h3 {
     font-size: 1.125rem;
 }
 
-.format-item p {
+.formatItem p {
     font-size: 1rem;
     margin-top: 0.25rem;
     color: var(--sub-text);
 }
 
-.format-selected {
+.formatSelected {
     position: absolute;
     top: 0.4rem;
     right: 0.4rem;

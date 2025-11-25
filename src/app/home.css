@@ -41,17 +41,20 @@
     gap: 0.5rem;
 }
 
-header p {
+.video p {
     margin: 3rem 0;
     max-width: 750px;
 }
 
-.home.btn.main, .home.btn.alt {
+.home.btn.main,
+.home.btn.alt {
     width: 150px;
     height: 45px;
 }
 
-.section-top, .community-intro, .draft-intro {
+.section-top,
+.community-intro,
+.draft-intro {
     text-align: center;
 }
 
@@ -70,7 +73,9 @@ header p {
     margin: 1rem auto;
 }
 
-#stats, #community, #draft {
+#stats,
+#community,
+#draft {
     flex-direction: column;
     justify-content: center;
     display: flex;
@@ -89,4 +94,3 @@ header p {
     object-fit: cover;
     object-position: top left;
 }
-

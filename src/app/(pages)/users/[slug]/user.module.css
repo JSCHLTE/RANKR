@@ -27,7 +27,6 @@
     padding: 0.35rem 0.75rem;
     font-size: 0.85rem;
     margin-left: 1rem;
-    border: 1px solid var(--theme);
 }
 
 .btn.follow {
@@ -107,6 +106,7 @@
 .userButtonWrapper button {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .editProfile {

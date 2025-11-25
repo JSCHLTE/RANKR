@@ -12,12 +12,15 @@ import { getUserById } from '@/app/providers/getUser/getUser';
 import Link from 'next/link';
 import { useAuth } from '@/app/providers/AuthProvider';
 
+import "../../../components/arcButton/button.css"
+import styles from "./players.module.css"
+
 const Players = () => {
 
   const { slug } = useParams();
   const { players } = usePlayerContext();
   const { user } = useAuth();
- 
+
   const [rankings, setRankings] = useState();
   const [rankData, setRankData] = useState();
   const [userData, setUserData] = useState();
@@ -40,8 +43,8 @@ const Players = () => {
             ? data.playerIds
             : Object.values(data.playerIds);
 
-            setRankings(rankingsArray);
-            setRankData(data);
+          setRankings(rankingsArray);
+          setRankData(data);
         } else {
           console.log("No player data available");
           setPlayerList();
@@ -55,17 +58,17 @@ const Players = () => {
   }, []);
 
   //Gets player information from the player id we got from rankings.playerIds
-    useEffect(() => {
-      if (!players || !rankings) return;
+  useEffect(() => {
+    if (!players || !rankings) return;
 
-      const orderedPlayers = rankings
-        .map((id) => players.find((p) => String(p.playerId) === String(id)))
-        .filter(Boolean)
+    const orderedPlayers = rankings
+      .map((id) => players.find((p) => String(p.playerId) === String(id)))
+      .filter(Boolean)
 
-      setPlayerList(orderedPlayers.filter(player => player.status === "Active"));
-      setUnsaved(orderedPlayers);
+    setPlayerList(orderedPlayers.filter(player => player.status === "Active"));
+    setUnsaved(orderedPlayers);
 
-    }, [players, rankings]);
+  }, [players, rankings]);
 
   //Saves rankings
   const saveRankings = () => {
@@ -83,7 +86,7 @@ const Players = () => {
         console.error("Error saving players: ", error);
       })
 
-      setRankings(newOrder)
+    setRankings(newOrder)
   }
 
   const cancelEdit = () => {
@@ -97,37 +100,37 @@ const Players = () => {
       setUserData(await getUserById(rankData.uid))
     }
 
-    if(rankData) getUser();
-    if(rankData?.uid === user?.uid) {
-      setAuthor(true); 
+    if (rankData) getUser();
+    if (rankData?.uid === user?.uid) {
+      setAuthor(true);
     } else {
       setAuthor(1);
     }
   }, [rankData])
 
-  if(!playerList) return <Loading />
+  if (!playerList) return <Loading />
 
   return (
     <>
-    <header className="rankings-header flex">
-      <h1>{rankData ? rankData.title : "Title of Ranking"}</h1>
-      <Link href={`/users/${userData?.username}`}>
-        <div className='author-wrapper flex'>
-          <div className='author-img'>
-            <img src={userData?.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture' width={50} height={50}/>
-        </div>
-          <p className='username'>{userData ? userData.displayName : "User"}</p>
-        </div>
-      </Link>
-      { author ? <div className='edit-buttons flex'>
-          {editMode ? <button className="btn main" onClick={saveRankings}>Save Order</button> : <button className="btn main" onClick={() => setEditMode(prev => !prev)}>Edit Order</button>}
-          {editMode ? <button className="btn alt" onClick={() => cancelEdit()}>Cancel</button> : ''}
-        </div> : "" }
-    </header>
-      <main className="player-rankings-wrapper flex">
-          {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList}/> : <PlayersRankings playerList={playerList} loading={loading}/>}
+      <header className={`${styles.rankingsHeader} flex`}>
+        <h1>{rankData ? rankData.title : "Title of Ranking"}</h1>
+        <Link href={`/users/${userData?.username}`}>
+          <div className={`${styles.authorWrapper} flex`}>
+            <div className={`${styles.authorImg}`}>
+              <img src={userData?.pfp ? userData.pfp : '/images/lion-blue.svg'} alt='User profile picture' width={50} height={50} />
+            </div>
+            <p className={`${styles.username}`}>{userData ? userData.displayName : "User"}</p>
+          </div>
+        </Link>
+        {author ? <div className={`${styles.editButtons} flex`}>
+          {editMode ? <button className="arc custom rounded" onClick={saveRankings}>Save Order</button> : <button className="arc custom rounded" onClick={() => setEditMode(prev => !prev)}>Edit Order</button>}
+          {editMode ? <button className="arc custom rounded" onClick={() => cancelEdit()}>Cancel</button> : ''}
+        </div> : ""}
+      </header>
+      <main className={`${styles.playerRankingsWrapper} flex`}>
+        {editMode ? <PlayersEdit playerList={playerList} setPlayerList={setPlayerList} /> : <PlayersRankings playerList={playerList} loading={loading} />}
       </main>
-      </>
+    </>
   )
 }
 
