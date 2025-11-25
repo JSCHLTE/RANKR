@@ -123,8 +123,8 @@ const Players = () => {
           </div>
         </Link>
         {author ? <div className={`${styles.editButtons} flex`}>
-          {editMode ? <button className="arc custom rounded" onClick={saveRankings}>Save Order</button> : <button className="arc custom rounded" onClick={() => setEditMode(prev => !prev)}>Edit Order</button>}
-          {editMode ? <button className="arc custom rounded" onClick={() => cancelEdit()}>Cancel</button> : ''}
+          {editMode ? <button className={`${styles.saveBtn} arc custom rounded`} onClick={saveRankings}>Save rankings</button> : <button className={`${styles.editBtn} arc custom rounded`} onClick={() => setEditMode(prev => !prev)}>Edit rankings</button>}
+          {editMode ? <button className={`${styles.cancelBtn} arc custom rounded`} onClick={() => cancelEdit()}>Cancel edits</button> : ''}
         </div> : ""}
       </header>
       <main className={`${styles.playerRankingsWrapper} flex`}>
