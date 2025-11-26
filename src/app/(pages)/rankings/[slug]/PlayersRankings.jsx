@@ -4,10 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
 
+import styles from "./playerSearch.module.css";
+
 const POSITIONS = ['QB', 'RB', 'WR', 'TE'];
 
 const PlayersRankings = ({ playerList }) => {
-  
+
   const [searchValue, setSearchValue] = useState("");
   const [positionFilter, setPositionFilter] = useState([]);
   const [playerCard, setPlayerCard] = useState([]);
@@ -54,7 +56,7 @@ const PlayersRankings = ({ playerList }) => {
       <input
         type="text"
         placeholder="Search player..."
-        className="player-search"
+        className={styles.playerSearch}
         value={searchValue}
         onChange={({ target }) => setSearchValue(target.value)}
       />

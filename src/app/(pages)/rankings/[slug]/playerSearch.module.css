@@ -1,0 +1,11 @@
+.playerSearch {
+    width: 100%;
+    height: 50px;
+    font-size: 1.25rem;
+    padding: 0 0.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--theme);
+    background-color: var(--background);
+    color: var(--permWhite);
+    font-size: inherit;
+}

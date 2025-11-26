@@ -7,7 +7,12 @@
     overflow: hidden;
     height: 250px;
     justify-content: space-between;
-    background-color: var(--background-light);
+    background: linear-gradient(135deg, var(--background-light), var(--background));
+    border: 1px solid var(--background-light);
+}
+
+.rankingItem:hover {
+    border-color: rgba(255, 255, 255, 0);
 }
 
 .rankingTitleWrapper h3 {

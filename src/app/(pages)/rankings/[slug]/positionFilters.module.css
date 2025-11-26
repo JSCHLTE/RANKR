@@ -1,0 +1,31 @@
+.filterItems {
+    align-items: center;
+    margin: 0.5rem 0 1rem;
+}
+
+.filterButtons {
+    margin-left: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filterButtons button {
+    background-color: var(--background);
+    border: 1px solid var(--theme);
+    color: var(--permWhite);
+    width: 75px;
+    height: 30px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.filterButtons button.active {
+    background-color: var(--theme) !important;
+    color: var(--background) !important;
+    font-weight: bold;
+}
+
+.filterButtons button:hover {
+    background-color: var(--background-light);
+}
