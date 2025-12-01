@@ -14,6 +14,7 @@ const CreateRankings = () => {
   const [formValues, setFormValues] = useState({
     title: "",
     teams: "",
+    positions: "",
     format: "",
     rankTeamLayout: "",
     qb: "",
@@ -131,7 +132,7 @@ const CreateRankings = () => {
         playerIds: templatePlayerIds,
         createdAt: new Date().toISOString(),
         updatedAt: "",
-        isPrivate: false, 
+        isPrivate: false,
         superFlex: formValues.teamSuperflex,
         author: user ? user.username : "none",
         uid: uid
@@ -159,6 +160,10 @@ const CreateRankings = () => {
       setError(`Failed to create ranking: ${err.message}`);
     }
   };
+
+  useEffect(() => {
+    console.log(formValues)
+  }, [formValues])
 
   return (
     <div className="form-wrapper">
@@ -201,7 +206,7 @@ const CreateRankings = () => {
             <option value="32">32 teams</option>
           </select>
         </label>
-        <label htmlFor="format">
+        <label htmlFor="positions">
           Ranking Positions
           <div className='format-wrapper'>
             <LeagueFormat
@@ -210,7 +215,7 @@ const CreateRankings = () => {
               value={"all"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"} 
+              name={"positions"}
             />
             <LeagueFormat
               title="QB's"
@@ -218,7 +223,7 @@ const CreateRankings = () => {
               value={"qb"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"}
+              name={"positions"}
             />
             <LeagueFormat
               title="RB's"
@@ -226,7 +231,7 @@ const CreateRankings = () => {
               value={"rb"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"}
+              name={"positions"}
             />
             <LeagueFormat
               title="WR's"
@@ -234,7 +239,7 @@ const CreateRankings = () => {
               value={"wr"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"}
+              name={"positions"}
             />
             <LeagueFormat
               title="TE's"
@@ -242,7 +247,7 @@ const CreateRankings = () => {
               value={"te"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"}
+              name={"positions"}
             />
             <LeagueFormat
               title="Rookies"
@@ -250,7 +255,7 @@ const CreateRankings = () => {
               value={"rookie"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"}
+              name={"positions"}
             />
           </div>
         </label>
@@ -263,7 +268,7 @@ const CreateRankings = () => {
               value={"redraft"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"format"} 
+              name={"format"}
             />
             <LeagueFormat
               title="Keeper"
@@ -468,14 +473,14 @@ const CreateRankings = () => {
               setFormValues={setFormValues}
               formValues={formValues}
               name={"scoring"}
-             />
+            />
             <LeagueFormat
               title="Non-PPR"
               desc="0 points per reception"
               value={"Non-PPR"}
               setFormValues={setFormValues}
               formValues={formValues}
-              name={"scoring"}  
+              name={"scoring"}
             />
             <LeagueFormat
               title="Don't Specify"
