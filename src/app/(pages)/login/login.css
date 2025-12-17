@@ -23,18 +23,11 @@
 
 #loginForm {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 3rem;
 }
 
-#loginForm label {
-    flex-direction: column;
-    font-size: 1.25rem;
-    color: var(--sub-text);
-}
-
-#loginForm label input {
-    margin-top: 0.5rem;
+#loginForm input {
     width: 100%;
     height: 50px;
     padding: 1rem;

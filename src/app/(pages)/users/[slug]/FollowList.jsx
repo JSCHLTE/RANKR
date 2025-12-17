@@ -24,8 +24,8 @@ const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
       setIsLoading(true);
       setError(null);
       try {
-        const path = followList === "followers" 
-          ? `users/${uid}/followers` 
+        const path = followList === "followers"
+          ? `users/${uid}/followers`
           : `users/${uid}/following`;
         const dataRef = ref(db, path);
         const snapshot = await get(dataRef);
@@ -86,21 +86,23 @@ const FollowList = ({ uid, pfp, username, followList, setFollowList }) => {
   return (
     <div className="follow-list-wrapper">
       <div className="follow-list-inner-wrapper">
-      <div onClick={() => setFollowList(null)} className="follow-list-x">
-        <i className="fa-solid fa-x"></i>
-    </div>
         <div className="follow-list-title flex">
-          <div className="user-pfp">
-            <img
-              src={pfp || '/images/lion-blue.svg'}
-              alt="User profile picture"
-              width={50}
-              height={50}
-            />
+          <div className="follow-list-title-user flex">
+            <div className="user-pfp">
+              <img
+                src={pfp || '/images/lion-blue.svg'}
+                alt="User profile picture"
+                width={50}
+                height={50}
+              />
+            </div>
+            <p>
+              {username ? `${username}'s ${followList}` : `User's ${followList || "list"}`}
+            </p>
           </div>
-          <p>
-            {username ? `${username}'s ${followList}` : `User's ${followList || "list"}`}
-          </p>
+          <div onClick={() => setFollowList(null)} className="follow-list-x">
+            <i className="fa-solid fa-x"></i>
+          </div>
         </div>
         <div className="follow-list-list flex">
           {isLoading ? (
