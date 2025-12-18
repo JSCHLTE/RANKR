@@ -5,34 +5,41 @@
     border-radius: 10px;
 }
 
-.player-stat-season-wrapper {
+.stats-table {
     position: relative;
+    padding: 5rem !important;
 }
 
-.player-card-player-info-wrapper, .player-stat-season-wrapper {
+.player-card-player-info-wrapper,
+.stats-table {
     scrollbar-width: thin;
     scrollbar-color: var(--theme) var(--background-light);
     gap: 1.25rem;
     overflow-x: auto;
-  }
-  
-  .player-card-player-info-wrapper::-webkit-scrollbar, .player-stat-season-wrapper::-webkit-scrollbar {
+}
+
+.player-card-player-info-wrapper::-webkit-scrollbar,
+.stats-table::-webkit-scrollbar {
     width: 8px;
-  }
-  
-  .player-card-player-info-wrapper::-webkit-scrollbar-track, .player-stat-season-wrapper::-webkit-scrollbar-track {
+}
+
+.player-card-player-info-wrapper::-webkit-scrollbar-track,
+.stats-table::-webkit-scrollbar-track {
     background: var(--background-light);
     border-radius: 4px;
-  }
-  
-  .player-card-player-info-wrapper::-webkit-scrollbar-thumb, .player-stat-season-wrapper::-webkit-scrollbar-thumb {
+}
+
+.player-card-player-info-wrapper::-webkit-scrollbar-thumb,
+.stats-table::-webkit-scrollbar-thumb {
     background: var(--theme);
     border-radius: 4px;
-  }
-  
-  .player-card-player-info-wrapper::-webkit-scrollbar-thumb:hover, .player-stat-season-wrapper::-webkit-scrollbar-thumb:hover {
-    background: hsl(194, 100%, 55%); /* Slightly lighter theme color on hover */
-  }
+}
+
+.player-card-player-info-wrapper::-webkit-scrollbar-thumb:hover,
+.stats-table::-webkit-scrollbar-thumb:hover {
+    background: hsl(194, 100%, 55%);
+    /* Slightly lighter theme color on hover */
+}
 
 .player-card-player-info-title {
     opacity: 0.85;
@@ -40,7 +47,8 @@
     font-size: 1.15rem;
 }
 
-.player-card-player-value, .player-card-header-left-pos-info {
+.player-card-player-value,
+.player-card-header-left-pos-info {
     font-size: 1.1rem;
 }
 
@@ -60,27 +68,29 @@
     display: none;
 }
 
-.player-stat-season-wrapper {
-    background-color: var(--background);
+.stats-table {
     border-radius: 10px;
     margin: 0.5rem;
     padding: 0.75rem 0.75rem 1rem;
+    background-color: var(--background);
 }
 
 .stats-error {
     padding: 0.5rem;
 }
 
-.player-stat-season-wrapper table {
+.stats-table {
     border: none;
     border-collapse: collapse;
 }
 
-.player-stat-season-wrapper table th {
+.stats-table th {
     text-transform: uppercase;
     padding: 0.35rem 0.35rem 0 0;
+    background-color: var(--background);
 }
-.player-stat-season-wrapper table td  {
+
+.stats-table td {
     padding: 0.35rem 0.35rem 0 0;
     width: 75px;
     height: 30px;
@@ -90,27 +100,29 @@
     padding: 0.35rem 0.35rem 0 0.35rem !important;
 }
 
-.player-stat-season-wrapper table td, .player-stat-season-wrapper table th {
+.stats-table td,
+.stats-table th {
     border: none;
 }
 
-.player-stat-season-wrapper table td div, .player-stat-season-wrapper table th {
+.stats-table td div,
+.stats-table th {
     line-height: 30px;
     text-align: center;
     border-radius: 5px;
 }
 
-.player-stat-season-wrapper table .logo-team {
+.stats-table .logo-team {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.player-stat-season-wrapper table img {
+.stats-table img {
     margin-right: 0.25rem;
 }
 
-.table-stat {
+.stats-table .table-stat {
     background-color: var(--grey-bg);
     border: 1px solid var(--grey-bg);
     text-align: center;
