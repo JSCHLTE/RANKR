@@ -7,7 +7,8 @@
     font-size: 2rem;
 }
 
-.player-rankings-wrapper, .players-custom-wrapper {
+.player-rankings-wrapper,
+.players-custom-wrapper {
     gap: 0.5rem;
     flex-direction: column;
     min-height: 700px;
@@ -27,35 +28,6 @@
     align-items: center;
     cursor: pointer;
     padding: 0.35rem;
-}
-
-.drag-handle-tab {
-    background-color: var(--theme);
-    width: 30px;
-    padding: 0 0.5rem;
-    border-radius: 10px;
-    margin-right: 0.5rem;
-    height: 80px;
-}
-
-.drag-handle-tab:hover {
-    cursor: grab;
-}
-
-.drag-handle-tab:active {
-    cursor: grabbing;
-    opacity: 0.75;
-}
-
-.lines-wrapper {
-    gap: 0.25rem;
-    flex-direction: column;
-}
-
-.lines-wrapper .line-drag {
-    background-color: var(--permWhite);
-    width: 15px;
-    height: 2px;
 }
 
 .player-item {
@@ -86,7 +58,8 @@
     opacity: 0.25;
 }
 
-.player-team-logo, .player-item .player-item-img-wrapper img  {
+.player-team-logo,
+.player-item .player-item-img-wrapper img {
     position: absolute;
     top: 0;
     left: 0;
@@ -103,12 +76,13 @@
     font-size: 1.15rem;
 }
 
-.player-item-info-details  {
+.player-item-info-details {
     gap: 0.5rem;
     margin-top: 0.5rem;
 }
 
-.btn.create, .btn.cancel {
+.btn.create,
+.btn.cancel {
     width: 150px;
     height: 40px;
 }
