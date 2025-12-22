@@ -36,14 +36,8 @@
 }
 
 .player-team-logo {
-    opacity: 0.25;
-}
-
-.player-team-logo,
-.player-item .player-item-img-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
+    width: 20px;
+    height: 20px;
 }
 
 .player-item .player-item-img-wrapper img {
@@ -130,7 +124,7 @@
     padding: 0 0.5rem;
     border-radius: 10px;
     margin-right: 0.5rem;
-    height: 80px;
+    height: 65px;
 }
 
 .drag-handle-tab:hover {

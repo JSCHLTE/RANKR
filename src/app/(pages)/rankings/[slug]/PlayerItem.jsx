@@ -38,13 +38,6 @@ const PlayerItem = ({
               </div>
             )}
             <div className="player-item-img-wrapper">
-              {/* {player.currentTeam && ( // Assuming player has currentTeam; make optional if needed
-            <img
-              src={`https://sleepercdn.com/images/team_logos/nfl/${player.currentTeam.toLowerCase()}.png`}
-              alt={`${player.currentTeam} logo`}
-              className="player-team-logo"
-            />
-          )} */}
               <img
                 src={player.playerImg ?? "/images/player-default.webp"}
                 alt={player.full_name}

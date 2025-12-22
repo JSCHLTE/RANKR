@@ -6,26 +6,29 @@
 .filterButtons {
     margin-left: 0.5rem;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .filterButtons button {
-    background-color: var(--background);
-    border: 1px solid var(--theme);
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: var(--permWhite);
-    width: 75px;
-    height: 30px;
+    width: 80px;
+    height: 32px;
     border-radius: 10px;
-    text-transform: uppercase;
+    text-transform: capitalize;
+    font-size: 0.9rem;
     cursor: pointer;
 }
 
 .filterButtons button.active {
-    background-color: var(--theme) !important;
-    color: var(--background) !important;
+    background-color: var(--permWhite);
+    color: var(--permBlack);
     font-weight: bold;
 }
 
 .filterButtons button:hover {
-    background-color: var(--background-light);
+    background-color: var(--permWhite);
+    color: var(--permBlack);
 }

@@ -104,36 +104,6 @@
     margin: 0.5rem 0 1rem;
 }
 
-.filter-buttons {
-    margin-left: 0.5rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.filter-buttons button {
-    background-color: var(--background);
-    border: 1px solid var(--theme);
-    color: var(--permWhite);
-    width: 75px;
-    height: 30px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.filter-buttons button.active {
-    background-color: var(--theme) !important;
-    color: var(--background) !important;
-}
-
-.filter-buttons button:hover {
-    background-color: var(--background-light);
-}
-
-.filter-buttons button.active {
-    font-weight: bold;
-}
-
 .author-wrapper {
     align-items: center;
     background-color: var(--background);
