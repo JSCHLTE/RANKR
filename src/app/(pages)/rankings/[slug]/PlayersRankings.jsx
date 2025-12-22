@@ -5,12 +5,14 @@ import PositionFilters from "./PositionFilters";
 import PlayerList from "./PlayerList";
 
 import styles from "./playerSearch.module.css";
+import Filters from "./(filters)/Filters";
 
 const POSITIONS = ['QB', 'RB', 'WR', 'TE'];
 
 const PlayersRankings = ({ playerList }) => {
 
   const [searchValue, setSearchValue] = useState("");
+  const [activeFilter, setActiveFilter] = useState(undefined);
   const [positionFilter, setPositionFilter] = useState([]);
   const [playerCard, setPlayerCard] = useState([]);
 
@@ -65,6 +67,10 @@ const PlayersRankings = ({ playerList }) => {
         handleFilter={handleFilter}
         resetFilters={() => setPositionFilter([])}
         POSITIONS={POSITIONS}
+      />
+      <Filters
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
       />
       <PlayerList
         players={displayPlayers}

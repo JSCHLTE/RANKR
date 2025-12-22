@@ -1,0 +1,23 @@
+.positions label,
+.positions input {
+    cursor: pointer;
+}
+
+.positionsWrapper {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.positions label {
+    font-family: inherit;
+    margin-left: 0.35rem;
+}
+
+.positions input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
