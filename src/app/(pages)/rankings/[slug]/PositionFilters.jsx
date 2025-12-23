@@ -11,7 +11,7 @@ const PositionFilters = ({
     <div className={`${styles.filterButtons} flex`}>
       <button>Position</button>
       <button>Team</button>
-      {/* <button className={positionFilter.length <= 0 ? `${styles.active}` : ''} onClick={resetFilters}>
+      <button className={positionFilter.length <= 0 ? `${styles.active}` : ''} onClick={resetFilters}>
         All
       </button>
       {POSITIONS.map(pos => (
@@ -22,7 +22,7 @@ const PositionFilters = ({
         >
           {pos}
         </button>
-      ))} */}
+      ))}
       <button
         onClick={() => handleFilter('Rookie')}
         className={positionFilter.includes('Rookie') ? `${styles.active}` : ''}

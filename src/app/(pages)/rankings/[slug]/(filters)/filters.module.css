@@ -9,9 +9,14 @@
     margin-top: 1rem;
 }
 
+.positions {
+    position: relative;
+    align-items: center;
+}
+
 .positions label {
     font-family: inherit;
-    margin-left: 0.35rem;
+    padding-left: 2rem;
 }
 
 .positions input {
@@ -20,4 +25,50 @@
     cursor: pointer;
     height: 0;
     width: 0;
+}
+
+.positions input:checked~.checkmark::after {
+    display: block;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--background);
+    border: 1px solid var(--background-light);
+    border-radius: 5px;
+}
+
+.checkmark:hover,
+.positions label:hover .checkmark {
+    background-color: var(--background-light);
+}
+
+.positions .checkmark::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.resetButton {
+    margin-top: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--permWhite);
+    font-weight: bold;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.teams {
+    flex-direction: column;
 }
