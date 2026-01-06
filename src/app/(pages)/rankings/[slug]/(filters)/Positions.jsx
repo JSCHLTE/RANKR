@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./filters.module.css";
 import { teams } from "../../../../providers/teams/TeamProvider";
 
-const Positions = () => {
+const Positions = ({ handleFilter }) => {
 
     const [positions, setPositions] = useState({
         QB: false,
@@ -114,7 +114,6 @@ const Positions = () => {
                 <h2>Teams</h2>
                 <div className={`${styles.positionsWrapper} flex`}>
                     {teams.map(team => (
-                        console.log(team.id),
                         <div className={styles.positions} key={team.id}>
                             <label htmlFor={team.id}>
                                 {team.city} {team.name}

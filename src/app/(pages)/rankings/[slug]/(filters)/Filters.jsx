@@ -1,10 +1,10 @@
 import styles from "./filters.module.css";
 import Positions from "./Positions";
 
-const Filters = ({ activeFilter, setActiveFilter }) => {
+const Filters = ({ handleFilter }) => {
     return (
         <div className={styles.filtersWrapper}>
-            <Positions />
+            <Positions handleFilter={handleFilter} />
         </div>
     );
 };

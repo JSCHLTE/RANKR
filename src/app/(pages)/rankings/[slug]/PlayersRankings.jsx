@@ -24,9 +24,9 @@ const PlayersRankings = ({ playerList }) => {
       const isRookieFilter = positionFilter.includes('Rookie');
       const posFilters = positionFilter.filter(p => p !== 'Rookie');
 
-      //Checks if player is a rookie and that the item is not a defense
+      //Checks if player is a rookie
       if (isRookieFilter) {
-        filtered = filtered.filter(player => player?.years_exp === 0 && player?.position !== "DEF");
+        filtered = filtered.filter(player => player?.years_exp === 0);
       }
 
       //Filters players by position
@@ -35,7 +35,7 @@ const PlayersRankings = ({ playerList }) => {
       }
     }
 
-    // Apply search on top (with regex normalization for better matching, e.g., "aj brown" matches "A.J. Brown")
+    // Apply search on top (with regex normalization for better matching)
     if (searchValue.trim().length > 0) {
       const searchTerm = searchValue.toLowerCase().replace(/[^a-z0-9]/g, '');
       filtered = filtered.filter(player => {
@@ -52,6 +52,10 @@ const PlayersRankings = ({ playerList }) => {
       prev.includes(pos) ? prev.filter(item => item !== pos) : [...prev, pos]
     );
   };
+
+  useEffect(() => {
+    console.log(positionFilter)
+  }, [positionFilter])
 
   return (
     <>
@@ -71,6 +75,7 @@ const PlayersRankings = ({ playerList }) => {
       <Filters
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
+        handleFilter={handleFilter}
       />
       <PlayerList
         players={displayPlayers}

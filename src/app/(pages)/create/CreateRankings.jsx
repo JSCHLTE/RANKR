@@ -57,10 +57,6 @@ const CreateRankings = () => {
     },
   };
 
-  useEffect(() => {
-    console.log(formValues)
-  }, [formValues])
-
   // Handle form input changes
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -160,10 +156,6 @@ const CreateRankings = () => {
       setError(`Failed to create ranking: ${err.message}`);
     }
   };
-
-  useEffect(() => {
-    console.log(formValues)
-  }, [formValues])
 
   return (
     <div className="form-wrapper">
