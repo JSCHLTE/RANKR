@@ -1,0 +1,133 @@
+.positionsContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(5, 13, 26, 0.90);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    padding: 1rem 0;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--background-light);
+}
+
+.positionsInner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.positions label,
+.positions input {
+    cursor: pointer;
+}
+
+.positionsWrapper {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.positions {
+    position: relative;
+    align-items: center;
+}
+
+.positions label {
+    font-family: inherit;
+    padding-left: 2rem;
+}
+
+.positions input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.positions input:checked~.checkmark::after {
+    display: block;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: var(--background);
+    border: 1px solid var(--background-light);
+    border-radius: 5px;
+}
+
+.checkmark:hover,
+.positions label:hover .checkmark {
+    background-color: var(--background-light);
+}
+
+.positions .checkmark::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.buttonsWrapper {
+    display: flex;
+    justify-content: right;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.buttonsWrapper button {
+    font-weight: 600;
+    border: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1000px) {
+    .buttonsWrapper button {
+        flex: 1;
+    }
+}
+
+.resetButton {
+    background-color: var(--white);
+    color: var(--background);
+}
+
+.closeButton {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+.teams {
+    flex-direction: column;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}

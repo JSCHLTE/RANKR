@@ -4,13 +4,11 @@ const PositionFilters = ({
   positionFilter,
   handleFilter,
   resetFilters,
-  POSITIONS
+  POSITIONS,
+  setTeamFilter
 }) => (
   <div className={`${styles.filterItems} flex`}>
-    <span>Filters:</span>
     <div className={`${styles.filterButtons} flex`}>
-      <button>Position</button>
-      <button>Team</button>
       <button className={positionFilter.length <= 0 ? `${styles.active}` : ''} onClick={resetFilters}>
         All
       </button>
@@ -28,6 +26,11 @@ const PositionFilters = ({
         className={positionFilter.includes('Rookie') ? `${styles.active}` : ''}
       >
         Rookie
+      </button>
+      <button
+        onClick={() => setTeamFilter(true)}
+      >
+        Team
       </button>
     </div>
   </div>
